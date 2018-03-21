@@ -3,19 +3,23 @@
 "-//mybatis.org//DTD Config 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-	<settings>
+	 <settings>
 		<setting name="jdbcTypeForNull" value="NULL"/>
 	</settings>
 
-	<typeAliases>		
-		<typeAlias type="com.army.movieEro.member.vo.MemberVO" alias="Member"/>
-<!-- 		<typeAlias type="org.kh.firstSpring.notice.model.vo.Notice" alias="Notice"/>
+	<typeAliases>
+		<typeAlias type="com.army.adminMovieEro.movieAddList.model.vo.MovieAddListVo" alias="MovieAddListVo"/>
+		<!-- <typeAlias type="com.army.adminMovieEro.member.model.vo.AdminMemberVo" alias="AdminMemberVo"/> -->
+		<!-- <typeAlias type="com.army.movieEro.member.vo.MemberVO" alias="Member"/>
+		<typeAlias type="org.kh.firstSpring.notice.model.vo.Notice" alias="Notice"/>
 		<typeAlias type="org.kh.firstSpring.board.model.vo.Board" alias="Board"/> -->
 	</typeAliases>
 	
 	<mappers>
- 		<mapper resource="mappers/member-mapper.xml"/>
-<!--		<mapper resource="mappers/notice-mapper.xml"/>
+		<mapper resource="mappers/movieAddList-mapper.xml"/>
+		<!-- <mapper resource="mappers/adminMember-mapper.xml"/> -->
+ 		<!-- <mapper resource="mappers/member-mapper.xml"/>
+		<mapper resource="mappers/notice-mapper.xml"/>
 		<mapper resource="mappers/board-mapper.xml"/> -->
 	</mappers>
 </configuration>
