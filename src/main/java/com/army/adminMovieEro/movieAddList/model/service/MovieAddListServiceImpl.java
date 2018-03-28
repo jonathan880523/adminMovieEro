@@ -14,7 +14,6 @@ public class MovieAddListServiceImpl implements MovieAddListService {
 	@Autowired
 	private MovieAddListDao dao;
 	
-	
 	@Override
 	public void registMovie(MovieAddListVo vo) throws Exception {
 		dao.insertMovie(vo);

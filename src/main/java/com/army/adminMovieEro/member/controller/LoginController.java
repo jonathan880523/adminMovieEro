@@ -19,8 +19,10 @@ public class LoginController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 	
-	@RequestMapping("/login.do")
-	public String home(Locale locale, Model model) {
+	@RequestMapping(value="/")
+	public String home() {
+		
+		logger.info("LoginController 도착.......................");
 		
 		return "main/login";
 	}
