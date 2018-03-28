@@ -92,9 +92,8 @@ public class AjaxAddMovieController {
             try {
             	map = new ObjectMapper().readValue(response.toString(), Map.class);
             	
-            	int one = map.size();
             	System.out.println("map = " + map);
-            	System.out.println("map의 size" + one);
+            	System.out.println("map의 size" + map.size());
             	model.addAttribute("addMovieMap", map);
             }catch(Exception e) {
             	e.getStackTrace();

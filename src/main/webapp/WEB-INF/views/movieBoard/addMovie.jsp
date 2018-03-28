@@ -301,14 +301,12 @@
                                                 <form class="form-horizontal">
                                                   <fieldset>
                                                     <div class="control-group">
-                                                      <label class="control-label" for="focusedInput">영화를 선텍해주세요</label>
+                                                      <label class="control-label" for="focusedInput">영화를 선텍해주세요<br>(제목 / 감독)</label>
                                                       <div class="controls">
                                                         <select id="resultMovieList" name="resultMovieList">
                                                         	<option selected disabled>검색된 영화 목록</option>
                                                         </select>
-                                                        <p>${addMovieMap}</p>
-                                                        <div id="testDiv"></div>
-                                                        
+                                                        <div id="hiddenMovieInfo"></div>
                                                       </div>
                                                     </div>
                                                   </fieldset>
@@ -543,33 +541,22 @@
             	$.ajax({
             		url : "${pageContext.request.contextPath}/ajaxAddMovie.do",
                 	data : movieInputData,
-                	/* success: function(rawData) {
-                	    var data;
-                	    try {
-                	      data = $.parseJSON(rawData);
-                	      console.log(data);
-                	      var counter = data.counter;
-                	      for(var i=1; i<=counter; i++){
-                	        //since the number of 'testPath' elements in the JSON depend on the 'counter' variable, I am parsing it in this way
-                	        //counter has the correct integer value and loops runs fine
-                	        var currCounter = 'testPath'+i ;
-                	        alert(data[currCounter]); // everything alerts as undefined
-                	      }
-                	    } catch(err) {
-                	      alert(err);
-                	    }
-                	  }, */
-               		 success : function(data){
+            		success : function(data){
                			console.log("성공");
                			ajaxResult = data;
                			console.log(ajaxResult.items);
-               			$("#testDiv").text(ajaxResult);
-               			
-               			
-               			$("#resultMovieList").append($('<option>'),{
-           	    			value : 1,
-       	        			text : ajaxResult.items
-   	            		});
+               			$(ajaxResult.items).each(function(index, item){
+               				$("<option>").attr({
+               					value : item.title 
+               				}).html(item.title + " / " + item.director)
+               				  .appendTo("#resultMovieList")
+               				/* $("#resultMovieList").append($('<option>').html(item.title + " / " + item.director)); */
+               				$('<input>').attr({
+               					type : 'hidden',
+               					class : item.title
+               				}).appendTo("#hiddenMovieInfo");
+               				console.log(index)
+               			});
                 	},
                 	error : function(request, status, error){
                 		alert("code:"+request.status+"\n"+
