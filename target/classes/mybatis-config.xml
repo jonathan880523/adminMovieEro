@@ -17,6 +17,7 @@
 	
 	<mappers>
 		<mapper resource="mappers/movieAddList-mapper.xml"/>
+		<mapper resource="mappers/InsertResultMovie-mapper.xml"/>
 		<!-- <mapper resource="mappers/adminMember-mapper.xml"/> -->
  		<!-- <mapper resource="mappers/member-mapper.xml"/>
 		<mapper resource="mappers/notice-mapper.xml"/>

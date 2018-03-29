@@ -191,7 +191,7 @@
                                 <div class="span12">
                                    <div class="table-toolbar">
                                       <div class="btn-group">
-                                         <a href="/adminMovieEro/addMovie.do"><button class="btn btn-success">추가<i class="icon-plus icon-white"></i></button></a>
+                                         <a href="${pageContext.request.contextPath}/addMovie.do"><button class="btn btn-success">추가<i class="icon-plus icon-white"></i></button></a>
                                       </div>
                                       <div class="btn-group">
                                          <a href="#"><button class="btn btn-success">삭제<i class="icon-remove icon-white"></i></button></a>

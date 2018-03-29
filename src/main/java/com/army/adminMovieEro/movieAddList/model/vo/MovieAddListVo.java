@@ -8,8 +8,9 @@ public class MovieAddListVo {
 	private String PUB_DATE;
 	private String DIRECTOR;
 	private String ACTOR;
-	private int USER_RATING;
+	private String USER_RATING;
 	private String IMAGE;
+	private String LINK;
 	private int SEQUENCE;
 	
 	public MovieAddListVo() {
@@ -17,7 +18,7 @@ public class MovieAddListVo {
 	}
 
 	public MovieAddListVo(String aDMIN_ID, String tHEATER, String tITLE, String sUB_TITLE, String pUB_DATE,
-			String dIRECTOR, String aCTOR, int uSER_RATING, String iMAGE, int sEQUENCE) {
+			String dIRECTOR, String aCTOR, String uSER_RATING, String iMAGE, String lINK, int sEQUENCE) {
 		super();
 		ADMIN_ID = aDMIN_ID;
 		THEATER = tHEATER;
@@ -28,6 +29,7 @@ public class MovieAddListVo {
 		ACTOR = aCTOR;
 		USER_RATING = uSER_RATING;
 		IMAGE = iMAGE;
+		LINK = lINK;
 		SEQUENCE = sEQUENCE;
 	}
 
@@ -87,11 +89,11 @@ public class MovieAddListVo {
 		ACTOR = aCTOR;
 	}
 
-	public int getUSER_RATING() {
+	public String getUSER_RATING() {
 		return USER_RATING;
 	}
 
-	public void setUSER_RATING(int uSER_RATING) {
+	public void setUSER_RATING(String uSER_RATING) {
 		USER_RATING = uSER_RATING;
 	}
 
@@ -103,6 +105,14 @@ public class MovieAddListVo {
 		IMAGE = iMAGE;
 	}
 	
+	public String getLINK() {
+		return LINK;
+	}
+	
+	public void setLINK(String lINk) {
+		LINK = lINk;
+	}
+	
 	public int getSEQUENCE() {
 		return SEQUENCE;
 	}
@@ -111,7 +121,7 @@ public class MovieAddListVo {
 	public String toString() {
 		return "MovieAddListVo [ADMIN_ID=" + ADMIN_ID + ", THEATER=" + THEATER + ", TITLE=" + TITLE + ", SUB_TITLE="
 				+ SUB_TITLE + ", PUB_DATE=" + PUB_DATE + ", DIRECTOR=" + DIRECTOR + ", ACTOR=" + ACTOR
-				+ ", USER_RATING=" + USER_RATING + ", IMAGE=" + IMAGE + "]";
+				+ ", USER_RATING=" + USER_RATING + ", IMAGE=" + IMAGE + ", LINK=" + LINK + ", SEQUENCE=" + SEQUENCE
+				+ "]";
 	}
-	
 }

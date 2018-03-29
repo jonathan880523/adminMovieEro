@@ -200,8 +200,7 @@
                                         <ul>
                                             <li><a href="#tab1" data-toggle="tab">영화 검색 옵션</a></li>
                                             <li><a href="#tab2" data-toggle="tab">영화 선택</a></li>
-                                            <li><a href="#tab3" data-toggle="tab">스틸컷 추가</a></li>
-                                            <li><a href="#tab4" data-toggle="tab">결과</a></li>
+                                            <li><a href="#tab3" data-toggle="tab">결과</a></li>
                                         </ul>
                                          </div>
                                           </div>
@@ -303,148 +302,61 @@
                                                     <div class="control-group">
                                                       <label class="control-label" for="focusedInput">영화를 선텍해주세요<br>(제목 / 감독)</label>
                                                       <div class="controls">
-                                                        <select id="resultMovieList" name="resultMovieList">
+                                                        <select id="allMovieList" name="allMovieList">
                                                         	<option selected disabled>검색된 영화 목록</option>
                                                         </select>
-                                                        <div id="hiddenMovieInfo"></div>
+                                                        &nbsp;&nbsp;&nbsp;
+                                                        <input type="button"  id="selectMovieBtn" class="btn" value="선택" />
                                                       </div>
                                                     </div>
                                                   </fieldset>
                                                 </form>
                                             </div>
                                             <div class="tab-pane" id="tab3">
-                                                <form class="form-horizontal">
-                                                  <fieldset>
-                                                    <div class="row-fluid">
-								                        <!-- block -->
-								                            <div class="block-content collapse in">
-								                                <div class="row-fluid padd-bottom">
-								                                	<div class="row">
-									                                	<div class="col-sm-6">
-										                                  <div class="span3">
-										                                      <a href="#" class="thumbnail">
-										                                        <img data-src="holder.js/260x180" alt="260x180" style="width: 260px; height: 180px;" src="
-										                                        data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQQAAAC0CAYAAABytVLLAAAK4klEQVR4Xu2bB4sVyxZGy
-										                                        yxizmLAhAFzzvrbzVkUc44ooo45p3e/hjr0OzOjnzr3eR7fKrhczsw+3bXX7loVehzW19f3vdAgAAEI/ENgGELgOYAA
-										                                        BCoBhMCzAAEIdAggBB4GCEAAIfAMQAAC/QmwQuCpgAAEWCHwDEAAAqwQeAYgAIEfEGDLwOMBAQiwZeAZgAAE2DLwDEA
-										                                        AAmwZeAYgAAGHAGcIDiViIBBCACGEFJo0IeAQQAgOJWIgEEIAIYQUmjQh4BBACA4lYiAQQgAhhBSaNCHgEEAIDiViIB
-										                                        BCACGEFJo0IeAQQAgOJWIgEEIAIYQUmjQh4BBACA4lYiAQQgAhhBSaNCHgEEAIDiViIBBCACGEFJo0IeAQQAgOJWIgE
-										                                        EIAIYQUmjQh4BBACA4lYiAQQgAhhBSaNCHgEEAIDiViIBBCACGEFJo0IeAQQAgOJWIgEEIAIYQUmjQh4BBACA4lYiAQ
-										                                        QgAhhBSaNCHgEEAIDiViIBBCACGEFJo0IeAQQAgOJWIgEEIAIYQUmjQh4BBACA4lYiAQQgAhhBSaNCHgEEAIDiViIBB
-										                                        CACGEFJo0IeAQQAgOJWIgEEIAIYQUmjQh4BBACA4lYiAQQgAhhBSaNCHgEEAIDiViIBBCACGEFJo0IeAQQAgOJWIgEE
-										                                        IAIYQUmjQh4BBACA4lYiAQQgAhhBSaNCHgEEAIDiViIBBCACGEFJo0IeAQQAgOJWIgEEIAIYQUmjQh4BBACA4lYiAQQ
-										                                        gAhhBSaNCHgEEAIDiViIBBCACGEFJo0IeAQQAgOJWIgEEIAIYQUmjQh4BBACA4lYiAQQgAhhBSaNCHgEEAIDiViIBBC
-										                                        ACGEFJo0IeAQQAgOJWIgEEIAIYQUmjQh4BBACA4lYiAQQgAhhBSaNCHgEEAIDiViIBBCACGEFJo0IeAQQAgOJWIgEEI
-										                                        AIYQUmjQh4BBACA4lYiAQQgAhhBSaNCHgEEAIDiViIBBCACGEFJo0IeAQQAgOJWIgEEIAIYQUmjQh4BBACA4lYiAQQg
-										                                        Ah9Fih37x5Uy5cuFA+fvxYRowYUSZPnlyWLl1axo4d2+np58+fy9WrV8uzZ8/Kt2/fyvjx48uyZcvKpEmTOjHv378v5
-										                                        8+fL/r/9+/fy8SJE8vq1avL6NGjfyvj+/fvl7t375bZs2c3/Wm3V69elevXrzf3UtO91J92n4e6P7+VBF/6KQGE8FNE/
-										                                        7uA169fl+PHjw94w+3btzcD/+vXr+XgwYPly5cv/eI2b97cCESD7+jRo40s2m3kyJFl165dZdSoUb+UlK534sSJIhHNn
-										                                        DmzrF27tvP9vr6+cubMmX7XGzZsWNm9e3cZM2bMkPfnlzpP8C8RQAi/hOvfDT558mR5+fJlcxMNbA3At2/fNp81+2/Zs
-										                                        qXcvHmz3L59u/nZtGnTigb548ePm88zZswo69atK5cuXSoPHz7s/EzyeP78efN5yZIlZdGiRVYi9+7da+6lftQ2a9as
-										                                        smbNms7ndp8lC8XWe82dO7esXLlyyPpjdZqgPyKAEP4I39B9Wcv6I0eONLOpVgJaEehnhw4darYPWuprxtVMrW2FPu/
-										                                        Zs6doJpYAJJIpU6aU5cuXd74zbty4smPHjmalcODAgWZ1oeX8qlWryuXLlxuZDB8+vNlK6DraqkgeitOgl3yqWAYTgl
-										                                        YikpbuvWnTpqbP+/fvb64jQeg6NYfB+rN169ahA8mV/ogAQvgjfEP3ZQ1CDfZPnz6V+fPnl8WLFzcX1/agCkGS0ODSA
-										                                        NdqYOrUqUXbjAkTJpR58+Y1g1rfrzFz5sxpBr/asWPHOiLRtkH3qqsPSURikCTU6uDW7yUa/U5nFpr9B1shaBsi+ej+
-										                                        urb6qDy0GvlZfyQ63YP29wkghL9fg0F7oK2ADgbVNLNv3Lixmem7zwb0e8lAwtCevca0hXDlypXy4MGDzkpDA1crku5
-										                                        raWDu27evOdBstyqUbiFotaLfdTf1R9dRc/qDEHrjQUQIvVGHfr3QjKyT/dq09NaZQVsI+qyVxYsXL5owbTV0sFhjVq
-										                                        xY0awc1G7cuFHu3LnTiKMe9mk7oO1Gu23YsKG5T3cbTAi3bt0q+m+gpsNHrWLc/vRoKaK6hRB6rNwfPnxo3jS0D/LWr
-										                                        19fpk+f3uzL6+Bqz9RaouvVn84EtGw/fPhwM/O33wicO3euPHnypHkVqC2DxKCmVcK7d+86QtEqY6A2kBDa/dH5gM4Q
-										                                        1G8dNEpUOufYuXNnp89Of3qsHHHdQQg9VHINJg3m+kpRe3nN2HU53R6A+luAhQsXNr2/du1a0RuBum2QUCSE9pahHv7
-										                                        Vw0ld8+nTp+Xs2bP/RaC+unRWCFqZnDp1qglt90evIfU6slsIP+tPD5UitisIoYdKXweSuqQ9vLYJmmnVNNg1w9bVgM
-										                                        4Ktm3b1gx8zd6SRZ39NUNrxaDvaDVQD/p0nfpqUvE6sKzXrxh0OKi3F917+oFWCFrNSGB6s6Dtit4W6F51hSMh7N27t
-										                                        9PnH/Wnh8oQ3RWE0CPlH2yA1u5JEDqk08zbPavXGP114IIFC8qjR4/KxYsXB8ysnhG05aPv6XCwvmJsz+T1IgMJQSLQ
-										                                        4Nd3B2p6y6A3GE5/eqQM8d1ACD3yCLS3AwN1qb3319sCvTVotzr46s8GOuyrh4ztpb6uq32+7l9fD+oaWn3odWa3ELp
-										                                        loW3O6dOn+0lBf5Sk+9Wzih/1p0dKQDe0Ev1nxvkOif8/AvrbBP2dgAacDvS0hehuWtLXf8ugJf3v/jsGh476oj5pq6
-										                                        F76YDzb/bH6TMx/QkgBJ4KCECgQwAh8DBAAAIIgWcAAhBgy8AzAAEI/IAAWwYeDwhAgC0DzwAEIMCWgWcAAhBgy8AzA
-										                                        AEIOAQ4Q3AoEQOBEAIIIaTQpAkBhwBCcCgRA4EQAgghpNCkCQGHAEJwKBEDgRACCCGk0KQJAYcAQnAoEQOBEAIIIaTQ
-										                                        pAkBhwBCcCgRA4EQAgghpNCkCQGHAEJwKBEDgRACCCGk0KQJAYcAQnAoEQOBEAIIIaTQpAkBhwBCcCgRA4EQAgghpNC
-										                                        kCQGHAEJwKBEDgRACCCGk0KQJAYcAQnAoEQOBEAIIIaTQpAkBhwBCcCgRA4EQAgghpNCkCQGHAEJwKBEDgRACCCGk0K
-										                                        QJAYcAQnAoEQOBEAIIIaTQpAkBhwBCcCgRA4EQAgghpNCkCQGHAEJwKBEDgRACCCGk0KQJAYcAQnAoEQOBEAIIIaTQp
-										                                        AkBhwBCcCgRA4EQAgghpNCkCQGHAEJwKBEDgRACCCGk0KQJAYcAQnAoEQOBEAIIIaTQpAkBhwBCcCgRA4EQAgghpNCk
-										                                        CQGHAEJwKBEDgRACCCGk0KQJAYcAQnAoEQOBEAIIIaTQpAkBhwBCcCgRA4EQAgghpNCkCQGHAEJwKBEDgRACCCGk0KQ
-										                                        JAYcAQnAoEQOBEAIIIaTQpAkBhwBCcCgRA4EQAgghpNCkCQGHAEJwKBEDgRACCCGk0KQJAYcAQnAoEQOBEAIIIaTQpA
-										                                        kBhwBCcCgRA4EQAgghpNCkCQGHAEJwKBEDgRACCCGk0KQJAYcAQnAoEQOBEAIIIaTQpAkBhwBCcCgRA4EQAgghpNCkC
-										                                        QGHAEJwKBEDgRACCCGk0KQJAYcAQnAoEQOBEAIIIaTQpAkBhwBCcCgRA4EQAgghpNCkCQGHAEJwKBEDgRACCCGk0KQJ
-										                                        AYcAQnAoEQOBEAIIIaTQpAkBhwBCcCgRA4EQAgghpNCkCQGHwH8AFmb1VN5FaGoAAAAASUVORK5CYII=">
-										                                      </a>
-										                                  </div>
-										                                  <div class="span3">
-										                                      <a href="#" class="thumbnail">
-										                                        <img data-src="holder.js/260x180" alt="260x180" style="width: 260px; height: 180px;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQQAAAC0CAYAAABytVLLAAAK4klEQVR4Xu2bB4sVyxZGy
-										                                        yxizmLAhAFzzvrbzVkUc44ooo45p3e/hjr0OzOjnzr3eR7fKrhczsw+3bXX7loVehzW19f3vdAgAAEI/ENgGELgOYAA
-										                                        BCoBhMCzAAEIdAggBB4GCEAAIfAMQAAC/QmwQuCpgAAEWCHwDEAAAqwQeAYgAIEfEGDLwOMBAQiwZeAZgAAE2DLwDEA
-										                                        AAmwZeAYgAAGHAGcIDiViIBBCACGEFJo0IeAQQAgOJWIgEEIAIYQUmjQh4BBACA4lYiAQQgAhhBSaNCHgEEAIDiViIB
-										                                        BCACGEFJo0IeAQQAgOJWIgEEIAIYQUmjQh4BBACA4lYiAQQgAhhBSaNCHgEEAIDiViIBBCACGEFJo0IeAQQAgOJWIgE
-										                                        EIAIYQUmjQh4BBACA4lYiAQQgAhhBSaNCHgEEAIDiViIBBCACGEFJo0IeAQQAgOJWIgEEIAIYQUmjQh4BBACA4lYiAQ
-										                                        QgAhhBSaNCHgEEAIDiViIBBCACGEFJo0IeAQQAgOJWIgEEIAIYQUmjQh4BBACA4lYiAQQgAhhBSaNCHgEEAIDiViIBB
-										                                        CACGEFJo0IeAQQAgOJWIgEEIAIYQUmjQh4BBACA4lYiAQQgAhhBSaNCHgEEAIDiViIBBCACGEFJo0IeAQQAgOJWIgEE
-										                                        IAIYQUmjQh4BBACA4lYiAQQgAhhBSaNCHgEEAIDiViIBBCACGEFJo0IeAQQAgOJWIgEEIAIYQUmjQh4BBACA4lYiAQQ
-										                                        gAhhBSaNCHgEEAIDiViIBBCACGEFJo0IeAQQAgOJWIgEEIAIYQUmjQh4BBACA4lYiAQQgAhhBSaNCHgEEAIDiViIBBC
-										                                        ACGEFJo0IeAQQAgOJWIgEEIAIYQUmjQh4BBACA4lYiAQQgAhhBSaNCHgEEAIDiViIBBCACGEFJo0IeAQQAgOJWIgEEI
-										                                        AIYQUmjQh4BBACA4lYiAQQgAhhBSaNCHgEEAIDiViIBBCACGEFJo0IeAQQAgOJWIgEEIAIYQUmjQh4BBACA4lYiAQQg
-										                                        Ah9Fih37x5Uy5cuFA+fvxYRowYUSZPnlyWLl1axo4d2+np58+fy9WrV8uzZ8/Kt2/fyvjx48uyZcvKpEmTOjHv378v5
-										                                        8+fL/r/9+/fy8SJE8vq1avL6NGjfyvj+/fvl7t375bZs2c3/Wm3V69elevXrzf3UtO91J92n4e6P7+VBF/6KQGE8FNE/
-										                                        7uA169fl+PHjw94w+3btzcD/+vXr+XgwYPly5cv/eI2b97cCESD7+jRo40s2m3kyJFl165dZdSoUb+UlK534sSJIhHNn
-										                                        DmzrF27tvP9vr6+cubMmX7XGzZsWNm9e3cZM2bMkPfnlzpP8C8RQAi/hOvfDT558mR5+fJlcxMNbA3At2/fNp81+2/Zs
-										                                        qXcvHmz3L59u/nZtGnTigb548ePm88zZswo69atK5cuXSoPHz7s/EzyeP78efN5yZIlZdGiRVYi9+7da+6lftQ2a9as
-										                                        smbNms7ndp8lC8XWe82dO7esXLlyyPpjdZqgPyKAEP4I39B9Wcv6I0eONLOpVgJaEehnhw4darYPWuprxtVMrW2FPu/
-										                                        Zs6doJpYAJJIpU6aU5cuXd74zbty4smPHjmalcODAgWZ1oeX8qlWryuXLlxuZDB8+vNlK6DraqkgeitOgl3yqWAYTgl
-										                                        YikpbuvWnTpqbP+/fvb64jQeg6NYfB+rN169ahA8mV/ogAQvgjfEP3ZQ1CDfZPnz6V+fPnl8WLFzcX1/agCkGS0ODSA
-										                                        NdqYOrUqUXbjAkTJpR58+Y1g1rfrzFz5sxpBr/asWPHOiLRtkH3qqsPSURikCTU6uDW7yUa/U5nFpr9B1shaBsi+ej+
-										                                        urb6qDy0GvlZfyQ63YP29wkghL9fg0F7oK2ADgbVNLNv3Lixmem7zwb0e8lAwtCevca0hXDlypXy4MGDzkpDA1crku5
-										                                        raWDu27evOdBstyqUbiFotaLfdTf1R9dRc/qDEHrjQUQIvVGHfr3QjKyT/dq09NaZQVsI+qyVxYsXL5owbTV0sFhjVq
-										                                        xY0awc1G7cuFHu3LnTiKMe9mk7oO1Gu23YsKG5T3cbTAi3bt0q+m+gpsNHrWLc/vRoKaK6hRB6rNwfPnxo3jS0D/LWr
-										                                        19fpk+f3uzL6+Bqz9RaouvVn84EtGw/fPhwM/O33wicO3euPHnypHkVqC2DxKCmVcK7d+86QtEqY6A2kBDa/dH5gM4Q
-										                                        1G8dNEpUOufYuXNnp89Of3qsHHHdQQg9VHINJg3m+kpRe3nN2HU53R6A+luAhQsXNr2/du1a0RuBum2QUCSE9pahHv7
-										                                        Vw0ld8+nTp+Xs2bP/RaC+unRWCFqZnDp1qglt90evIfU6slsIP+tPD5UitisIoYdKXweSuqQ9vLYJmmnVNNg1w9bVgM
-										                                        4Ktm3b1gx8zd6SRZ39NUNrxaDvaDVQD/p0nfpqUvE6sKzXrxh0OKi3F917+oFWCFrNSGB6s6Dtit4W6F51hSMh7N27t
-										                                        9PnH/Wnh8oQ3RWE0CPlH2yA1u5JEDqk08zbPavXGP114IIFC8qjR4/KxYsXB8ysnhG05aPv6XCwvmJsz+T1IgMJQSLQ
-										                                        4Nd3B2p6y6A3GE5/eqQM8d1ACD3yCLS3AwN1qb3319sCvTVotzr46s8GOuyrh4ztpb6uq32+7l9fD+oaWn3odWa3ELp
-										                                        loW3O6dOn+0lBf5Sk+9Wzih/1p0dKQDe0Ev1nxvkOif8/AvrbBP2dgAacDvS0hehuWtLXf8ugJf3v/jsGh476oj5pq6
-										                                        F76YDzb/bH6TMx/QkgBJ4KCECgQwAh8DBAAAIIgWcAAhBgy8AzAAEI/IAAWwYeDwhAgC0DzwAEIMCWgWcAAhBgy8AzA
-										                                        AEIOAQ4Q3AoEQOBEAIIIaTQpAkBhwBCcCgRA4EQAgghpNCkCQGHAEJwKBEDgRACCCGk0KQJAYcAQnAoEQOBEAIIIaTQ
-										                                        pAkBhwBCcCgRA4EQAgghpNCkCQGHAEJwKBEDgRACCCGk0KQJAYcAQnAoEQOBEAIIIaTQpAkBhwBCcCgRA4EQAgghpNC
-										                                        kCQGHAEJwKBEDgRACCCGk0KQJAYcAQnAoEQOBEAIIIaTQpAkBhwBCcCgRA4EQAgghpNCkCQGHAEJwKBEDgRACCCGk0K
-										                                        QJAYcAQnAoEQOBEAIIIaTQpAkBhwBCcCgRA4EQAgghpNCkCQGHAEJwKBEDgRACCCGk0KQJAYcAQnAoEQOBEAIIIaTQp
-										                                        AkBhwBCcCgRA4EQAgghpNCkCQGHAEJwKBEDgRACCCGk0KQJAYcAQnAoEQOBEAIIIaTQpAkBhwBCcCgRA4EQAgghpNCk
-										                                        CQGHAEJwKBEDgRACCCGk0KQJAYcAQnAoEQOBEAIIIaTQpAkBhwBCcCgRA4EQAgghpNCkCQGHAEJwKBEDgRACCCGk0KQ
-										                                        JAYcAQnAoEQOBEAIIIaTQpAkBhwBCcCgRA4EQAgghpNCkCQGHAEJwKBEDgRACCCGk0KQJAYcAQnAoEQOBEAIIIaTQpA
-										                                        kBhwBCcCgRA4EQAgghpNCkCQGHAEJwKBEDgRACCCGk0KQJAYcAQnAoEQOBEAIIIaTQpAkBhwBCcCgRA4EQAgghpNCkC
-										                                        QGHAEJwKBEDgRACCCGk0KQJAYcAQnAoEQOBEAIIIaTQpAkBhwBCcCgRA4EQAgghpNCkCQGHAEJwKBEDgRACCCGk0KQJ
-										                                        AYcAQnAoEQOBEAIIIaTQpAkBhwBCcCgRA4EQAgghpNCkCQGHwH8AFmb1VN5FaGoAAAAASUVORK5CYII=">
-										                                      </a>
-										                                  </div>
-									                                  	</div>
-								                                  	</div>
-								                                </div>
-								                            </div>
-								                        <!-- /block -->
-								                    </div>
-                                                  </fieldset>
-                                                </form>
-                                            </div>
-                                            <div class="tab-pane" id="tab4">
-                                                <form class="form-horizontal">
+                                                <form class="form-horizontal" action="${pageContext.request.contextPath}/insertMovie.do">
                                                   <fieldset>
                                                     <div class="control-group">
-                                                      <label class="control-label" for="focusedInput">Company Name</label>
+                                                      <label class="control-label" for="focusedInput">제목</label>
                                                       <div class="controls">
-                                                        <input class="input-xlarge focused" id="focusedInput" type="text" value="">
+                                                        <input class="input-xlarge focused" id="resultTitle" name="resultTitle" type="text" value="">
                                                       </div>
                                                     </div>
                                                     <div class="control-group">
-                                                      <label class="control-label" for="focusedInput">Contact Name</label>
+                                                      <label class="control-label" for="focusedInput">제목(영어)</label>
                                                       <div class="controls">
-                                                        <input class="input-xlarge focused" id="focusedInput" type="text" value="">
+                                                        <input class="input-xlarge focused" id="resultSubtitle" name="resultSubtitle" type="text" value="">
                                                       </div>
                                                     </div>
                                                     <div class="control-group">
-                                                      <label class="control-label" for="focusedInput">Contact Phone</label>
+                                                      <label class="control-label" for="focusedInput">영화감독</label>
                                                       <div class="controls">
-                                                        <input class="input-xlarge focused" id="focusedInput" type="text" value="">
+                                                        <input class="input-xlarge focused" id="resultDirector" name="resultDirector" type="text" value="">
                                                       </div>
+                                                    </div>
+                                                    <div class="control-group">
+                                                      <label class="control-label" for="focusedInput">배우</label>
+                                                      <div class="controls">
+                                                        <input class="input-xlarge focused" id="resultActor" name="resultActor" type="text" value="">
+                                                      </div>
+                                                    </div>
+                                                    <div class="control-group">
+                                                      <label class="control-label" for="focusedInput">제작년도</label>
+                                                      <div class="controls">
+                                                        <input class="input-xlarge focused" id="resultPubDate" name="resultPubDate" type="text" value="">
+                                                      </div>
+                                                    </div>
+                                                    <div class="control-group">
+                                                      <label class="control-label" for="focusedInput">네이버평점</label>
+                                                      <div class="controls">
+                                                        <input class="input-xlarge focused" id="resultUserRating" name="resultUserRating" type="text" value="" readOnly>
+                                                      </div>
+                                                    </div>
+                                                    <div>
+                                                   		<input class="input-xlarge focused" id="resultImage" name="resultImage" type="hidden" value="" readOnly>
+                                                    	<input class="input-xlarge focused" id="resultLink" name="resultLink" type="hidden" value="" readOnly>
                                                     </div>
                                                   </fieldset>
+                                                  <input type="submit" value="전송">
                                                 </form>
                                             </div>
                                             <ul class="pager wizard">
@@ -452,7 +364,7 @@
                                                 <li class="previous"><a href="javascript:void(0);">Previous</a></li>
                                                 <li class="next last" style="display:none;"><a href="javascript:void(0);">Last</a></li>
                                                 <li class="next"><a href="javascript:void(0);">Next</a></li>
-                                                <li class="next finish" style="display:none;"><a href="javascript:;">Finish</a></li>
+                                                <li class="next finish" style="display:none;"><a href="javascript:">Finish</a></li>
                                             </ul>
                                         </div>  
                                     </div>
@@ -496,7 +408,7 @@
 	jQuery(document).ready(function() {   
 	   FormValidation.init();
 	});
-	
+		//step 변경//////////////////////////////
         $(function() {
             $(".datepicker").datepicker();
             $(".uniform_on").uniform();
@@ -523,8 +435,9 @@
                 $('#rootwizard').find("a[href*='tab1']").trigger('click');
             });
             
-            //ajax로 데이터 넘기기
-            var ajaxResult;
+            //ajax로 데이터 넘기기/////////////////////////////////////
+            var ajaxResult = null;
+            console.log(ajaxResult);
             $("#searchMovieAjax").on('click', function(){
             	//네이버 영화 검색 api의 입력 데이터
             	var movieInputData = {
@@ -543,18 +456,15 @@
                 	data : movieInputData,
             		success : function(data){
                			console.log("성공");
+               			debugger;
+               			console.log(data);
                			ajaxResult = data;
                			console.log(ajaxResult.items);
                			$(ajaxResult.items).each(function(index, item){
                				$("<option>").attr({
-               					value : item.title 
+               					value : index, 
                				}).html(item.title + " / " + item.director)
-               				  .appendTo("#resultMovieList")
-               				/* $("#resultMovieList").append($('<option>').html(item.title + " / " + item.director)); */
-               				$('<input>').attr({
-               					type : 'hidden',
-               					class : item.title
-               				}).appendTo("#hiddenMovieInfo");
+               				  .appendTo("#allMovieList");
                				console.log(index)
                			});
                 	},
@@ -568,6 +478,23 @@
                 });
             });
             
+            //선택한 영화 결과(tap3) 화면에 출력하기
+            $("#selectMovieBtn").on('click',function(){
+            	console.log(ajaxResult.items);
+            	var selectedIndex = $("#allMovieList").val();
+            	console.log(ajaxResult.items[selectedIndex]);
+            	
+            	$(ajaxResult.items[selectedIndex]).each(function(index, item){
+            		$("#resultTitle").val(item.title);
+            		$("#resultSubtitle").val(item.subtitle);
+            		$("#resultDirector").val(item.director);
+            		$("#resultActor").val(item.actor);
+            		$("#resultPubDate").val(item.pubDate);
+            		$("#resultUserRating").val(item.userRating);
+            		$("#resultImage").val(item.image);
+            		$("#resultLink").val(item.link);
+            	})
+            });
         });
         </script>
     </body>
