@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="InsertResultMovie">
+	
+	<insert id="insertResultMovie" parameterType="map">
+		INSERT INTO MOVIE_INFO 
+		(MOVIE_INFO_SEQ, TITLE, SUB_TITLE, DIRECTOR, ACTOR, PUB_DATE, USER_RATING, IMAGE, LINK)
+		VALUES (MOVIE_INFO_SEQ.NEXTVAL, #{resultTitle}, #{resultSubtitle}, #{resultDirector},
+		#{resultActor}, #{resultPubDate}, #{resultUserRating},
+		#{resultImage}, #{resultLink})
+	</insert>
+</mapper>
