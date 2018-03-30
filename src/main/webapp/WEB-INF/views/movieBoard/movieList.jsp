@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html>
     <head>
@@ -16,7 +17,7 @@
         <![endif]-->
         <script src="vendors/modernizr-2.6.2-respond-1.1.0.min.js"></script>
     </head>
-    
+   	 	<c:set var="movieListResult" value="${requestScope.movieList}" /> 
     <body>
         <div class="navbar navbar-fixed-top">
             <div class="navbar-inner">
@@ -191,38 +192,38 @@
                                 <div class="span12">
                                    <div class="table-toolbar">
                                       <div class="btn-group">
-                                         <a href="${pageContext.request.contextPath}/addMovie.do"><button class="btn btn-success">추가<i class="icon-plus icon-white"></i></button></a>
+                                         <a href="${pageContext.request.contextPath}/addMovie.do"><button class="btn btn-primary">추가<i class="icon-plus icon-white"></i></button></a>
                                       </div>
                                       <div class="btn-group">
-                                         <a href="#"><button class="btn btn-success">삭제<i class="icon-remove icon-white"></i></button></a>
+                                         <a href="#"><button class="btn btn-primary">삭제<i class="icon-remove icon-white"></i></button></a>
                                       </div>
                                    </div>
                                     
-                                    <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="example2">
+                                    <table border="0" class="table table-striped table-bordered">
                                         <thead>
                                             <tr>
                                             	<th><input type="checkbox"></th>
-                                                <th>영화제목</th>
-                                                <th>스틸컷 등록 여부</th>
-                                                <th>영상 등록</th>
-                                                <th>게시 여부</th>
+                                            	<th>제목</th>
+                                            	<th>스틸컷</th>
+                                            	<th>트레일러</th>
+                                            	<th>등록여부</th>
+                                            </tr>
+                                            <tr>
                                             </tr>
                                         </thead>
+                                        
                                         <tbody>
-                                            <tr class="odd gradeX">
-                                            	<td><input type="checkbox"></td>
-                                                <td>퍼시픽림:업라이징</td>
-                                                <td><input type="text" placeholder="영상 URL을 등록해주세요"></td>
-                                                <td><a><button class="btn btn-success">영상등록 <i class="icon-film icon-white"></i></button></a></td>
-                                                <td><input type="text" value="미등록" readOnly></td>
-                                            </tr>
-                                            <tr class="odd gradeX">
-                                            	<td><input type="checkbox"></td>
-                                                <td><input type="text" value="영화를 등록해주세요" readOnly></td>
-                                                <td><input type="text" placeholder="영상 URL을 등록해주세요"></td>
-                                                <td><a><button class="btn btn-success">영상등록 <i class="icon-film icon-white"></i></button></a></td>
-                                                <td><input type="text" value="미등록" readOnly></td>
-                                            </tr>
+                                        	<c:forEach var="b" items="${movieListResult}">
+                                           		<tr class="odd gradeX">
+	                                            	<td><input type="checkbox"></td>
+	                                                <td>${b.TITLE}</td>
+	                                                <td><input type="text" id="imageURL" name="imageURL" placeholder="사진 URL을 입력해주세요">
+	                                                <button class="btn btn-primary"><i class="icon-picture icon-white"></i></button></td>
+	                                                <td><input type="text" id="videoURL" name="videoURL" placeholder="영상 URL을 입력해주세요">
+	                                                <button class="btn btn-primary"><i class="icon-film icon-white"></i></button></td>
+	                                                <td><input type="text" value="미등록" readOnly></td>
+                                            	</tr>
+                                        	</c:forEach>
                                         </tbody>
                                     </table>
                                 </div>
@@ -234,6 +235,7 @@
             </div>
             <hr>
             <footer>
+            ${i}여기여기
                 <p>&copy; Vincent Gabriel 2013</p>
             </footer>
         </div>
@@ -247,9 +249,7 @@
         <script src="assets/scripts.js"></script>
         <script src="assets/DT_bootstrap.js"></script>
         <script>
-        $(function() {
-            
-        });
+
         </script>
     </body>
 

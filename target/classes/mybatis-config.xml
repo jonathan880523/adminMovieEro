@@ -8,7 +8,7 @@
 	</settings>
 
 	<typeAliases>
-		<typeAlias type="com.army.adminMovieEro.movieAddList.model.vo.MovieAddListVo" alias="MovieAddListVo"/>
+		<typeAlias type="com.army.adminMovieEro.movieAddList.model.vo.MovieListVo" alias="MovieListVo"/>
 		<!-- <typeAlias type="com.army.adminMovieEro.member.model.vo.AdminMemberVo" alias="AdminMemberVo"/> -->
 		<!-- <typeAlias type="com.army.movieEro.member.vo.MemberVO" alias="Member"/>
 		<typeAlias type="org.kh.firstSpring.notice.model.vo.Notice" alias="Notice"/>
@@ -16,7 +16,7 @@
 	</typeAliases>
 	
 	<mappers>
-		<mapper resource="mappers/movieAddList-mapper.xml"/>
+		<mapper resource="mappers/movieList-mapper.xml"/>
 		<mapper resource="mappers/InsertResultMovie-mapper.xml"/>
 		<!-- <mapper resource="mappers/adminMember-mapper.xml"/> -->
  		<!-- <mapper resource="mappers/member-mapper.xml"/>

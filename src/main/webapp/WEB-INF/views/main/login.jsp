@@ -17,10 +17,10 @@
   <body id="login">
     <div class="container">
 
-      <form class="form-signin">
-        <h2 class="form-signin-heading">Please sign in</h2>
-        <input type="text" class="input-block-level" placeholder="Email address">
-        <input type="password" class="input-block-level" placeholder="Password">
+      <form class="form-signin" action="${pageContext.request.contextPath}/login.do">
+        <h2 class="form-signin-heading">로그인 해주세요</h2>
+        <input type="text" class="input-block-level" name="adminId" placeholder="관리자 아이디">
+        <input type="password" class="input-block-level" name="adminPw" placeholder="관리자 비밀번호">
         <label class="checkbox">
           <input type="checkbox" value="remember-me"> Remember me
         </label>

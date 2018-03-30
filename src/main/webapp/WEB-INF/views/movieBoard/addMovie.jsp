@@ -290,7 +290,7 @@
                                                     <div class="control-group">
                                                       <label class="control-label" for="focusedInput">검색하기</label>
                                                       <div class="controls">
-                                                        <input class="btn btn-success" id="searchMovieAjax" name="searchMovieAjax" type="button" value="검색">
+                                                        <input class="btn btn-primary" id="searchMovieAjax" name="searchMovieAjax" type="button" value="검색">
                                                       </div>
                                                     </div>
                                                   </fieldset>
@@ -306,7 +306,7 @@
                                                         	<option selected disabled>검색된 영화 목록</option>
                                                         </select>
                                                         &nbsp;&nbsp;&nbsp;
-                                                        <input type="button"  id="selectMovieBtn" class="btn" value="선택" />
+                                                        <input type="button"  id="selectMovieBtn" class="btn btn-primary" value="선택" />
                                                       </div>
                                                     </div>
                                                   </fieldset>
@@ -352,11 +352,10 @@
                                                       </div>
                                                     </div>
                                                     <div>
-                                                   		<input class="input-xlarge focused" id="resultImage" name="resultImage" type="hidden" value="" readOnly>
                                                     	<input class="input-xlarge focused" id="resultLink" name="resultLink" type="hidden" value="" readOnly>
                                                     </div>
                                                   </fieldset>
-                                                  <input type="submit" value="전송">
+                                                  <input type="submit" class="btn btn-primary" value="전송">
                                                 </form>
                                             </div>
                                             <ul class="pager wizard">
@@ -467,8 +466,16 @@
                				  .appendTo("#allMovieList");
                				console.log(index)
                			});
+               			
+               			$("#searchMovieAjax").removeClass();
+               			$("#searchMovieAjax").addClass("btn btn-success");
+               			$("#searchMovieAjax").val("성공");
                 	},
                 	error : function(request, status, error){
+                		$("#searchMovieAjax").removeClass();
+               			$("#searchMovieAjax").addClass("btn btn-danger");
+               			$("#searchMovieAjax").val("실패");
+               			
                 		alert("code:"+request.status+"\n"+
                 				"message:"+request.responseText+"\n"+"error:"+error);
                 	},
@@ -491,9 +498,13 @@
             		$("#resultActor").val(item.actor);
             		$("#resultPubDate").val(item.pubDate);
             		$("#resultUserRating").val(item.userRating);
-            		$("#resultImage").val(item.image);
             		$("#resultLink").val(item.link);
-            	})
+            	});
+            	
+            	$("#selectMovieBtn").removeClass();
+       			$("#selectMovieBtn").addClass("btn btn-success");
+       			$("#selectMovieBtn").val("성공");
+            	
             });
         });
         </script>
