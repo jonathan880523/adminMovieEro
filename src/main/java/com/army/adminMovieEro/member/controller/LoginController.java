@@ -1,9 +1,14 @@
 package com.army.adminMovieEro.member.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 
 /**
@@ -11,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 public class LoginController {
+	
+	@Autowired com.army.adminMovieEro.member.model.service.loginService loginService;
 	
 	
 	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
@@ -22,8 +29,8 @@ public class LoginController {
 		return "main/login";
 	}
 	
-	/*@RequestMapping(value="login.do")
-	public ModelAndView home(HttpServletRequest request, ModelAndView mv) {
+	@RequestMapping(value="login.do", method=RequestMethod.GET)
+	public String home(HttpServletRequest request, ModelAndView mv) {
 		logger.info("LoginController 도착.......................");
 		
 		String ADMIN_ID = request.getParameter("adminId");
@@ -32,16 +39,15 @@ public class LoginController {
 		System.out.println("adminId = " + ADMIN_ID);
 		System.out.println("adminPw = " + ADMIN_PW);
 		
-		boolean checkId =  loginService.checkId(ADMIN_ID, ADMIN_PW);
+		boolean checkStatus =  loginService.checkAdmin(ADMIN_ID, ADMIN_PW);
 		
-		if(checkId) {
-			mv.setViewName("movieBoard/movieList");
+		if(checkStatus) {
+			return "redirect:loadMovie.do";
 		}else {
-			mv.setViewName("main/login");
+			return "redirect:/";
 		}
 		
-		return mv;
-	}*/
+	}
 	
 	
 }

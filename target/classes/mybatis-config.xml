@@ -9,7 +9,7 @@
 
 	<typeAliases>
 		<typeAlias type="com.army.adminMovieEro.movieAddList.model.vo.MovieListVo" alias="MovieListVo"/>
-		<!-- <typeAlias type="com.army.adminMovieEro.member.model.vo.AdminMemberVo" alias="AdminMemberVo"/> -->
+		<typeAlias type="com.army.adminMovieEro.member.model.vo.AdminMemberVo" alias="AdminMemberVo"/>
 		<!-- <typeAlias type="com.army.movieEro.member.vo.MemberVO" alias="Member"/>
 		<typeAlias type="org.kh.firstSpring.notice.model.vo.Notice" alias="Notice"/>
 		<typeAlias type="org.kh.firstSpring.board.model.vo.Board" alias="Board"/> -->
@@ -18,7 +18,7 @@
 	<mappers>
 		<mapper resource="mappers/movieList-mapper.xml"/>
 		<mapper resource="mappers/InsertResultMovie-mapper.xml"/>
-		<!-- <mapper resource="mappers/adminMember-mapper.xml"/> -->
+		<mapper resource="mappers/adminMember-mapper.xml"/>
  		<!-- <mapper resource="mappers/member-mapper.xml"/>
 		<mapper resource="mappers/notice-mapper.xml"/>
 		<mapper resource="mappers/board-mapper.xml"/> -->

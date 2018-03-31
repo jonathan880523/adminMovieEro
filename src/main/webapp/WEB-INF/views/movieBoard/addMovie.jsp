@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    
     <head>
         <title>[관리자]영화 추가하기</title>
         <!-- Bootstrap -->

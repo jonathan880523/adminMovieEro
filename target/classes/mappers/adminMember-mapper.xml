@@ -5,8 +5,8 @@
 <mapper namespace="AdminMemberVo">
 	
 	<!-- 로그인 쿼리 -->
-	<select id="login" parameterType="AdminMemberVo">
+	<select id="adminLogin" parameterType="string" resultType="AdminMemberVo">
 		SELECT ADMIN_ID, ADMIN_PW FROM ADMIN_MEMBER 
-		WHERE ADMIN_ID = #{ADMIN_ID} AND ADMIN_PW = #{ADMIN_PW}
+		WHERE ADMIN_ID = #{ADMIN_ID}
 	</select>
 </mapper>

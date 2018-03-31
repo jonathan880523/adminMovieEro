@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.army.adminMovieEro.movieAddList.model.service.DeleteMovieService;
 import com.army.adminMovieEro.movieAddList.model.service.InsertResultMovieService;
 import com.army.adminMovieEro.movieAddList.model.service.MovieListService;
 import com.army.adminMovieEro.movieAddList.model.vo.MovieListVo;
@@ -33,6 +34,8 @@ public class AddMovieController {
 	@Autowired MovieListService movieListService;
 	
 	@Autowired InsertResultMovieService insertResultMovieService;
+	
+	@Autowired DeleteMovieService deleteMovieService;
 	
 	public static final Logger logger = LoggerFactory.getLogger(AddMovieController.class);
 	
@@ -171,6 +174,15 @@ public class AddMovieController {
 		insertResultMovieService.insertResultMovie(resultMap);
 		
 		return "redirect:loadMovie.do";
+		
+	}
+	
+	//영화 목록에서 지우기
+	@RequestMapping("deleteMovie.do")
+	public String deleteMovie(HttpServletRequest request) {
+		int movieUniNum = request.getParameter(""); 
+				
+		return null;
 		
 	}
 	

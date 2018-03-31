@@ -17,7 +17,6 @@
         <![endif]-->
         <script src="vendors/modernizr-2.6.2-respond-1.1.0.min.js"></script>
     </head>
-   	 	<c:set var="movieListResult" value="${requestScope.movieList}" /> 
     <body>
         <div class="navbar navbar-fixed-top">
             <div class="navbar-inner">
@@ -211,10 +210,11 @@
                                             <tr>
                                             </tr>
                                         </thead>
-                                        
                                         <tbody>
+                                      		<c:set var="movieListResult" value="${requestScope.movieList}" /> 
                                         	<c:forEach var="b" items="${movieListResult}">
                                            		<tr class="odd gradeX">
+                                           			<input type="hidden" name="movieUniNum" value="${b.MOVIE_INFO_SEQ}">
 	                                            	<td><input type="checkbox"></td>
 	                                                <td>${b.TITLE}</td>
 	                                                <td><input type="text" id="imageURL" name="imageURL" placeholder="사진 URL을 입력해주세요">
@@ -235,7 +235,6 @@
             </div>
             <hr>
             <footer>
-            ${i}여기여기
                 <p>&copy; Vincent Gabriel 2013</p>
             </footer>
         </div>
@@ -249,7 +248,9 @@
         <script src="assets/scripts.js"></script>
         <script src="assets/DT_bootstrap.js"></script>
         <script>
-
+        $(document).ready(function(){
+        	
+        })
         </script>
     </body>
 
