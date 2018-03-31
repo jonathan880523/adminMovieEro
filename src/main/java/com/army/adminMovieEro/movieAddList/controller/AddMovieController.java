@@ -26,7 +26,9 @@ import org.springframework.web.servlet.ModelAndView;
 import com.army.adminMovieEro.movieAddList.model.service.DeleteMovieService;
 import com.army.adminMovieEro.movieAddList.model.service.InsertResultMovieService;
 import com.army.adminMovieEro.movieAddList.model.service.MovieListService;
+import com.army.adminMovieEro.movieAddList.model.service.MovieVisualService;
 import com.army.adminMovieEro.movieAddList.model.vo.MovieListVo;
+import com.army.adminMovieEro.movieAddList.model.vo.MovieVisualVo;
 
 @Controller
 public class AddMovieController {
@@ -36,6 +38,8 @@ public class AddMovieController {
 	@Autowired InsertResultMovieService insertResultMovieService;
 	
 	@Autowired DeleteMovieService deleteMovieService;
+	
+	@Autowired MovieVisualService movieVisualService;
 	
 	public static final Logger logger = LoggerFactory.getLogger(AddMovieController.class);
 	
@@ -194,6 +198,22 @@ public class AddMovieController {
 		}
 		return "#";
 		
+	}
+	
+	//이미지 등록하기
+	@RequestMapping("insertStillcut.do")
+	public String insertStillcut(HttpServletRequest request, MovieVisualVo vo) {
+		System.out.println("insertStillcut.do도착...........................");
+		vo.setMOVIE_INFO_SEQ(request.getParameter("movieUniNum"));
+		vo.setMOVIE_STILLCUT(request.getParameter("movieStillcut"));
+		System.out.println("넘어온 유니넘버 : " + vo.getMOVIE_INFO_SEQ() + "\n넘어온 stillcutURL : " + vo.getMOVIE_STILLCUT());
+		
+		int insertStillcutResult = movieVisualService.insertStillcut(vo);
+		
+		if(insertStillcutResult > 0) {
+			return "redirect:loadMovie.do";
+		}
+		return "redirect:loadMovie.do";
 	}
 	
 }

@@ -16,11 +16,12 @@ public class MovieListDaoImpl implements MovieListDao {
 
 	@Override
 	public List<MovieListVo> loadMovieList() {
+		System.out.println("MovieListDao 도착................");
 		List<MovieListVo> movieList = new ArrayList<MovieListVo>();
 		
 		movieList = sqlSession.selectList("MovieListVo.loadMovieList");
-		System.out.println("불러온 영화 제목 : " + movieList.get(3).getTITLE());
-		System.out.println("불러온 seq : " + movieList.get(3).getMOVIE_INFO_SEQ());
+		System.out.println("영화 목록 불러오기 성공");
+		
 		return movieList;
 	}
 

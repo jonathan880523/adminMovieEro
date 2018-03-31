@@ -193,7 +193,7 @@
 	                                <div class="span12">
 	                                   <div class="table-toolbar">
 	                                      <div class="btn-group">
-	                                         <a href="${pageContext.request.contextPath}/addMovie.do"><button class="btn btn-primary">추가<i class="icon-plus icon-white"></i></button></a>
+	                                        <button id="insertMovieBtn" class="btn btn-primary">추가<i class="icon-plus icon-white"></i></button>
 	                                      </div>
 	                                      <div class="btn-group">
 	                                         <input type="submit" id="deleteBtn" class="btn btn-primary" value="삭제<i class="icon-remove icon-white"></i>">
@@ -219,10 +219,10 @@
 	                                           			<input type="hidden" name="movieUniNum" value="${b.MOVIE_INFO_SEQ}">
 		                                            	<td><input type="checkbox" value="${b.MOVIE_INFO_SEQ}"></td>
 		                                                <td>${b.TITLE}</td>
-		                                                <td><input type="text" id="imageURL" name="imageURL" placeholder="사진 URL을 입력해주세요">
-		                                                <button class="btn btn-primary"><i class="icon-picture icon-white"></i></button></td>
-		                                                <td><input type="text" id="videoURL" name="videoURL" placeholder="영상 URL을 입력해주세요">
-		                                                <button class="btn btn-primary"><i class="icon-film icon-white"></i></button></td>
+		                                                <td><input type="text" id="imageURL" name="imageURL" placeholder="사진 URL을 입력해주세요" value="">
+		                                                <input type="submit" id="image${b.MOVIE_INFO_SEQ}" name="movieStillcut" class="btn btn-primary" value="<i class="icon-picture icon-white"></i>"></td>
+		                                                <td><input type="text" id="videoURL" name="videoURL" placeholder="영상 URL을 입력해주세요" value="">
+		                                                <input type="submit" id="video${b.MOVIE_INFO_SEQ}" name="moiveTrailer" class="btn btn-primary" value="<i class="icon-film icon-white"></i>"></td>
 		                                                <td><input type="text" value="미등록" readOnly></td>
 	                                            	</tr>
 	                                        	</c:forEach>
@@ -252,12 +252,25 @@
         <script src="assets/DT_bootstrap.js"></script>
         <script>
         $(document).ready(function(){
+        	//영화 추가 페이지로 이동
+        	$("#insertMovieBtn").on('click', function(){
+        		$(location).attr('href','${pageContext.request.contextPath}/addMovie.do');
+        	});
+        	
+        	//영화 목록에서 영화 삭제
         	var formObj = $('form[role="form"]');
         	
         	console.log(formObj);
         	
         	$("#deleteBtn").on('click', function(){
-        		formObj.attr('action','${pageContext.request.contextPath}/deleteMovie.do');
+        		formObj.attr('action','${pageContext.request.contextPath}/addMovie.jsp');
+        		formObj.attr('method','get');
+        		formObj.submit();
+        	});
+        	
+        	//이미지 등록
+        	$("#image${b.MOVIE_INFO_SEQ}").on('click',function(){
+        		formObj.attr('action','${pageContext.request.contextPath}/insertStillcut.do');
         		formObj.attr('method','get');
         		formObj.submit();
         	});
