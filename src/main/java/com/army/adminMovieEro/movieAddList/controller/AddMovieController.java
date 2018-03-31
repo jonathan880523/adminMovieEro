@@ -180,9 +180,19 @@ public class AddMovieController {
 	//영화 목록에서 지우기
 	@RequestMapping("deleteMovie.do")
 	public String deleteMovie(HttpServletRequest request) {
-		int movieUniNum = request.getParameter(""); 
-				
-		return null;
+		System.out.println("deleteMovie.do 도착.......................");
+		
+		String movieUniNum = request.getParameter("movieUniNum");
+		
+		System.out.println("삭제할 request.getParameter(\"movieUniNum\") : " + request.getParameter("movieUniNum"));
+		System.out.println("삭제할 UniqueNumber : " + movieUniNum);
+		
+		int resultDeleteMovie = deleteMovieService.deleteMovie(movieUniNum);
+		
+		if(resultDeleteMovie > 0) {
+			return "redirect:loadMovie.do";
+		}
+		return "#";
 		
 	}
 	

@@ -11,8 +11,13 @@ public class DeleteMovieServiceImpl implements DeleteMovieService {
 	@Autowired DeleteMovieDao deleteMovieDao;
 	
 	@Override
-	public int deleteMovie(int movieUniNum) {
-		return 0;
+	public int deleteMovie(String movieUniNum) {
+		System.out.println("deleteMovieService 도착..........................");
+		
+		int resultDeleteMovie = deleteMovieDao.deleteMovie(movieUniNum);
+		System.out.println("삭제 후 결과 : " + resultDeleteMovie);
+		
+		return resultDeleteMovie;
 	}
 
 }

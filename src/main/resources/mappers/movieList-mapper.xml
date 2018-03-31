@@ -8,9 +8,9 @@
 		SELECT TITLE, MOVIE_INFO_SEQ FROM MOVIE_INFO
 	</select>
 
-	<delete id="deleteMovie">
-		DELETE FROM MOVIE_ADDLIST_BOARD WHERE TITLE =
-		#{TITLE}
+	<delete id="deleteMovie" parameterType="string">
+		DELETE FROM MOVIE_INFO WHERE MOVIE_INFO_SEQ =
+		#{MOVIE_INFO_SEQ}
 	</delete>
 
 </mapper>
