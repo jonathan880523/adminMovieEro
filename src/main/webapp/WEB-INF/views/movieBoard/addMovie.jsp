@@ -401,8 +401,7 @@
 	<script src="assets/form-validation.js"></script>
         
 	<script src="assets/scripts.js"></script>
-        <script>
-
+    <script>
 	jQuery(document).ready(function() {   
 	   FormValidation.init();
 	});
@@ -484,14 +483,21 @@
                 });
             });
             
+            
             //선택한 영화 결과(tap3) 화면에 출력하기
+            var arrOptVal = "";
             $("#selectMovieBtn").on('click',function(){
             	console.log(ajaxResult.items);
             	var selectedIndex = $("#allMovieList").val();
             	console.log(ajaxResult.items[selectedIndex]);
+            	arrOptVal = $('#allMovieList').children('option:selected').text();
+            	arrOptVal = arrOptVal.split("/");
+            	arrOptVal = arrOptVal[0];
             	
             	$(ajaxResult.items[selectedIndex]).each(function(index, item){
-            		$("#resultTitle").val(item.title);
+            		
+            		/* $("#resultTitle").val(item.title); */
+            		$("#resultTitle").val(arrOptVal);
             		$("#resultSubtitle").val(item.subtitle);
             		$("#resultDirector").val(item.director);
             		$("#resultActor").val(item.actor);
