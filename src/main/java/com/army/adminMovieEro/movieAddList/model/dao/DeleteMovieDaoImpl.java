@@ -7,15 +7,16 @@ import org.springframework.stereotype.Repository;
 @Repository("deleteMovieDao")
 public class DeleteMovieDaoImpl implements DeleteMovieDao {
 
-	@Autowired SqlSession sqlSession;
-	
+	@Autowired
+	SqlSession sqlSession;
+
 	@Override
 	public int deleteMovie(String movieUniNum) {
 		System.out.println("deleteMovieDao 도착...................");
-		
+
 		System.out.println("삭제할 유니넘버  : " + movieUniNum);
-		int resultDeleteMovie = sqlSession.delete("MovieListVo.deleteMovie",movieUniNum);
-		
+		int resultDeleteMovie = sqlSession.delete("MovieListVo.deleteMovie", movieUniNum);
+
 		return resultDeleteMovie;
 	}
 

@@ -352,6 +352,7 @@
                                                     </div>
                                                     <div>
                                                     	<input class="input-xlarge focused" id="resultLink" name="resultLink" type="hidden" value="" readOnly>
+                                                    	<input class="input-xlarge focused" id="resultImage" name="resultImage" type="hidden" value="" readOnly>
                                                     </div>
                                                   </fieldset>
                                                   <input type="submit" class="btn btn-primary" value="전송">
@@ -453,7 +454,6 @@
                 	data : movieInputData,
             		success : function(data){
                			console.log("성공");
-               			debugger;
                			console.log(data);
                			ajaxResult = data;
                			console.log(ajaxResult.items);
@@ -483,27 +483,46 @@
                 });
             });
             
-            
             //선택한 영화 결과(tap3) 화면에 출력하기
             var arrOptVal = "";
             $("#selectMovieBtn").on('click',function(){
             	console.log(ajaxResult.items);
             	var selectedIndex = $("#allMovieList").val();
             	console.log(ajaxResult.items[selectedIndex]);
-            	arrOptVal = $('#allMovieList').children('option:selected').text();
-            	arrOptVal = arrOptVal.split("/");
-            	arrOptVal = arrOptVal[0];
+            	arrOptTitleVal = $('#allMovieList').children('option:selected').text();
+            	arrOptTitleVal = arrOptTitleVal.split("/");
+            	arrOptTitleVal = arrOptTitleVal[0];
             	
             	$(ajaxResult.items[selectedIndex]).each(function(index, item){
             		
             		/* $("#resultTitle").val(item.title); */
-            		$("#resultTitle").val(arrOptVal);
+            		$("#resultTitle").val(arrOptTitleVal);
             		$("#resultSubtitle").val(item.subtitle);
-            		$("#resultDirector").val(item.director);
-            		$("#resultActor").val(item.actor);
+            		
+            		var NonSplitedDirector = item.director;  
+            		splitedDirectorArr = NonSplitedDirector.split('|');
+            		console.log("splitedDirectorArrlength : " +splitedDirectorArr.length);
+            		console.log("splitedDirectorArr : " +splitedDirectorArr);
+            		if(splitedDirectorArr.length <= 2){
+            			$("#resultDirector").val(splitedDirectorArr[0]);
+            		}else{
+            			$("#resultDirector").val(NonSplitedDirector);	
+            		}
+            		
+            		var NonSplitedActor = item.actor;  
+            		splitedActorArr = NonSplitedActor.split('|');
+            		console.log("splitedActorArrlength : " +splitedActorArr.length);
+            		console.log("splitedActorArr : " +splitedActorArr);
+            		if(splitedActorArr.length <= 2){
+            			$("#resultActor").val(splitedActorArr[0]);
+            		}else{
+            			$("#resultActor").val(splitedActorArr);	
+            		}
+            		
             		$("#resultPubDate").val(item.pubDate);
             		$("#resultUserRating").val(item.userRating);
             		$("#resultLink").val(item.link);
+            		$("#resultImage").val(item.image);
             	});
             	
             	$("#selectMovieBtn").removeClass();

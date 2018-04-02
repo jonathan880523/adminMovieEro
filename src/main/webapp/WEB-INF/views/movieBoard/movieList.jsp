@@ -193,20 +193,20 @@
 	                                <div class="span12">
 	                                   <div class="table-toolbar">
 	                                      <div class="btn-group">
-	                                        <button type="submit" id="insertMovieBtn" class="btn btn-primary">추가<i class="icon-plus icon-white"></i></button>
+	                                        <button type="button" id="insertMovieBtn" class="btn btn-primary">추가<i class="icon-plus icon-white"></i></button>
 	                                      </div>
 	                                      <div class="btn-group">
-	                                         <button type="submit" id="deleteBtn" class="btn btn-primary">삭제<i class="icon-remove icon-white"></i></button>
+	                                         <button type="button" id="deleteBtn" class="btn btn-primary">삭제<i class="icon-remove icon-white"></i></button>
 	                                      </div>
 	                                   </div>
 	                                    
-	                                    <table border="0" class="table table-striped table-bordered">
+	                                    <table id="movieListTable" border="0" class="table table-striped table-bordered">
 	                                        <thead>
 	                                            <tr>
 	                                            	<th><input type="checkbox"></th>
 	                                            	<th>제목</th>
-	                                            	<th>스틸컷</th>
-	                                            	<th>트레일러</th>
+	                                            	<th>감독</th>
+	                                            	<th>제작년도</th>
 	                                            	<th>등록여부</th>
 	                                            </tr>
 	                                            <tr>
@@ -214,15 +214,12 @@
 	                                        </thead>
 	                                        <tbody>
 	                                      		<c:set var="movieListResult" value="${requestScope.movieList}" /> 
-	                                        	<c:forEach var="b" items="${movieListResult}">
+	                                        	<c:forEach var="listMap" items="${movieListResult}">
 	                                           		<tr class="odd gradeX">
-	                                           			<input type="hidden" name="movieUniNum" value="${b.MOVIE_INFO_SEQ}">
-		                                            	<td><input type="checkbox" value="${b.MOVIE_INFO_SEQ}"></td>
-		                                                <td>${b.TITLE}</td>
-		                                                <td><input type="text" id="imageURL" name="imageURL" placeholder="사진 URL을 입력해주세요" value="">
-		                                                <button type="submit" id="image${b.MOVIE_INFO_SEQ}" name="movieStillcut" class="btn btn-primary" value=""><i class="icon-picture icon-white"></i></button></td>
-		                                                <td><input type="text" id="videoURL" name="videoURL" placeholder="영상 URL을 입력해주세요" value="">
-		                                                <button type="submit" id="video${b.MOVIE_INFO_SEQ}" name="moiveTrailer" class="btn btn-primary" value=""><i class="icon-film icon-white"></i></button></td>
+		                                            	<td><input type="checkbox" name="movieUniNumDel" value="${listMap.MOVIE_INFO_SEQ}"></td>
+		                                                <td><a>${listMap.TITLE}</a></td>
+		                                                <td>${listMap.DIRECTOR}</td>
+		                                                <td>${listMap.PUB_DATE}</td>
 		                                                <td><input type="text" value="미등록" readOnly></td>
 	                                            	</tr>
 	                                        	</c:forEach>
@@ -255,8 +252,6 @@
      	//영화 목록에서 영화 삭제
     	var formObj = $('form[role="form"]');
     	
-    	console.log(formObj);
-        
         $(document).ready(function(){
         	//영화 추가 페이지로 이동
         	$("#insertMovieBtn").on('click', function(){
@@ -265,18 +260,13 @@
         		formObj.submit();
         	});
         	
+        	//영화 목록에서 영화 삭제
         	$("#deleteBtn").on('click', function(){
         		formObj.attr('action','${pageContext.request.contextPath}/deleteMovie.do');
         		formObj.attr('method','get');
         		formObj.submit();
         	});
         	
-        	//이미지 등록
-        	$("#image${b.MOVIE_INFO_SEQ}").on('click',function(){
-        		formObj.attr('action','${pageContext.request.contextPath}/insertStillcut.do');
-        		formObj.attr('method','get');
-        		formObj.submit();
-        	});
         })
         </script>
     </body>

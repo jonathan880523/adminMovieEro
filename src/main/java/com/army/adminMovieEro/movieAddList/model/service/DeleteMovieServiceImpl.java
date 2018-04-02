@@ -8,15 +8,16 @@ import com.army.adminMovieEro.movieAddList.model.dao.DeleteMovieDao;
 @Service("deleteMovieService")
 public class DeleteMovieServiceImpl implements DeleteMovieService {
 
-	@Autowired DeleteMovieDao deleteMovieDao;
-	
+	@Autowired
+	DeleteMovieDao deleteMovieDao;
+
 	@Override
 	public int deleteMovie(String movieUniNum) {
 		System.out.println("deleteMovieService 도착..........................");
-		
+
 		int resultDeleteMovie = deleteMovieDao.deleteMovie(movieUniNum);
 		System.out.println("삭제 후 결과 : " + resultDeleteMovie);
-		
+
 		return resultDeleteMovie;
 	}
 

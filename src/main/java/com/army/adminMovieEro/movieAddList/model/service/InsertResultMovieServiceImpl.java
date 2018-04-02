@@ -15,8 +15,6 @@ public class InsertResultMovieServiceImpl implements InsertResultMovieService {
 	@Override
 	public void insertResultMovie(Map<String, String> resultMap) {
 		System.out.println("insertResultMovieService 도착...................");
-		System.out.println("넘어온 값의 갯수" + resultMap.size());
-		System.out.println("영화 제목 : " + resultMap.get("resultTitle"));
 		insertResultMovieDao.insertResultMovie(resultMap);
 	}
 

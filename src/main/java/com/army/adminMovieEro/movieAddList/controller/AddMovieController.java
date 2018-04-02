@@ -32,136 +32,136 @@ import com.army.adminMovieEro.movieAddList.model.vo.MovieVisualVo;
 
 @Controller
 public class AddMovieController {
-	
-	@Autowired MovieListService movieListService;
-	
-	@Autowired InsertResultMovieService insertResultMovieService;
-	
-	@Autowired DeleteMovieService deleteMovieService;
-	
-	@Autowired MovieVisualService movieVisualService;
-	
+
+	@Autowired
+	MovieListService movieListService;
+
+	@Autowired
+	InsertResultMovieService insertResultMovieService;
+
+	@Autowired
+	DeleteMovieService deleteMovieService;
+
+	@Autowired
+	MovieVisualService movieVisualService;
+
 	public static final Logger logger = LoggerFactory.getLogger(AddMovieController.class);
-	
-	//영화 추가 controller
-	@RequestMapping(value="addMovie.do")
+
+	// 영화 추가 controller
+	@RequestMapping(value = "addMovie.do")
 	public String goAddMovie() {
-		
+
 		logger.info("addMovie.do 도착...............");
-		
+
 		return "movieBoard/addMovie";
 	}
-	
+
 	@RequestMapping("loadMovie.do")
 	public ModelAndView loadMoive(ModelAndView mv) {
 		logger.info("loadMovie.do 도착...............");
 		List<MovieListVo> movieList = new ArrayList<MovieListVo>();
-		
+
 		movieList = movieListService.loadMovieList();
-		if(movieList!=null) {
-			System.out.println("movieList"+movieList);
-			mv.addObject("movieList", movieList)
-			.setViewName("movieBoard/movieList");
-		}else {
-			mv.addObject("movieList", movieList)
-			.setViewName("movieBoard/movieList");
+		if (movieList != null) {
+			System.out.println("movieList" + movieList);
+			mv.addObject("movieList", movieList).setViewName("movieBoard/movieList");
+		} else {
+			mv.addObject("movieList", movieList).setViewName("movieBoard/movieList");
 		}
 		return mv;
 	}
-	
-	//영화 검색 Ajax
+
+	// 영화 검색 Ajax
 	@ResponseBody
 	@RequestMapping(value = "/ajaxAddMovie.do", method = RequestMethod.GET)
-	public Map<String, String> ajaxAddMovie(HttpServletRequest request, Model model){
+	public Map<String, String> ajaxAddMovie(HttpServletRequest request, Model model) {
 		Map<String, String> map = null;
 		StringBuffer response = new StringBuffer();
 		try {
 			System.out.println("AjaxAddMovieController 도착.................");
-			
-			String clientId = "yxO7C6C5LsdJtbHkbfHs";//애플리케이션 클라이언트 아이디값";
-	        String clientSecret = "TOjCC9nvUj";//애플리케이션 클라이언트 시크릿값";
-	        
-	        //ajax를 통해서 넘어온 request값 
-	        String query = request.getParameter("query");
-	        query = URLEncoder.encode(query, "UTF-8");
-	        System.out.println("query = "+query);
-	        String display = request.getParameter("display");
-	        System.out.println("display = " + display);
-	        String genre = request.getParameter("genre");
-	        System.out.println("genre = " + genre);
-	        String country = request.getParameter("country");
-	        System.out.println("country = " + country);
-	        String yearfrom = request.getParameter("yearfrom");
-	        System.out.println("yearfrom = " + yearfrom);
-	        String yearto = request.getParameter("yearto");
-	        System.out.println("yearto = " + yearto);
-	        
-	        String apiURL = "https://openapi.naver.com/v1/search/movie.json?query=" + query; // json 결과과
-	        
-	        if(display != "") {
-	        	apiURL += "&display="+display;
-	        	System.out.println(apiURL);
-	        }
-	        if(genre != "") {
-	        	apiURL += "&genre="+genre;
-	        	System.out.println(apiURL);
-	        }
-	        if(country != "") {
-	        	apiURL += "&country="+country;
-	        	System.out.println(apiURL);
-	        }
-	        if(yearfrom != "") {
-	        	apiURL += "&yearfrom="+yearfrom;
-	        	System.out.println(apiURL);
-	        }
-	        if(yearto != "") {
-	        	apiURL += "&yearto="+yearto;
-	        	System.out.println(apiURL);
-	        }
-	        System.out.println("마지막 apiURL = " + apiURL);
-            
-            URL url = new URL(apiURL);
-            HttpURLConnection con = (HttpURLConnection)url.openConnection();
-            con.setRequestMethod("GET");
-            con.setRequestProperty("X-Naver-Client-Id", clientId);
-            con.setRequestProperty("X-Naver-Client-Secret", clientSecret);
-            int responseCode = con.getResponseCode();
-            BufferedReader br;
-            if(responseCode==200) { // 정상 호출
-                br = new BufferedReader(new InputStreamReader(con.getInputStream()));
-            } else {  // 에러 발생
-                br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
-            }
-            String inputLine;
-            while ((inputLine = br.readLine()) != null) {
-                response.append(inputLine);
-            }
-            br.close();
-            System.out.println(response.toString());
-            
-            
-            try {
-            	map = new ObjectMapper().readValue(response.toString(), Map.class);
-            	
-            	System.out.println("map = " + map);
-            	System.out.println("map의 size" + map.size());
-            	model.addAttribute("addMovieMap", map);
-            }catch(Exception e) {
-            	e.getStackTrace();
-            }
-            
-        } catch (Exception e) {
-            System.out.println(e);
-        }
+
+			String clientId = "yxO7C6C5LsdJtbHkbfHs";// 애플리케이션 클라이언트 아이디값";
+			String clientSecret = "TOjCC9nvUj";// 애플리케이션 클라이언트 시크릿값";
+
+			// ajax를 통해서 넘어온 request값
+			String query = request.getParameter("query");
+			query = URLEncoder.encode(query, "UTF-8");
+			System.out.println("query = " + query);
+			String display = request.getParameter("display");
+			System.out.println("display = " + display);
+			String genre = request.getParameter("genre");
+			System.out.println("genre = " + genre);
+			String country = request.getParameter("country");
+			System.out.println("country = " + country);
+			String yearfrom = request.getParameter("yearfrom");
+			System.out.println("yearfrom = " + yearfrom);
+			String yearto = request.getParameter("yearto");
+			System.out.println("yearto = " + yearto);
+
+			String apiURL = "https://openapi.naver.com/v1/search/movie.json?query=" + query; // json 결과과
+
+			if (display != "") {
+				apiURL += "&display=" + display;
+				System.out.println(apiURL);
+			}
+			if (genre != "") {
+				apiURL += "&genre=" + genre;
+				System.out.println(apiURL);
+			}
+			if (country != "") {
+				apiURL += "&country=" + country;
+				System.out.println(apiURL);
+			}
+			if (yearfrom != "") {
+				apiURL += "&yearfrom=" + yearfrom;
+				System.out.println(apiURL);
+			}
+			if (yearto != "") {
+				apiURL += "&yearto=" + yearto;
+				System.out.println(apiURL);
+			}
+			System.out.println("마지막 apiURL = " + apiURL);
+
+			URL url = new URL(apiURL);
+			HttpURLConnection con = (HttpURLConnection) url.openConnection();
+			con.setRequestMethod("GET");
+			con.setRequestProperty("X-Naver-Client-Id", clientId);
+			con.setRequestProperty("X-Naver-Client-Secret", clientSecret);
+			int responseCode = con.getResponseCode();
+			BufferedReader br;
+			if (responseCode == 200) { // 정상 호출
+				br = new BufferedReader(new InputStreamReader(con.getInputStream()));
+			} else { // 에러 발생
+				br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
+			}
+			String inputLine;
+			while ((inputLine = br.readLine()) != null) {
+				response.append(inputLine);
+			}
+			br.close();
+			System.out.println(response.toString());
+
+			try {
+				map = new ObjectMapper().readValue(response.toString(), Map.class);
+
+				System.out.println("map = " + map);
+				System.out.println("map의 size" + map.size());
+				model.addAttribute("addMovieMap", map);
+			} catch (Exception e) {
+				e.getStackTrace();
+			}
+
+		} catch (Exception e) {
+			System.out.println(e);
+		}
 		return map;
 	}
-	
 
-	//영화 등록 controller
-	@RequestMapping(value="insertMovie.do", method=RequestMethod.GET)
+	// 영화 등록 controller
+	@RequestMapping(value = "insertMovie.do", method = RequestMethod.GET)
 	public String insertMovie(HttpServletRequest request) {
 		Map<String, String> resultMap = new HashMap<String, String>();
-		
+
 		resultMap.put("resultTitle", request.getParameter("resultTitle"));
 		System.out.println("영화 제목 : " + resultMap.get(0));
 		resultMap.put("resultSubtitle", request.getParameter("resultSubtitle"));
@@ -170,50 +170,32 @@ public class AddMovieController {
 		resultMap.put("resultActor", request.getParameter("resultActor"));
 		resultMap.put("resultPubDate", request.getParameter("resultPubDate"));
 		resultMap.put("resultUserRating", request.getParameter("resultUserRating"));
-		System.out.println("네이버 평점 : " + request.getParameter("resultUserRating"));
 		resultMap.put("resultLink", request.getParameter("resultLink"));
+		resultMap.put("resultImage", request.getParameter("resultImage"));
+		System.out.println("영화 이미지URL : " + resultMap.get("resultImage"));
 
-		System.out.println("입력된 값의 갯수 : " + resultMap.size());
-		
 		insertResultMovieService.insertResultMovie(resultMap);
-		
+
 		return "redirect:loadMovie.do";
-		
+
 	}
-	
-	//영화 목록에서 지우기
+
+	// 영화 목록에서 지우기
 	@RequestMapping("deleteMovie.do")
 	public String deleteMovie(HttpServletRequest request) {
 		System.out.println("deleteMovie.do 도착.......................");
-		
-		String movieUniNum = request.getParameter("movieUniNum");
-		
-		System.out.println("삭제할 request.getParameter(\"movieUniNum\") : " + request.getParameter("movieUniNum"));
+
+		String movieUniNum = request.getParameter("movieUniNumDel");
+
 		System.out.println("삭제할 UniqueNumber : " + movieUniNum);
-		
+
 		int resultDeleteMovie = deleteMovieService.deleteMovie(movieUniNum);
-		
-		if(resultDeleteMovie > 0) {
+
+		if (resultDeleteMovie > 0) {
 			return "redirect:loadMovie.do";
 		}
 		return "#";
-		
+
 	}
-	
-	//이미지 등록하기
-	@RequestMapping("insertStillcut.do")
-	public String insertStillcut(HttpServletRequest request, MovieVisualVo vo) {
-		System.out.println("insertStillcut.do도착...........................");
-		vo.setMOVIE_INFO_SEQ(request.getParameter("movieUniNum"));
-		vo.setMOVIE_STILLCUT(request.getParameter("movieStillcut"));
-		System.out.println("넘어온 유니넘버 : " + vo.getMOVIE_INFO_SEQ() + "\n넘어온 stillcutURL : " + vo.getMOVIE_STILLCUT());
-		
-		int insertStillcutResult = movieVisualService.insertStillcut(vo);
-		
-		if(insertStillcutResult > 0) {
-			return "redirect:loadMovie.do";
-		}
-		return "redirect:loadMovie.do";
-	}
-	
+
 }
