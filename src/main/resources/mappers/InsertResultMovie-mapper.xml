@@ -6,8 +6,8 @@
 	
 	<insert id="insertResultMovie" parameterType="map">
 		INSERT INTO MOVIE_INFO 
-		(MOVIE_INFO_SEQ, TITLE, SUB_TITLE, DIRECTOR, ACTOR, PUB_DATE, USER_RATING, LINK, IMAGE)
-		VALUES (MOVIE_INFO_SEQ.NEXTVAL, #{resultTitle}, #{resultSubtitle}, #{resultDirector},
-		#{resultActor}, #{resultPubDate}, #{resultUserRating}, #{resultLink}, #{resultImage})
+		(MV_INFO_SEQ, MV_TITLE, MV_SUB_TITLE, MV_PUB_DATE, MV_DIRECTOR, MV_ACTOR, MV_USER_RATING, MV_LINK, MV_IMAGE)
+		VALUES (MOVIE_INFO_SEQ.NEXTVAL, #{resultTitle}, #{resultSubtitle}, #{resultPubDate},
+		#{resultDirector}, #{resultActor}, #{resultUserRating}, #{resultLink}, #{resultImage})
 	</insert>
 </mapper>

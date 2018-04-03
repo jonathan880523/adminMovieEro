@@ -30,4 +30,13 @@ public class MovieListDaoImpl implements MovieListDao {
 		
 	}
 
+	@Override
+	public MovieListVo loadMovieTitle(int numMOVIE_INFO_SEQ) {
+		System.out.println("Dao loadMovieTitle 도착................");
+		MovieListVo movieVo = new MovieListVo();
+		
+		movieVo = sqlSession.selectOne("MovieListVo.loadMovieTitle", numMOVIE_INFO_SEQ);
+		return movieVo;
+	}
+
 }

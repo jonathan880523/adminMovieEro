@@ -1,57 +1,66 @@
 package com.army.adminMovieEro.movieAddList.model.vo;
 
 public class MovieVisualVo {
-	private String VISUAL_SEQ;
-	private String MOVIE_INFO_SEQ;
-	private String MOVIE_TRAILER;
-	private String MOVIE_STILLCUT;
+	private int MV_VISUAL_SEQ;
+	private int MV_INFO_SEQ;
+	private String MV_TITLE;
+	private String MV_STILLCUT;
+	private String MV_TRAILER;
 	
-	public MovieVisualVo() {};
-	
-	public MovieVisualVo(String vISUAL_SEQ, String mOVIE_INFO_SEQ, String mOVIE_TRAILER, String mOVIE_STILLCUT) {
+	public MovieVisualVo() {}
+
+	public MovieVisualVo(int mV_VISUAL_SEQ, int mV_INFO_SEQ, String mV_TITLE, String mV_STILLCUT, String mV_TRAILER) {
 		super();
-		VISUAL_SEQ = vISUAL_SEQ;
-		MOVIE_INFO_SEQ = mOVIE_INFO_SEQ;
-		MOVIE_TRAILER = mOVIE_TRAILER;
-		MOVIE_STILLCUT = mOVIE_STILLCUT;
+		MV_VISUAL_SEQ = mV_VISUAL_SEQ;
+		MV_INFO_SEQ = mV_INFO_SEQ;
+		MV_TITLE = mV_TITLE;
+		MV_STILLCUT = mV_STILLCUT;
+		MV_TRAILER = mV_TRAILER;
 	}
 
-	public String getVISUAL_SEQ() {
-		return VISUAL_SEQ;
+	public int getMV_VISUAL_SEQ() {
+		return MV_VISUAL_SEQ;
 	}
 
-	public void setVISUAL_SEQ(String vISUAL_SEQ) {
-		VISUAL_SEQ = vISUAL_SEQ;
+	public void setMV_VISUAL_SEQ(int mV_VISUAL_SEQ) {
+		MV_VISUAL_SEQ = mV_VISUAL_SEQ;
 	}
 
-	public String getMOVIE_INFO_SEQ() {
-		return MOVIE_INFO_SEQ;
+	public int getMV_INFO_SEQ() {
+		return MV_INFO_SEQ;
 	}
 
-	public void setMOVIE_INFO_SEQ(String mOVIE_INFO_SEQ) {
-		MOVIE_INFO_SEQ = mOVIE_INFO_SEQ;
+	public void setMV_INFO_SEQ(int mV_INFO_SEQ) {
+		MV_INFO_SEQ = mV_INFO_SEQ;
 	}
 
-	public String getMOVIE_TRAILER() {
-		return MOVIE_TRAILER;
+	public String getMV_TITLE() {
+		return MV_TITLE;
 	}
 
-	public void setMOVIE_TRAILER(String mOVIE_TRAILER) {
-		MOVIE_TRAILER = mOVIE_TRAILER;
+	public void setMV_TITLE(String mV_TITLE) {
+		MV_TITLE = mV_TITLE;
 	}
 
-	public String getMOVIE_STILLCUT() {
-		return MOVIE_STILLCUT;
+	public String getMV_STILLCUT() {
+		return MV_STILLCUT;
 	}
 
-	public void setMOVIE_STILLCUT(String mOVIE_STILLCUT) {
-		MOVIE_STILLCUT = mOVIE_STILLCUT;
+	public void setMV_STILLCUT(String mV_STILLCUT) {
+		MV_STILLCUT = mV_STILLCUT;
+	}
+
+	public String getMV_TRAILER() {
+		return MV_TRAILER;
+	}
+
+	public void setMV_TRAILER(String mV_TRAILER) {
+		MV_TRAILER = mV_TRAILER;
 	}
 
 	@Override
 	public String toString() {
-		return "MovieVisualVo [VISUAL_SEQ=" + VISUAL_SEQ + ", MOVIE_INFO_SEQ=" + MOVIE_INFO_SEQ + ", MOVIE_TRAILER="
-				+ MOVIE_TRAILER + ", MOVIE_STILLCUT=" + MOVIE_STILLCUT + "]";
-	}
-	
+		return "MovieVisualVo [MV_VISUAL_SEQ=" + MV_VISUAL_SEQ + ", MV_INFO_SEQ=" + MV_INFO_SEQ + ", MV_TITLE="
+				+ MV_TITLE + ", MV_STILLCUT=" + MV_STILLCUT + ", MV_TRAILER=" + MV_TRAILER + "]";
+	};
 }

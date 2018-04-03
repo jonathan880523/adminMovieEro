@@ -1,102 +1,111 @@
 package com.army.adminMovieEro.movieAddList.model.vo;
 
 public class MovieListVo {
-	private String TITLE;
-	private String SUB_TITLE;
-	private String PUB_DATE;
-	private String DIRECTOR;
-	private String ACTOR;
-	private String USER_RATING;
-	private String LINK;
-	private int MOVIE_INFO_SEQ;
+	private String MV_TITLE;
+	private String MV_SUB_TITLE;
+	private String MV_PUB_DATE;
+	private String MV_DIRECTOR;
+	private String MV_ACTOR;
+	private String MV_USER_RATING;
+	private String MV_LINK;
+	private String MV_IMAGE;
+	private int MV_INFO_SEQ;
 
 	public MovieListVo() {
 		super();
 	}
 
-	public MovieListVo(String TITLE, String SUB_TITLE, String PUB_DATE, String DIRECTOR, String ACTOR,
-			String USER_RATING, String LINK, int MOVIE_INFO_SEQ) {
+	public MovieListVo(String mV_TITLE, String mV_SUB_TITLE, String mV_PUB_DATE, String mV_DIRECTOR, String mV_ACTOR,
+			String mV_USER_RATING, String mV_LINK, String mV_IMAGE, int mV_INFO_SEQ) {
 		super();
-		this.TITLE = TITLE;
-		this.SUB_TITLE = SUB_TITLE;
-		this.PUB_DATE = PUB_DATE;
-		this.DIRECTOR = DIRECTOR;
-		this.ACTOR = ACTOR;
-		this.USER_RATING = USER_RATING;
-		this.LINK = LINK;
-		this.MOVIE_INFO_SEQ = MOVIE_INFO_SEQ;
+		MV_TITLE = mV_TITLE;
+		MV_SUB_TITLE = mV_SUB_TITLE;
+		MV_PUB_DATE = mV_PUB_DATE;
+		MV_DIRECTOR = mV_DIRECTOR;
+		MV_ACTOR = mV_ACTOR;
+		MV_USER_RATING = mV_USER_RATING;
+		MV_LINK = mV_LINK;
+		MV_IMAGE = mV_IMAGE;
+		MV_INFO_SEQ = mV_INFO_SEQ;
 	}
 
-	
-	public MovieListVo(String TITLE, int MOVIE_INFO_SEQ) {
-		super();
-		this.TITLE = TITLE;
-		this.MOVIE_INFO_SEQ = MOVIE_INFO_SEQ;
-	}
-	public String getTITLE() {
-		return TITLE;
+	public String getMV_TITLE() {
+		return MV_TITLE;
 	}
 
-	public void setTITLE(String tITLE) {
-		TITLE = tITLE;
+	public void setMV_TITLE(String mV_TITLE) {
+		MV_TITLE = mV_TITLE;
 	}
 
-	public String getSUB_TITLE() {
-		return SUB_TITLE;
+	public String getMV_SUB_TITLE() {
+		return MV_SUB_TITLE;
 	}
 
-	public void setSUB_TITLE(String sUB_TITLE) {
-		SUB_TITLE = sUB_TITLE;
+	public void setMV_SUB_TITLE(String mV_SUB_TITLE) {
+		MV_SUB_TITLE = mV_SUB_TITLE;
 	}
 
-	public String getPUB_DATE() {
-		return PUB_DATE;
+	public String getMV_PUB_DATE() {
+		return MV_PUB_DATE;
 	}
 
-	public void setPUB_DATE(String pUB_DATE) {
-		PUB_DATE = pUB_DATE;
+	public void setMV_PUB_DATE(String mV_PUB_DATE) {
+		MV_PUB_DATE = mV_PUB_DATE;
 	}
 
-	public String getDIRECTOR() {
-		return DIRECTOR;
+	public String getMV_DIRECTOR() {
+		return MV_DIRECTOR;
 	}
 
-	public void setDIRECTOR(String dIRECTOR) {
-		DIRECTOR = dIRECTOR;
+	public void setMV_DIRECTOR(String mV_DIRECTOR) {
+		MV_DIRECTOR = mV_DIRECTOR;
 	}
 
-	public String getACTOR() {
-		return ACTOR;
+	public String getMV_ACTOR() {
+		return MV_ACTOR;
 	}
 
-	public void setACTOR(String aCTOR) {
-		ACTOR = aCTOR;
+	public void setMV_ACTOR(String mV_ACTOR) {
+		MV_ACTOR = mV_ACTOR;
 	}
 
-	public String getUSER_RATING() {
-		return USER_RATING;
+	public String getMV_USER_RATING() {
+		return MV_USER_RATING;
 	}
 
-	public void setUSER_RATING(String uSER_RATING) {
-		USER_RATING = uSER_RATING;
+	public void setMV_USER_RATING(String mV_USER_RATING) {
+		MV_USER_RATING = mV_USER_RATING;
 	}
 
-	public String getLINK() {
-		return LINK;
+	public String getMV_LINK() {
+		return MV_LINK;
 	}
 
-	public void setLINK(String lINk) {
-		LINK = lINk;
+	public void setMV_LINK(String mV_LINK) {
+		MV_LINK = mV_LINK;
+	}
+
+	public String getMV_IMAGE() {
+		return MV_IMAGE;
+	}
+
+	public void setMV_IMAGE(String mV_IMAGE) {
+		MV_IMAGE = mV_IMAGE;
 	}
 
 	public int getMOVIE_INFO_SEQ() {
-		return MOVIE_INFO_SEQ;
+		return MV_INFO_SEQ;
+	}
+
+	public void setMOVIE_INFO_SEQ(int mV_INFO_SEQ) {
+		MV_INFO_SEQ = mV_INFO_SEQ;
 	}
 
 	@Override
 	public String toString() {
-		return "MovieListVo [TITLE=" + TITLE + ", SUB_TITLE=" + SUB_TITLE + ", PUB_DATE=" + PUB_DATE + ", DIRECTOR="
-				+ DIRECTOR + ", ACTOR=" + ACTOR + ", USER_RATING=" + USER_RATING + ", LINK=" + LINK
-				+ ", MOVIE_INFO_SEQ=" + MOVIE_INFO_SEQ + "]";
+		return "MovieListVo [MV_TITLE=" + MV_TITLE + ", MV_SUB_TITLE=" + MV_SUB_TITLE + ", MV_PUB_DATE=" + MV_PUB_DATE
+				+ ", MV_DIRECTOR=" + MV_DIRECTOR + ", MV_ACTOR=" + MV_ACTOR + ", MV_USER_RATING=" + MV_USER_RATING
+				+ ", MV_LINK=" + MV_LINK + ", MV_IMAGE=" + MV_IMAGE + ", MV_INFO_SEQ=" + MV_INFO_SEQ + "]";
 	}
+
 }

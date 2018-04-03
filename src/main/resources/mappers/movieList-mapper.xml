@@ -9,8 +9,12 @@
 	</select>
 
 	<delete id="deleteMovie">
-		DELETE FROM MOVIE_INFO WHERE MOVIE_INFO_SEQ =
-		#{MOVIE_INFO_SEQ}
+		DELETE FROM MOVIE_INFO WHERE MV_INFO_SEQ =
+		#{MV_INFO_SEQ}
 	</delete>
+	
+	<select id="loadMovieTitle" resultType="MovieListVo">
+		SELECT * FROM MOVIE_INFO WHERE MV_INFO_SEQ = #{numMOVIE_INFO_SEQ}
+	</select>
 
 </mapper>

@@ -7,4 +7,5 @@ import com.army.adminMovieEro.movieAddList.model.vo.MovieListVo;
 public interface MovieListDao {
 	public List<MovieListVo> loadMovieList();
 	public void deleteMovie(String title, String director);
+	public MovieListVo loadMovieTitle(int numMOVIE_INFO_SEQ);
 }

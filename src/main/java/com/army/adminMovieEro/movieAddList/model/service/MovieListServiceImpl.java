@@ -30,4 +30,12 @@ public class MovieListServiceImpl implements MovieListService {
 
 	}
 
+	@Override
+	public MovieListVo loadMovieTitle(int numMOVIE_INFO_SEQ) {
+		System.out.println("loadMovieTitle method 실행..................");
+		MovieListVo movieVo = new MovieListVo();
+		movieVo = movieListDao.loadMovieTitle(numMOVIE_INFO_SEQ);
+		return movieVo;
+	}
+
 }

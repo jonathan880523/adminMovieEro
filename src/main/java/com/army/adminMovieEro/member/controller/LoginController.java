@@ -1,6 +1,7 @@
 package com.army.adminMovieEro.member.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,6 +30,12 @@ public class LoginController {
 		return "main/login";
 	}
 	
+	@RequestMapping(value="logOut.do")
+	public String logOut() {
+		return "redirect:/";
+	}
+	
+	
 	@RequestMapping(value="login.do", method=RequestMethod.GET)
 	public String home(HttpServletRequest request, ModelAndView mv) {
 		logger.info("LoginController 도착.......................");
@@ -42,7 +49,7 @@ public class LoginController {
 		boolean checkStatus =  loginService.checkAdmin(ADMIN_ID, ADMIN_PW);
 		
 		if(checkStatus) {
-			return "redirect:loadMovie.do";
+			return "redirect:/main.do";
 		}else {
 			return "redirect:/";
 		}

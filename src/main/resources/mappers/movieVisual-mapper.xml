@@ -6,16 +6,24 @@
 
 	<insert id="insertStillcut" parameterType="MovieVisualVo">
 		INSERT INTO MOVIE_VISUAL_ITEMS
-		(VISUAL_SEQ, MOVIE_INFO_SEQ, MOVIE_STILLCUT)
+		(MV_VISUAL_SEQ, MV_INFO_SEQ, MV_STILLCUT)
 		VALUES
-		(MOVIE_VISUAL_ITEMS_SEQ.NEXTVAL, #{MOVIE_INFO_SEQ}, #{MOVIE_STILLCUT})
+		(MOVIE_VISUAL_ITEMS_SEQ.NEXTVAL, #{MV_INFO_SEQ}, #{MV_STILLCUT})
 	</insert>
 	
 	<insert id="insertTrailer" parameterType="MovieVisualVo">
 		INSERT INTO MOVIE_VISUAL_ITEMS
-		(VISUAL_SEQ, MOVIE_INFO_SEQ, MOVIE_TRAILER)
+		(MV_VISUAL_SEQ, MV_INFO_SEQ, MV_TRAILER)
 		VALUES
-		(MOVIE_VISUAL_ITEMS_SEQ.NEXTVAL, #{MOVIE_INFO_SEQ}, #{MOVIE_TRAILER})
+		(MOVIE_VISUAL_ITEMS_SEQ.NEXTVAL, #{MV_INFO_SEQ}, #{MV_TRAILER})
 	</insert>
+	
+	<select id="loadVisualItems" resultType="MovieVisualVo">
+		SELECT * FROM MOVIE_VISUAL_ITEMS WHERE MV_INFO_SEQ = #{numMOVIE_INFO_SEQ}
+	</select>
+	
+	<select id="loadLastItem" resultType="MovieVisualVo">
+		SELECT * FROM MOVIE_VISUAL_ITEMS WHERE MV_STILLCUT = #{MOVIE_STILLCUT}
+	</select>
 
 </mapper>

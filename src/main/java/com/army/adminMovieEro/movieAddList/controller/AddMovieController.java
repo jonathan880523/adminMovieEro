@@ -63,7 +63,7 @@ public class AddMovieController {
 
 		movieList = movieListService.loadMovieList();
 		if (movieList != null) {
-			System.out.println("movieList" + movieList);
+			System.out.println("movieList" + movieList.toString());
 			mv.addObject("movieList", movieList).setViewName("movieBoard/movieList");
 		} else {
 			mv.addObject("movieList", movieList).setViewName("movieBoard/movieList");
@@ -195,7 +195,58 @@ public class AddMovieController {
 			return "redirect:loadMovie.do";
 		}
 		return "#";
-
 	}
 
+	// 영화 스틸컷, 트레일러 목록 불러오기
+	@RequestMapping("loadVisualItems.do")
+	public ModelAndView loadVisualItems(HttpServletRequest request, ModelAndView mv) {
+		System.out.println("loadVisualItems.do 도착.......................");
+		String MOVIE_INFO_SEQ = request.getParameter("movieUniNumDel");
+		if(MOVIE_INFO_SEQ == null) {
+			mv.setViewName("redirect:loadMovie.do");
+			return mv;
+		}
+		
+		int numMOVIE_INFO_SEQ = Integer.parseInt(MOVIE_INFO_SEQ);
+		System.out.println("가져올 영화 정보 테이터 시퀀스 : " + numMOVIE_INFO_SEQ);
+
+		List<MovieVisualVo> movieVisualList = movieVisualService.loadVisualItems(numMOVIE_INFO_SEQ);
+		System.out.println(movieVisualList.size());
+		if(movieVisualList.size() == 0) {
+			MovieListVo movieVo =  movieListService.loadMovieTitle(numMOVIE_INFO_SEQ);
+			System.out.println("movieVo의 MV_TITLE: " + movieVo.getMV_TITLE());
+			mv.addObject("movieVo",movieVo).setViewName("movieBoard/addVisualitems");
+		}else {
+			mv.addObject("movieVisualList", movieVisualList).setViewName("movieBoard/addVisualitems");
+		}
+		return mv;
+	}
+
+	// 영화 스틸컷 추가
+	@ResponseBody
+	@RequestMapping("insertStillcut.do")
+	public ModelAndView insertVisualItems(HttpServletRequest request, ModelAndView mv) {
+		String MV_TITLE = request.getParameter("MV_TITLE");
+		int MV_INFO_SEQ = Integer.parseInt(request.getParameter("MV_INFO_SEQ"));
+		String MV_STILLCUT = request.getParameter("MV_STILLCUT");
+		
+		MovieVisualVo visualVo = new MovieVisualVo();
+		visualVo.setMV_TITLE(MV_TITLE);
+		visualVo.setMV_INFO_SEQ(MV_INFO_SEQ);
+		visualVo.setMV_STILLCUT(MV_STILLCUT);
+		System.out.println(visualVo.toString());
+		
+		int resultInsertStillcut = movieVisualService.insertStillcut(visualVo);
+		
+		//입력 성공하면 다시 입력한 값 가져오기(select)
+		if(resultInsertStillcut > 0) {
+			visualVo = movieVisualService.loadLastItem(visualVo.getMV_STILLCUT());
+			mv.addObject("resultStillcutMapData", visualVo)
+			  .setViewName("redirect:loadVisualItems.do");
+			return mv;
+		}else {
+			mv.setViewName("redirect:loadVisualItems.do");
+			return mv;
+		}
+	}
 }
