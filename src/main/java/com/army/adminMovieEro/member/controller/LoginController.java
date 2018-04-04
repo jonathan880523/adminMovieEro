@@ -31,13 +31,14 @@ public class LoginController {
 	}
 	
 	@RequestMapping(value="logOut.do")
-	public String logOut() {
+	public String logOut(HttpSession session) {
+		session.invalidate();
 		return "redirect:/";
 	}
 	
 	
 	@RequestMapping(value="login.do", method=RequestMethod.GET)
-	public String home(HttpServletRequest request, ModelAndView mv) {
+	public ModelAndView home(HttpServletRequest request, ModelAndView mv, HttpSession session) {
 		logger.info("LoginController 도착.......................");
 		
 		String ADMIN_ID = request.getParameter("adminId");
@@ -47,14 +48,15 @@ public class LoginController {
 		System.out.println("adminPw = " + ADMIN_PW);
 		
 		boolean checkStatus =  loginService.checkAdmin(ADMIN_ID, ADMIN_PW);
-		
 		if(checkStatus) {
-			return "redirect:/main.do";
+			session.setAttribute("ADMIN_ID", ADMIN_ID);
+			System.out.println("session : " + session);
+			mv.addObject("ADMIN_ID",session).setViewName("redirect:main.do");
+			return mv;
 		}else {
-			return "redirect:/";
+			session.invalidate();
+			mv.setViewName("redirect:/");
+			return mv;
 		}
-		
 	}
-	
-	
 }

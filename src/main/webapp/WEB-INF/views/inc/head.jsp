@@ -14,6 +14,6 @@
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+    <script src="vendors/modernizr-2.6.2-respond-1.1.0.min.js"></script>
     <script src="vendors/jquery-1.9.1.js"></script>
   </head>

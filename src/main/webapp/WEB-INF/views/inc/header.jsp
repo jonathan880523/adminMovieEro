@@ -1,12 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page session="true" %>
 <body class="sticky-menu">
+<%-- <c:set var="loginID" value="${ADMIN_ID}"/>
+<c:if test="${empty loginId}">
+	<c:redirect url="${pageContext.request.contextPath}/logOut.do" />
+</c:if> --%>
 <div class="navbar navbar-fixed-top">
 	<div class="navbar-inner">
 	    <div class="container-fluid">
 	        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span>
 	        </a>
-	        <a class="brand" href="#"><strong>movie愛路 관리자</strong></a>
+	        <a class="brand" href="${pageContext.request.contextPath}/main.do"><strong>movie愛路 관리자</strong></a>
 	        <div class="nav-collapse collapse">
 	            <ul class="nav pull-right">
 	                <li>
