@@ -29,7 +29,7 @@
 	         <a href="${pageContext.request.contextPath}/loadMovie.do"><i class="icon-chevron-right"></i>영화 목록</a>
 	     </li>
 	     <li>
-	         <a href="calendar.html"><i class="icon-chevron-right"></i>영화관 목록</a>
+	         <a href="theaterList.do"><i class="icon-chevron-right"></i>영화관 목록</a>
 	     </li>
 	     <li>
 	         <a href="stats.html"><i class="icon-chevron-right"></i>공지사항 목록</a>

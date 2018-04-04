@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <jsp:include page="../inc/head.jsp" flush="false" />
 <jsp:include page="../inc/header.jsp" flush="false" />
+
 <div class="container-fluid">
 	<div class="row-fluid">
 	    <!-- form -->

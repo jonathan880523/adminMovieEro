@@ -33,57 +33,44 @@
                                         <div class="tab-pane" id="tab1">
                                         <form name="form" id="form" method="post">
                                         <div class="control-group">
-                                           <input type="button" onClick="goPopup();" value="주소검색"/>
-                                           </div>
-                                           <table>
-                                           <tr><td>주소입력</td><td><input type="text"  style="width:500px;" id="roadFullAddr"  name="roadFullAddr" /></td></tr>
-                                          </table>
+                                           <input type="button" onClick="goPopup();" value="주소검색" />
+                                           
+                                           <div class="controls">
+                                           <label class="control-label">검색결과</label>
+                                           	<input type="text"  class="input-xlarge focused" style="width:500px;" id="roadFullAddr"  name="roadFullAddr" />
+											</div>
+										</div>                                         
                                           </form>
                                            </div>
                                             <div class="tab-pane" id="tab2">
-                                                <form class="form-horizontal">
+                                                <form name ="theaterinsert" class="form-horizontal" method="post" action="insertTheater.do">
                                                     <div class="control-group">
                                                       <label class="control-label" for="focusedInput">지점</label>
                                                       <div class="controls">
-                                                        <input class="input-xlarge focused" id="resultTitle" name="resultTitle" type="text" value="">
+                                                        <input class="input-xlarge focused" id="RENTAL_SERVICE_TITLE" name="RENTAL_SERVICE_TITLE" type="text" value="">
                                                       </div>
                                                     </div>
                                                     <div class="control-group">
                                                       <label class="control-label" for="focusedInput">정보</label>
                                                       <div class="controls">
-                                                        <input class="input-xlarge focused" id="resultSubtitle" name="resultSubtitle" type="text" value="">
-                                                      </div>
-                                                    </div>
-                                                    <div class="control-group">
-                                                      <label class="control-label" for="focusedInput">시간</label>
-                                                      <div class="controls">
-                                                        <input class="input-xlarge focused" id="resultDirector" name="resultDirector" type="text" value="">
+                                                        <input class="input-xlarge focused" id="RENTAL_SERVICE_INFO" name="RENTAL_SERVICE_INFO" type="text" value="">
                                                       </div>
                                                     </div>
                                                     <div class="control-group">
                                                       <label class="control-label" for="focusedInput">가격</label>
                                                       <div class="controls">
-                                                        <input class="input-xlarge focused" id="resultActor" name="resultActor" type="text" value="">
+                                                        <input class="input-xlarge focused" id="RENTAL_SERVICE_PRICE" name="RENTAL_SERVICE_PRICE" type="text" value="">
                                                       </div>
                                                     </div>
                                                     <div class="control-group">
-                                                      <label class="control-label" for="focusedInput">대관시작시간</label>
+                                                      <label class="control-label" for="focusedInput">주소</label>
                                                       <div class="controls">
-                                                        <input class="input-xlarge focused" id="resultPubDate" name="resultPubDate" type="text" value="">
-                                                      </div>
-                                                    </div>
-                                                    <div class="control-group">
-                                                      <label class="control-label" for="focusedInput">대관끝나는시간</label>
-                                                      <div class="controls">
-                                                        <input class="input-xlarge focused" id="resultPubDate" name="resultPubDate" type="text" value="">
+                                                        <input class="input-xlarge focused" id="RENTAL_SERVICE_POSITION" name="RENTAL_SERVICE_POSITION" type="text" value="" readonly>
                                                       </div>
                                                     </div>
                                                      <div>
-                                                    	<input class="input-xlarge focused" id="resultLink" name="resultLink" type="hidden" value="" readOnly>
-                                                    	<input class="input-xlarge focused" id="resultImage" name="resultImage" type="hidden" value="" readOnly>
-                                                     <input type="submit" class="btn btn-primary" value="전송">
                                                 
-                                                </div>
+                                              	  </div>
                                                     </form>
                                                     </div>
                                                    
@@ -93,8 +80,8 @@
                                             <ul class="pager wizard">
                                                 <li class="previous first" style="display:none;"><a href="javascript:void(0);">First</a></li>
                                                 <li class="previous"><a href="javascript:void(0);">Previous</a></li>
-                                                <li class="next last" style="display:none;"><a href="javascript:void(0);">Last</a></li>
                                                 <li class="next"><a href="javascript:void(0);">Next</a></li>
+                                                <li class="next finish" style="display:none;"><a href="javascript:">Finish</a></li>
                                             </ul>
                                         </div>  
                                     </div>
@@ -112,6 +99,9 @@
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c58093115a4a53c228969797d30bf0e6&libraries=services"></script>
   <script>
+  $('.next').click(function(){
+	  document.getElementById('RENTAL_SERVICE_POSITION').value = document.getElementById('roadFullAddr').value;
+  });
   function goPopup() {
 		// 주소검색을 수행할 팝업 페이지를 호출합니다.
 		// 호출된 페이지(jusopopup.jsp)에서 실제
@@ -151,9 +141,11 @@ jQuery(document).ready(function() {
                }
            }});
            $('#rootwizard .finish').click(function() {
-               alert('Finished!, Starting over!');
-               $('#rootwizard').find("a[href*='tab1']").trigger('click');
+               alert('영화관 정보가 입력되었습니다.');
+               document.theaterinsert.submit();
+               
            });
        }); 
+
 </script>
 <jsp:include page="../inc/footer.jsp" flush="false" />

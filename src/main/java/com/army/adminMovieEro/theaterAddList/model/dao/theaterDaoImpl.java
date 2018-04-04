@@ -17,7 +17,7 @@ public class theaterDaoImpl implements theaterDao {
 	@Override
 	public ArrayList<theaterVO> selectList() {
 		// TODO Auto-generated method stub
-		return null;
+		return new ArrayList<theaterVO>(sqlSession.selectList("TheaterVo.selectList"));
 	}
 
 	@Override
@@ -29,19 +29,18 @@ public class theaterDaoImpl implements theaterDao {
 	@Override
 	public int insertBoard(theaterVO b) {
 		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.insert("TheaterVo.insertList",b);
 	}
 
 	@Override
 	public int updateBoard(theaterVO b) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		return sqlSession.delete("TheaterVo.updateList",b);
 	}
 
 	@Override
 	public int deleteBoard(int boardNum) {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.delete("TheaterVo.deledtList",boardNum);
 	}
 
 	@Override

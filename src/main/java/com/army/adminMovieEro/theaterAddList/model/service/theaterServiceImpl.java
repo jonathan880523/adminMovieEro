@@ -16,7 +16,7 @@ public class theaterServiceImpl implements theaterService {
 	@Override
 	public ArrayList<theaterVO> selectList() {
 		// TODO Auto-generated method stub
-		return null;
+		return theaterServiceImpl.selectList();
 	}
 
 	@Override
@@ -28,25 +28,25 @@ public class theaterServiceImpl implements theaterService {
 	@Override
 	public int insertBoard(theaterVO b) {
 		// TODO Auto-generated method stub
-		return 0;
+		return theaterServiceImpl.insertBoard(b);
 	}
 
 	@Override
 	public int updateBoard(theaterVO b) {
 		// TODO Auto-generated method stub
-		return 0;
+		return theaterServiceImpl.updateBoard(b);
 	}
 
 	@Override
 	public int deleteBoard(int boardNum) {
 		// TODO Auto-generated method stub
-		return 0;
+		return theaterServiceImpl.deleteBoard(boardNum);
 	}
 
 	@Override
 	public int getListCount() {
 		// TODO Auto-generated method stub
-		return 0;
+		return theaterServiceImpl.getListCount();
 	}
 
 }

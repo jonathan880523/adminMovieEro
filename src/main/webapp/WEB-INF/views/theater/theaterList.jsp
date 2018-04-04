@@ -71,14 +71,14 @@ div.wizard-navigation .nav-pills>li+li {
 										</tr>
 									</thead>
 									<tbody>
-										<c:set var="movieListResult" value="${requestScope.movieList}" /> 
-										<c:forEach var="listMap" items="${movieListResult}">
+										<c:set var="theaterlist" value="${requestScope.theaterlist}"></c:set>
+										<c:forEach var="theater" items="${theaterlist}">
 										<tr class="odd gradeX">
-									 		<td><input type="checkbox" name="movieUniNumDel" value="${listMap.MOVIE_INFO_SEQ}"></td>
-									    	<td>${listMap.MV_TITLE}</a></td>
-									    	<td>${listMap.MV_DIRECTOR}</td>
-									    	<td>${listMap.MV_PUB_DATE}</td>
-									    	<td><input type="text" value="미등록" readOnly></td>
+									 		<td><input type="checkbox" name="movieUniNumDel" value="${theater.RENTAL_SERVICE_NO}"></td>
+									    	<td>${theater.RENTAL_SERVICE_TITLE}</a></td>
+									    	<td>${theater.RENTAL_SERVICE_POSITION}</td>
+									    	<td>${theater.RENTAL_SERVICE_PRICE}</td>
+									    	<td>${theater.RENTAL_SERVICE_INFO}</td>
 										</tr>
 									</c:forEach>
 									</tbody>
