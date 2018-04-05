@@ -3,7 +3,7 @@
 <%@ page session="true" %>
 <body class="sticky-menu">
 <c:set var="loginId" value="${adminId}"/>
-<c:if test="${empty loginID}">
+<c:if test="${empty loginId}">
 <script>
 location.href="./logOut.do"
 </script>

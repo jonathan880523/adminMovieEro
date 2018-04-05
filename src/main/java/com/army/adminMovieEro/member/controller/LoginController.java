@@ -41,10 +41,11 @@ public class LoginController {
 		System.out.println("adminPw = " + adminPw);
 		
 		boolean checkStatus =  loginService.checkAdmin(adminId, adminPw);
+		System.out.println("checkStatus : " + checkStatus);
 		if(checkStatus) {
 			session.setAttribute("adminId", adminId);
 			System.out.println("session : " + session.getAttribute("adminId"));
-			mv.addObject("ADMIN_ID",session).setViewName("redirect:main.do");
+			mv.addObject("adminId",session).setViewName("redirect:main.do");
 			return mv;
 		}else {
 			session.invalidate();
