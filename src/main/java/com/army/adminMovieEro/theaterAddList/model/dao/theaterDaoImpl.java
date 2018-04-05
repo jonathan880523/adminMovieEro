@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.army.adminMovieEro.theaterAddList.model.vo.theaterImageVo;
 import com.army.adminMovieEro.theaterAddList.model.vo.theaterVO;
 
 @Repository("theaterDaoImpl")
@@ -47,6 +48,12 @@ public class theaterDaoImpl implements theaterDao {
 	public int getListCount() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public int insertImage(theaterImageVo b) {
+		// TODO Auto-generated method stub
+		return sqlSession.insert("TheaterVo.insertImage");
 	}
 
 }

@@ -13,6 +13,10 @@
 	#{RENTAL_SERVICE_PRICE},#{RENTAL_SERVICE_TITLE},rental_movie_sq.nextval)
 	</insert>
 	
+	<insert id="insertImage" >
+	insert into rental_movie_image values(#{RENTAL_SERVICE_INFO},#{RENTAL_SERVICE_IMAGE});
+	</insert>
+	
 	<delete id="deledtList">
 	delete from rental_movie where RENTAL_SERVICE_NO=#{RENTAL_SERVICE_NO}
 	</delete>

@@ -12,6 +12,7 @@
 		<typeAlias type="com.army.adminMovieEro.member.model.vo.AdminMemberVo" alias="AdminMemberVo"/>
 		<typeAlias type="com.army.adminMovieEro.movieAddList.model.vo.MovieVisualVo" alias="MovieVisualVo"/>
 		<typeAlias type="com.army.adminMovieEro.theaterAddList.model.vo.theaterVO" alias="TheaterVo"/>
+		<typeAlias type="com.army.adminMovieEro.theaterAddList.model.vo.theaterImageVo" alias="TheaterImageVo"/>
 		<!-- <typeAlias type="com.army.movieEro.member.vo.MemberVO" alias="Member"/>
 		<typeAlias type="org.kh.firstSpring.notice.model.vo.Notice" alias="Notice"/>
 		<typeAlias type="org.kh.firstSpring.board.model.vo.Board" alias="Board"/> -->

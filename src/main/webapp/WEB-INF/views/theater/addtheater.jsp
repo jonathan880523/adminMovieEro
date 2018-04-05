@@ -31,7 +31,7 @@
                                         </div>
                                         <div class="tab-content">
                                         <div class="tab-pane" id="tab1">
-                                        <form name="form" id="form" method="post">
+                                        <form name="form" id="form" method="post" enctype="multipart/form-data" >
                                         <div class="control-group">
                                            <input type="button" onClick="goPopup();" value="주소검색" />
                                            
@@ -142,10 +142,9 @@ jQuery(document).ready(function() {
            }});
            $('#rootwizard .finish').click(function() {
                alert('영화관 정보가 입력되었습니다.');
-               document.theaterinsert.submit();
                
            });
        }); 
-
+	
 </script>
 <jsp:include page="../inc/footer.jsp" flush="false" />

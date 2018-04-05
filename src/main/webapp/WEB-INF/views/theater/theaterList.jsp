@@ -58,7 +58,10 @@ div.wizard-navigation .nav-pills>li+li {
 									<div class="btn-group">
 										<button type="button" id="deleteBtn" class="btn btn-primary">삭제<i class="icon-remove icon-white"></i></button>
 									</div>
-									
+									<div class="btn-group">
+										<button type="button" id="insertVisualItemsBtn" class="btn btn-primary">사진추가<i class="icon-film icon-white"></i></button>
+										<input type="file"  name="RENTAL_SERVICE_IMAGE" >
+									</div>
 								</div>
 								<table id="movieListTable" border="0" class="table table-striped table-bordered">
 									<thead>
@@ -68,17 +71,20 @@ div.wizard-navigation .nav-pills>li+li {
 											<th>주소</th>
 											<th>가격</th>
 											<th>정보</th>
+											<th>이미지</th>
 										</tr>
 									</thead>
 									<tbody>
 										<c:set var="theaterlist" value="${requestScope.theaterlist}"></c:set>
 										<c:forEach var="theater" items="${theaterlist}">
 										<tr class="odd gradeX">
-									 		<td><input type="checkbox" name="movieUniNumDel" value="${theater.RENTAL_SERVICE_NO}"></td>
-									    	<td>${theater.RENTAL_SERVICE_TITLE}</a></td>
+									 		<td><input type="checkbox" id = "RENTAL_SERVICE_NO" name="RENTAL_SERVICE_NO" value="${theater.RENTAL_SERVICE_NO}"></td>
+									    	<td>${theater.RENTAL_SERVICE_TITLE}</td>
 									    	<td>${theater.RENTAL_SERVICE_POSITION}</td>
 									    	<td>${theater.RENTAL_SERVICE_PRICE}</td>
 									    	<td>${theater.RENTAL_SERVICE_INFO}</td>
+									    	<td>
+									    	</td>
 										</tr>
 									</c:forEach>
 									</tbody>
@@ -106,16 +112,16 @@ $(document).ready(function(){
 	
 		//영화 목록에서 영화 삭제
 		$("#deleteBtn").on('click', function(){
-   		formObj.attr('action','${pageContext.request.contextPath}/deleteMovie.do');
+   		formObj.attr('action','${pageContext.request.contextPath}/deledtTheater.do');
    		formObj.attr('method','get');
    		formObj.submit();
 		});
-	
-   	//영상 추가 목록으로 이동
+	   	//영상 추가 목록으로 이동
    	$("#insertVisualItemsBtn").on('click', function(){
-   		formObj.attr('action','${pageContext.request.contextPath}/loadVisualItems.do');
+   		formObj.attr('action','${pageContext.request.contextPath}/theaterFileUpload.do');
    		formObj.attr('method','get');
    		formObj.submit();
-   		});
+		});
 })
+
 </script>
