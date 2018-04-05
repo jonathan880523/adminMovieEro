@@ -40,7 +40,7 @@ div.wizard-navigation .nav-pills>li+li {
 <div class="container-fluid">
 	<div class="row-fluid">
 	    <!-- form -->
-		<form role="form">
+		<form name="form" enctype="multipart/form-data">
 		 <!--/span-->
 			<div class="span9" id="content">
 				<div class="row-fluid">
@@ -60,7 +60,7 @@ div.wizard-navigation .nav-pills>li+li {
 									</div>
 									<div class="btn-group">
 										<button type="button" id="insertVisualItemsBtn" class="btn btn-primary">사진추가<i class="icon-film icon-white"></i></button>
-										<input type="file"  name="RENTAL_SERVICE_IMAGE" >
+										<input type="file"  name="image" />
 									</div>
 								</div>
 								<table id="movieListTable" border="0" class="table table-striped table-bordered">
@@ -100,26 +100,26 @@ div.wizard-navigation .nav-pills>li+li {
 </div>
 <script>
 //영화 목록에서 영화 삭제
-var formObj = $('form[role="form"]');
+var formObj = $('form[name="form"]');
 
 $(document).ready(function(){
 		//영화 추가 페이지로 이동
 		$("#insertMovieBtn").on('click', function(){
    		formObj.attr('action','${pageContext.request.contextPath}/addtheater.do');
-   		formObj.attr('method','get');
+   		formObj.attr('method','post');
    		formObj.submit();
 		});
 	
 		//영화 목록에서 영화 삭제
 		$("#deleteBtn").on('click', function(){
    		formObj.attr('action','${pageContext.request.contextPath}/deledtTheater.do');
-   		formObj.attr('method','get');
+   		formObj.attr('method','post');
    		formObj.submit();
 		});
 	   	//영상 추가 목록으로 이동
    	$("#insertVisualItemsBtn").on('click', function(){
    		formObj.attr('action','${pageContext.request.contextPath}/theaterFileUpload.do');
-   		formObj.attr('method','get');
+   		formObj.attr('method','post');
    		formObj.submit();
 		});
 })

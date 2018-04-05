@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -13,7 +12,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.army.adminMovieEro.theaterAddList.model.dao.theaterDaoImpl;
@@ -67,7 +65,9 @@ public class AddTheaterController {
 		return mv;
 	}
 	 @RequestMapping("theaterFileUpload.do")   
-	 public String action(@RequestParam("RENTAL_SERVICE_IMAGE") MultipartFile file,HttpServletRequest request,theaterImageVo board) 
+	 public String action(@RequestParam(value = "image", required = false) MultipartFile file,
+			 @RequestParam("RENTAL_SERVICE_NO") int bnum,
+			 theaterImageVo board) 
 			 throws Exception {
 		 		System.out.println(file);
 		 		try {
@@ -76,8 +76,10 @@ public class AddTheaterController {
 		 		 String renameFileName = sdf.format(new java.sql.Date(System.currentTimeMillis())) + "."
 						+ fileName.substring(fileName.lastIndexOf(".") + 1);
 		 		 
-			     File f = new File("D:\\workspace\\adminMovieEro\\src\\main\\webapp\\resources\\images\\theater"+renameFileName);
+			     File f = new File("D:\\workspace\\adminMovieEro\\src\\main\\webapp\\resources\\images\\theater\\"+renameFileName);
 			     file.transferTo(f);
+			     board.setRENTAL_SERVICE_IMAGE(renameFileName);
+			     board.setRENTAL_SERVICE_NO(bnum);
 			     theaterServiceImpl.insertImage(board);
 		 		}catch(IOException e){
 		 			e.printStackTrace();
