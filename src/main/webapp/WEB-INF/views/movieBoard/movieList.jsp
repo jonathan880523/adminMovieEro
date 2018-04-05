@@ -2,7 +2,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <jsp:include page="../inc/head.jsp" flush="false" />
 <jsp:include page="../inc/header.jsp" flush="false" />
-
 <div class="container-fluid">
 	<div class="row-fluid">
 	    <!-- form -->
@@ -17,7 +16,7 @@
 					    </div>
 						<div class="block-content collapse in">
 							<div class="span12">
-								<div class="table-toolbar">
+								<div class="table-toolbar" style="margin-bottom:14px;">
 									<div class="btn-group">
 										<button type="button" id="insertMovieBtn" class="btn btn-primary">추가<i class="icon-plus icon-white"></i></button>
 									</div>
