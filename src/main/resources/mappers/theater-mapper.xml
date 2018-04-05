@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="TheaterVo">
+
+	<select id="selectList" resultType="TheaterVo">
+	select * from rental_movie
+	</select>
+	
+	<insert id="insertList" >
+	insert into rental_movie values(#{RENTAL_SERVICE_INFO},#{RENTAL_SERVICE_POSITION},
+	#{RENTAL_SERVICE_PRICE},#{RENTAL_SERVICE_TITLE},rental_movie_sq.nextval)
+	</insert>
+	
+	<delete id="deledtList">
+	delete from rental_movie where RENTAL_SERVICE_NO=#{RENTAL_SERVICE_NO}
+	</delete>
+</mapper>
