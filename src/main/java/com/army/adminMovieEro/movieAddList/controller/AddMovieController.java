@@ -26,8 +26,10 @@ import org.springframework.web.servlet.ModelAndView;
 import com.army.adminMovieEro.movieAddList.model.service.DeleteMovieService;
 import com.army.adminMovieEro.movieAddList.model.service.InsertResultMovieService;
 import com.army.adminMovieEro.movieAddList.model.service.MovieListService;
+import com.army.adminMovieEro.movieAddList.model.service.MovieReviewService;
 import com.army.adminMovieEro.movieAddList.model.service.MovieVisualService;
 import com.army.adminMovieEro.movieAddList.model.vo.MovieListVo;
+import com.army.adminMovieEro.movieAddList.model.vo.MovieReviewVo;
 import com.army.adminMovieEro.movieAddList.model.vo.MovieVisualVo;
 
 @Controller
@@ -44,6 +46,9 @@ public class AddMovieController {
 
 	@Autowired
 	MovieVisualService movieVisualService;
+	
+	@Autowired
+	MovieReviewService movieReviewService;
 
 	public static final Logger logger = LoggerFactory.getLogger(AddMovieController.class);
 
@@ -250,10 +255,28 @@ public class AddMovieController {
 		}
 	}
 	
-	@RequestMapping("loadMovieReview.do")
-	public ModelAndView loadMovieReivew(ModelAndView mv) {
-		System.out.println("loadMovieReview.do 도착...................");
-		mv.setViewName("movieBoard/movieReview");
+	@RequestMapping("searchReview.do")
+	public ModelAndView searchReview(HttpServletRequest request, ModelAndView mv) {
+		System.out.println("searchReview.do 도착...................");
+		String MVTitle = request.getParameter("seachTitle");
+		List<MovieReviewVo> vo = new ArrayList<MovieReviewVo>();
+		System.out.println("검색한 영화 이름 : " + MVTitle);
+		vo = movieReviewService.searchReview(MVTitle);
+		System.out.println("검색된 영화 갯수: " + vo.size());
+		mv.addObject("resultMVTitle", vo)
+		  .setViewName("movieBoard/movieReview");
+		
+		return mv;
+	}
+	
+	@RequestMapping("loadReview.do")
+	public ModelAndView loadReview(ModelAndView mv) {
+		System.out.println("loadReview.do 도착...................");
+		List<MovieReviewVo> vo = new ArrayList<MovieReviewVo>();
+		vo = movieReviewService.loadReview();
+		mv.addObject("resultMVTitle", vo)
+		.setViewName("movieBoard/movieReview");
+		
 		return mv;
 	}
 }
