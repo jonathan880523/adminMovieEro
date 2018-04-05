@@ -53,7 +53,13 @@ public class theaterDaoImpl implements theaterDao {
 	@Override
 	public int insertImage(theaterImageVo b) {
 		// TODO Auto-generated method stub
-		return sqlSession.insert("TheaterVo.insertImage");
+		return sqlSession.insert("TheaterVo.insertImage",b);
+	}
+
+	@Override
+	public ArrayList<theaterImageVo> selectImage() {
+		// TODO Auto-generated method stub
+		return new ArrayList<theaterImageVo>(sqlSession.selectList("TheaterVo.selectImage"));
 	}
 
 }

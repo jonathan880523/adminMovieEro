@@ -142,7 +142,7 @@ jQuery(document).ready(function() {
            }});
            $('#rootwizard .finish').click(function() {
                alert('영화관 정보가 입력되었습니다.');
-               
+               document.theaterinsert.submit();
            });
        }); 
 	

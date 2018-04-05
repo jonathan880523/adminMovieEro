@@ -14,6 +14,8 @@ public interface theaterDao {
 	
 	public theaterVO selectBoard(int boardNum);
 	
+	public ArrayList<theaterImageVo> selectImage();
+	
 	public int insertBoard(theaterVO b);
 	
 	public int insertImage(theaterImageVo b);
