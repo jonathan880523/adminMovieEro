@@ -32,6 +32,9 @@ location.href="./logOut.do"
 	         <a href="${pageContext.request.contextPath}/loadMovie.do"><i class="icon-chevron-right"></i>영화 목록</a>
 	     </li>
 	     <li>
+	         <a href="${pageContext.request.contextPath}/loadMovieReivew.do"><i class="icon-chevron-right"></i>영화 리뷰 목록</a>
+	     </li>
+	     <li>
 	         <a href="theaterList.do"><i class="icon-chevron-right"></i>영화관 목록</a>
 	     </li>
 	     <li>

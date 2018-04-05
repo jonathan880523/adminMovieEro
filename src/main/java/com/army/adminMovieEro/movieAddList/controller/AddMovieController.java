@@ -249,4 +249,11 @@ public class AddMovieController {
 			return mv;
 		}
 	}
+	
+	@RequestMapping("loadMovieReview.do")
+	public ModelAndView loadMovieReivew(ModelAndView mv) {
+		System.out.println("loadMovieReview.do 도착...................");
+		mv.setViewName("movieBoard/movieReview");
+		return mv;
+	}
 }
