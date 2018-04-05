@@ -29,8 +29,8 @@ public class AddTheaterController {
 	public ModelAndView goMain(ModelAndView mv, theaterVO board) {
 		
 		ArrayList<theaterVO> theaterlist = theaterServiceImpl.selectList();
-	
-		mv.addObject("theaterlist",theaterlist).setViewName("theater/theaterList");
+		ArrayList<theaterImageVo> theaterImage = theaterServiceImpl.selectImage();
+		mv.addObject("theaterlist",theaterlist).addObject("theaterImage",theaterImage).setViewName("theater/theaterList");
 		return mv;
 	}
 	@RequestMapping("addressSearch.do")
@@ -75,15 +75,15 @@ public class AddTheaterController {
 		 		 String fileName = file.getOriginalFilename();
 		 		 String renameFileName = sdf.format(new java.sql.Date(System.currentTimeMillis())) + "."
 						+ fileName.substring(fileName.lastIndexOf(".") + 1);
-		 		 
 			     File f = new File("D:\\workspace\\adminMovieEro\\src\\main\\webapp\\resources\\images\\theater\\"+renameFileName);
 			     file.transferTo(f);
+			     board.setRENTAL_SERVICE_OIMAGE(fileName);
 			     board.setRENTAL_SERVICE_IMAGE(renameFileName);
 			     board.setRENTAL_SERVICE_NO(bnum);
 			     theaterServiceImpl.insertImage(board);
 		 		}catch(IOException e){
 		 			e.printStackTrace();
 		 		}
-			    return "theater/theaterList";
+			    return "redirect:theaterList.do";
 	    }
 }

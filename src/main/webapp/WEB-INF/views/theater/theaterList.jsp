@@ -10,6 +10,10 @@ div.wizard-navigation .nav-pills>li+li {
 #wizard .nav-pills>li>a {
 	background-color: transparent;
 }
+.my-image {
+    width: 150px;
+    height: auto;
+}
 
 #map {
 	height: 350px;
@@ -84,7 +88,17 @@ div.wizard-navigation .nav-pills>li+li {
 									    	<td>${theater.RENTAL_SERVICE_PRICE}</td>
 									    	<td>${theater.RENTAL_SERVICE_INFO}</td>
 									    	<td>
-									    	</td>
+									    	
+									    	<c:set var="theaterImage" value="${requestScope.theaterImage}"></c:set>
+											<c:forEach var="theaterImg" items="${theaterImage}">
+											<c:if test="${theater.RENTAL_SERVICE_NO eq theaterImg.RENTAL_SERVICE_NO}">
+											<input>
+											${theaterImg.RENTAL_SERVICE_OIMAGE}<br>
+											<button id ="imaView" onclick="imaView();">사진보기</button>
+											<button id="imgDelete"  onclick="imaDelete();">삭제하기</button><br>
+											</c:if>
+											</c:forEach>
+									    	</td>	
 										</tr>
 									</c:forEach>
 									</tbody>
@@ -123,5 +137,13 @@ $(document).ready(function(){
    		formObj.submit();
 		});
 })
+
+function imaView() {
+	alert("버튼1을 누르셨습니다.");
+}
+
+function DeleteView() {
+	alert("버튼2을 누르셨습니다.");
+}
 
 </script>

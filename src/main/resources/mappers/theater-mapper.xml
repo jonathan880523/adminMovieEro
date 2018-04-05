@@ -14,8 +14,12 @@
 	</insert>
 	
 	<insert id="insertImage" >
-	insert into rental_movie_image values(#{RENTAL_SERVICE_INFO},#{RENTAL_SERVICE_IMAGE});
+	insert into rental_movie_image values(#{RENTAL_SERVICE_NO},#{RENTAL_SERVICE_IMAGE},#{RENTAL_SERVICE_OIMAGE})
 	</insert>
+	
+	<select id="selectImage" resultType="theaterImageVo">
+	select * from rental_movie_image
+	</select>
 	
 	<delete id="deledtList">
 	delete from rental_movie where RENTAL_SERVICE_NO=#{RENTAL_SERVICE_NO}

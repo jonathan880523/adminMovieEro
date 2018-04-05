@@ -9,6 +9,8 @@ public interface theaterService {
 
 	public ArrayList<theaterVO> selectList();
 	
+	public ArrayList<theaterImageVo> selectImage();
+	
 	public theaterVO selectBoard(int boardNum);
 	
 	public int insertBoard(theaterVO b);

@@ -56,4 +56,9 @@ public class theaterServiceImpl implements theaterService {
 		return theaterServiceImpl.insertImage(b);
 	}
 
+	@Override
+	public ArrayList<theaterImageVo> selectImage() {
+		return theaterServiceImpl.selectImage();
+	}
+
 }
