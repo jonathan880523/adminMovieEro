@@ -2,13 +2,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page session="true" %>
 <body class="sticky-menu">
-<c:set var="loginId" value="${adminId}"/>
+<%-- <c:set var="loginId" value="${adminId}"/>
 <c:if test="${empty loginId}">
 <script>
 location.href="./logOut.do"
 </script>
-   <%-- <c:redirect url="${pageContext.request.contextPath}/logOut.do" /> --%>
-</c:if>
+   <c:redirect url="${pageContext.request.contextPath}/logOut.do" />
+</c:if> --%>
 <div class="navbar navbar-fixed-top">
 	<div class="navbar-inner">
 	    <div class="container-fluid">
