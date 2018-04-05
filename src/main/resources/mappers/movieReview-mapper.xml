@@ -11,5 +11,9 @@
 	<select id="loadReviewList" resultType="MovieReviewVo">
 		SELECT * FROM MOVIE_REVIEW
 	</select>
+	
+	<delete id="deleteReview">
+		DELETE FROM MOVIE_REVIEW WHERE MV_RV_SEQ = #{reviewSeq}
+	</delete>
 
 </mapper>

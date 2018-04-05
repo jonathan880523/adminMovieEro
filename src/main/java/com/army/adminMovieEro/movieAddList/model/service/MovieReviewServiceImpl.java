@@ -1,4 +1,4 @@
-package com.army.adminMovieEro.movieAddList.model.service;
+﻿package com.army.adminMovieEro.movieAddList.model.service;
 
 import java.util.List;
 
@@ -25,5 +25,20 @@ public class MovieReviewServiceImpl implements MovieReviewService {
 		
 		return movieReviewDao.loadReview();
 	}
+	
+	@Override
+	public boolean deleteReview(int reviewSeq){
+		System.out.println("deleteReview 실행....................");
+		int resultDeleteReviewCnt = movieReviewDao.deleteReview(reviewSeq);
+		boolean resultDeleteReview = false;
+		if(resultDeleteReviewCnt > 0){
+			resultDeleteReview = true;
+			return resultDeleteReview;
+		}else{
+			resultDeleteReview = false;
+			return resultDeleteReview;
+		}
+		
+	};
 
 }

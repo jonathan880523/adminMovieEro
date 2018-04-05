@@ -1,4 +1,4 @@
-package com.army.adminMovieEro.movieAddList.model.dao;
+﻿package com.army.adminMovieEro.movieAddList.model.dao;
 
 import java.util.List;
 
@@ -23,6 +23,12 @@ public class MovieReviewDaoImpl implements MovieReviewDao {
 	public List<MovieReviewVo> loadReview() {
 		System.out.println("Dao loadReview 실행..................");
 		return sqlSession.selectList("Review.loadReviewList");
+	}
+	
+	@Override
+	public int deleteReview(int reviewSeq){
+		System.out.println("Dao deleteReview 실행.................");
+		return sqlSession.delete("Review.deleteReview", reviewSeq);
 	}
 
 }

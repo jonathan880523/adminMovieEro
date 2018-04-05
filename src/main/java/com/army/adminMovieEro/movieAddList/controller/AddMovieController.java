@@ -1,4 +1,4 @@
-package com.army.adminMovieEro.movieAddList.controller;
+﻿package com.army.adminMovieEro.movieAddList.controller;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -277,6 +277,27 @@ public class AddMovieController {
 		mv.addObject("resultMVTitle", vo)
 		.setViewName("movieBoard/movieReview");
 		
+		return mv;
+	}
+	
+	@RequestMapping("deleteReview.do")
+	public ModelAndView deleteReview(int reviewSeq, ModelAndView mv) {
+		System.out.println("deleteReview.do 도착.....................");
+		System.out.println("삭제할 리뷰 시퀀스 : " + reviewSeq);
+		boolean resultDeleteReview = movieReviewService.deleteReview(reviewSeq);
+		if(resultDeleteReview) {
+			mv.setViewName("redirect:loadReview.do");
+			return mv;
+		}else {
+			mv.setViewName("redirect:loadReview.do");
+			return mv;
+		}
+	}
+	
+	@RequestMapping("reloadReview.do")
+	public ModelAndView reloadReview(ModelAndView mv) {
+		System.out.println("reloadReview.do 도착......................");
+		mv.setViewName("redirect:loadReview.do");
 		return mv;
 	}
 }

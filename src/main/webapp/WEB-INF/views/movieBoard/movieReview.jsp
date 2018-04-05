@@ -17,7 +17,9 @@
 						<div class="navbar navbar-inner block-header">
 							<div class="muted pull-left">
 								<input name="seachTitle" type="text" value="">
-								<button id="searchReview" class="btn btn-primary" type="submit">검색</button>
+								<button id="searchReviewBtn" class="btn btn-primary" type="submit" style="margin-bottom:14px;">검색</button>
+								<button id="deleteReviewBtn" class="btn btn-primary" style="margin-bottom:14px;">삭제</button>
+								<button id="reloadReviewBtn" class="btn btn-primary" style="margin-bottom:14px;">초기화</button>
 							</div>
 						</div>
 						<div class="block-content collapse in">
@@ -35,11 +37,11 @@
 									<tbody>
 									<c:forEach var="reviewList" items="${loadMVTitle}">
 										<tr>
-											<td><input type="checkbox" value="${reviewList.MV_RV_SEQ}"></td>
+											<td><input type="checkbox" name="reviewSeq" value="${reviewList.MV_RV_SEQ}"></td>
 											<td>${reviewList.MV_TITLE}</td>
 											<td>${reviewList.MV_RV_TITLE}</td>
 											<td>${reviewList.USER_ID}</td>
-											<td colspan="3"><textarea rows="4" cols="100" readOnly>
+											<td><textarea rows="4" cols="200" readOnly>
 												${reviewList.MV_RV_CONTENTS}
 											</textarea></td>
 										</tr>
@@ -57,8 +59,20 @@
 </div>
 <script>
 	$(document).ready(function(){
-		$("#searchReview").on('click',function(){
+		$("#searchReviewBtn").on('click',function(){
 			$("#formSeachReview").attr('action','searchReview.do')
+								 .attr('method','get')
+								 .submit();
+		});
+		
+		$("#deleteReviewBtn").on('click',function(){
+			$("#formSeachReview").attr('action','deleteReview.do')
+								 .attr('method','get')
+								 .submit();
+		});
+		
+		$("#reloadReviewBtn").on('click',function(){
+			$("#formSeachReview").attr('action','reloadReview.do')
 								 .attr('method','get')
 								 .submit();
 		});
