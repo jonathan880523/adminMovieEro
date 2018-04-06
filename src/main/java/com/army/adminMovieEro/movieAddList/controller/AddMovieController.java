@@ -13,6 +13,10 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import org.codehaus.jackson.map.ObjectMapper;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,9 +29,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.army.adminMovieEro.movieAddList.model.service.DeleteMovieService;
 import com.army.adminMovieEro.movieAddList.model.service.InsertResultMovieService;
+import com.army.adminMovieEro.movieAddList.model.service.MovieDetailServie;
 import com.army.adminMovieEro.movieAddList.model.service.MovieListService;
 import com.army.adminMovieEro.movieAddList.model.service.MovieReviewService;
 import com.army.adminMovieEro.movieAddList.model.service.MovieVisualService;
+import com.army.adminMovieEro.movieAddList.model.vo.MovieDetailVo;
 import com.army.adminMovieEro.movieAddList.model.vo.MovieListVo;
 import com.army.adminMovieEro.movieAddList.model.vo.MovieReviewVo;
 import com.army.adminMovieEro.movieAddList.model.vo.MovieVisualVo;
@@ -49,6 +55,9 @@ public class AddMovieController {
 	
 	@Autowired
 	MovieReviewService movieReviewService;
+	
+	@Autowired
+	MovieDetailServie movieDetailServie;
 
 	public static final Logger logger = LoggerFactory.getLogger(AddMovieController.class);
 
@@ -298,6 +307,95 @@ public class AddMovieController {
 	public ModelAndView reloadReview(ModelAndView mv) {
 		System.out.println("reloadReview.do 도착......................");
 		mv.setViewName("redirect:loadReview.do");
+		return mv;
+	}
+	
+	@RequestMapping("addMovieDetail.do")
+	public String addMovieDetail(ModelAndView mv, HttpServletRequest request, MovieDetailVo MovieDetailInfo) {
+		String movieUniNum = request.getParameter("movieUniNumDel");
+		String MovieLink = request.getParameter("MVLink");
+		List list = new ArrayList();
+		try {
+			Document doc = Jsoup.connect(MovieLink).get();
+
+			Element MVTitle = doc.select(".h_movie a:eq(0)").get(0);
+			Elements MVTitles = MVTitle.select("a");
+			for(Element e : MVTitles) {
+				list.add(e.text());
+			}
+			Element summaryValue = doc.select(".info_spec .step1+dd").get(0);
+			Elements summaryValues = summaryValue.select("span");
+			for(Element e : summaryValues) {
+				list.add(e.text());
+			}
+			
+			Element directorValue = doc.select(".info_spec .step2+dd p").get(0);
+			Elements directorValues = directorValue.select("a");
+			for(Element e : directorValues) {
+				list.add(e.text());
+			}
+			
+			Element actorValue = doc.select(".info_spec .step3+dd").get(0);
+			Elements actorValues = actorValue.select("p");
+			for(Element e : actorValues) {
+				list.add(e.text());
+			}
+			
+			Element gradeValue = doc.select(".info_spec .step4+dd p").get(0);
+			Elements gradeValues = gradeValue.select("a");
+			for(Element e : gradeValues) {
+				list.add(e.text());
+			}
+			
+			//String으로 casting
+			String setMVTitle = (String) list.get(0);
+			String genre = (String)list.get(1);
+			String country = (String)list.get(2);
+			String runtime = (String)list.get(3);
+			String releaseDate = (String)list.get(4);
+			String director = (String)list.get(5);
+			String actor = (String)list.get(6);
+			String grade = (String)list.get(7);
+			
+			//vo에 자료 넣기
+			MovieDetailInfo.setMV_INFO_SEQ(Integer.parseInt(movieUniNum));
+			MovieDetailInfo.setMV_LINK(MovieLink);
+			MovieDetailInfo.setMV_TITLE(setMVTitle);
+			MovieDetailInfo.setMV_GENRE(genre);
+			MovieDetailInfo.setMV_COUNTRY(country);
+			MovieDetailInfo.setMV_RUNTIME(runtime);
+			MovieDetailInfo.setMV_RELEASE_DATE(releaseDate);
+			MovieDetailInfo.setMV_DIRECTOR(director);
+			MovieDetailInfo.setMV_ACTOR(actor);
+			MovieDetailInfo.setMV_GRADE(grade);
+			
+			//list에 vo넣기
+			List<MovieDetailVo> MVInfoList = new ArrayList<MovieDetailVo>();
+			MVInfoList.add(MovieDetailInfo);
+			
+			for(int i=0; i < MVInfoList.size(); i++) {
+				System.out.println("저장할 영화 디테일 자료" + MVInfoList.get(i));
+			}
+			
+			System.out.println("처리......................");
+			int result = movieDetailServie.addMovieDetail(MVInfoList);
+			if(result > 0) {
+				System.out.println("입력 성공");
+			}else {
+				System.out.println("입력 실패");
+			}
+			
+		}catch(Exception e) {
+			e.getLocalizedMessage();
+		}
+		return "redirect:loadDetailInfo.do";
+	}
+	
+	@RequestMapping("loadDetailInfo.do")
+	public ModelAndView loadDetailInfo(ModelAndView mv) {
+		List<MovieDetailVo> detailResult = new ArrayList<MovieDetailVo>();
+		detailResult = movieDetailServie.loadMovieDetail();
+		mv.addObject("detailResult", detailResult).setViewName("movieBoard/movieDetail");
 		return mv;
 	}
 }

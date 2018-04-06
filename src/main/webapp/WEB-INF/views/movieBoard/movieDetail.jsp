@@ -35,21 +35,28 @@
 										<tr>
 											<th><input type="checkbox"></th>
 											<th>제목</th>
+											<th>장르</th>
+											<th>국가</th>
+											<th>런타임</th>
+											<th>개봉일</th>
+											<th>배우</th>
 											<th>감독</th>
-											<th>제작년도</th>
-											<th>등록여부</th>
+											<th>등급</th>
 										</tr>
 									</thead>
 									<tbody>
-										<c:set var="movieListResult" value="${requestScope.movieList}" /> 
-										<c:forEach var="listMap" items="${movieListResult}">
+										<c:set var="movieDetailResult" value="${requestScope.detailResult}" /> 
+										<c:forEach var="listMap" items="${movieDetailResult}">
 										<tr class="odd gradeX">
 									 		<td><input type="checkbox" name="movieUniNumDel" value="${listMap.MOVIE_INFO_SEQ}"></td>
 									    	<td>${listMap.MV_TITLE}</a></td>
+									    	<td>${listMap.MV_GENRE}</td>
+									    	<td>${listMap.MV_COUNTRY}</td>
+									    	<td>${listMap.MV_RUNTIME}</td>
+									    	<td>${listMap.MV_RELEASE_DATE}</td>
+									    	<td>${listMap.MV_ACTOR}</td>
 									    	<td>${listMap.MV_DIRECTOR}</td>
-									    	<td>${listMap.MV_PUB_DATE}</td>
-									    	<td><input type="text" value="미등록" readOnly></td>
-									    	<input type="hidden" name="MVLink" value="${listMap.MV_LINK}">
+									    	<td>${listMap.MV_GRADE}</td>
 										</tr>
 									</c:forEach>
 									</tbody>
@@ -64,37 +71,5 @@
 	</div>
 </div>
 <script>
-	//영화 목록에서 영화 삭제
-	var formObj = $('form[role="form"]');
-
-   $(document).ready(function(){
-   		//영화 추가 페이지로 이동
-   		$("#insertMovieBtn").on('click', function(){
-	   		formObj.attr('action','${pageContext.request.contextPath}/addMovie.do');
-	   		formObj.attr('method','get');
-	   		formObj.submit();
-   		});
-   	
-   		//영화 목록에서 영화 삭제
-   		$("#deleteBtn").on('click', function(){
-	   		formObj.attr('action','${pageContext.request.contextPath}/deleteMovie.do');
-	   		formObj.attr('method','get');
-	   		formObj.submit();
-   		});
-   	
-	   	//영상 추가 목록으로 이동
-	   	$("#insertVisualItemsBtn").on('click', function(){
-	   		formObj.attr('action','${pageContext.request.contextPath}/loadVisualItems.do');
-	   		formObj.attr('method','get');
-	   		formObj.submit();
-	   		});
-	   	
-	   	//영화 정보 추가로 이동
-	   	$("#insertDetailInfoBtn").on('click', function(){
-	   		formObj.attr('action','${pageContext.request.contextPath}/addMovieDetail.do');
-	   		formObj.attr('method','get');
-	   		formObj.submit();
-	   		});
-   })
 </script>
 <jsp:include page="../inc/footer.jsp" flush="false" />

@@ -17,7 +17,7 @@ public class MovieVisualDaoImpl implements MovieVisualDao {
 	@Override
 	public int insertStillcut(MovieVisualVo visualVo) {
 		System.out.println("Dao insertStillcut 실행...............");
-		int insertStillcutResult = sqlSession.insert("MovieVisualVo.insertStillcut",visualVo);
+		int insertStillcutResult = sqlSession.insert("MovieVisual.insertStillcut",visualVo);
 		System.out.println(insertStillcutResult + "개 입력 성공");
 		return insertStillcutResult;
 	}
@@ -30,13 +30,13 @@ public class MovieVisualDaoImpl implements MovieVisualDao {
 	@Override
 	public List<MovieVisualVo> loadVisualItems(int numMOVIE_INFO_SEQ) {
 		System.out.println("Dao loadMovieItems 실행.....................");
-		List<MovieVisualVo> movieVisualList = sqlSession.selectList("MovieVisualVo.loadVisualItems", numMOVIE_INFO_SEQ);
+		List<MovieVisualVo> movieVisualList = sqlSession.selectList("MovieVisual.loadVisualItems", numMOVIE_INFO_SEQ);
 			return movieVisualList;
 	}
 
 	@Override
 	public MovieVisualVo loadLastItem(String MOVIE_STILLCUT) {
-		MovieVisualVo movieVo = sqlSession.selectOne("MovieVisualVo.loadLastItem", MOVIE_STILLCUT);
+		MovieVisualVo movieVo = sqlSession.selectOne("MovieVisual.loadLastItem", MOVIE_STILLCUT);
 		return movieVo;
 	}
 

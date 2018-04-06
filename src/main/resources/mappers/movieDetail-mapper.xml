@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="MovieInfoDetail">
+	
+	<insert id="addDetailInfo" parameterType="MovieDetailVo">
+		INSERT INTO MOVIE_INFO_DETAIL 
+		(MV_DETAIL_SEQ, MV_INFO_SEQ, MV_LINK, MV_TITLE, MV_GENRE, MV_COUNTRY, MV_RUNTIME,
+		MV_RELEASE_DATE, MV_ACTOR, MV_DIRECTOR, MV_GRADE) VALUES(
+		MOVIE_DETAIL_SEQ.NEXTVAL, #{MV_INFO_SEQ}, #{MV_LINK}, #{MV_TITLE}, #{MV_GENRE},
+		#{MV_COUNTRY}, #{MV_RUNTIME}, #{MV_RELEASE_DATE}, #{MV_ACTOR}, #{MV_DIRECTOR}, #{MV_GRADE} 
+		)
+	</insert>
+	
+	<select id="loadDetailInfo" resultType="MovieDetailVo">
+		SELECT * FROM MOVIE_INFO_DETAIL
+	</select>
+</mapper>
