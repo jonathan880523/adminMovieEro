@@ -16,7 +16,7 @@ public class MovieListDaoImpl implements MovieListDao {
 
 	@Override
 	public List<MovieListVo> loadMovieList() {
-		System.out.println("MovieListDao 도착................");
+		System.out.println("Dao MovieList 실행................");
 		List<MovieListVo> movieList = new ArrayList<MovieListVo>();
 		
 		movieList = sqlSession.selectList("MovieListVo.loadMovieList");
@@ -26,13 +26,16 @@ public class MovieListDaoImpl implements MovieListDao {
 	}
 
 	@Override
-	public void deleteMovie(String title, String director) {
-		
+	public void deleteMovie(String movieUniNum) {
+		System.out.println("Dao deleteMovie 실행...................");
+
+		System.out.println("삭제할 유니넘버  : " + movieUniNum);
+		sqlSession.delete("MovieListVo.deleteMovie", movieUniNum);
 	}
 
 	@Override
 	public MovieListVo loadMovieTitle(int numMOVIE_INFO_SEQ) {
-		System.out.println("Dao loadMovieTitle 도착................");
+		System.out.println("Dao loadMovieTitle 실행................");
 		MovieListVo movieVo = new MovieListVo();
 		
 		movieVo = sqlSession.selectOne("MovieListVo.loadMovieTitle", numMOVIE_INFO_SEQ);

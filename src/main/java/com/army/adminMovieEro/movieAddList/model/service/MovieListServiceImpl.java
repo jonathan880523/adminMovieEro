@@ -17,7 +17,7 @@ public class MovieListServiceImpl implements MovieListService {
 
 	@Override
 	public List<MovieListVo> loadMovieList() {
-		System.out.println("loadMovieList method 실행..................");
+		System.out.println("Service loadMovieList 실행..................");
 		List<MovieListVo> movieList = new ArrayList<MovieListVo>();
 
 		movieList = movieListDao.loadMovieList();
@@ -26,15 +26,18 @@ public class MovieListServiceImpl implements MovieListService {
 	}
 
 	@Override
-	public void deleteMovie(String title, String director) {
-
+	public void deleteMovie(String movieUniNum) {
+		System.out.println("Service deleteMovieService 실행..........................");
+		movieListDao.deleteMovie(movieUniNum);
 	}
 
 	@Override
 	public MovieListVo loadMovieTitle(int numMOVIE_INFO_SEQ) {
-		System.out.println("loadMovieTitle method 실행..................");
+		System.out.println("Service loadMovieTitle 실행..................");
 		MovieListVo movieVo = new MovieListVo();
+		
 		movieVo = movieListDao.loadMovieTitle(numMOVIE_INFO_SEQ);
+		
 		return movieVo;
 	}
 
