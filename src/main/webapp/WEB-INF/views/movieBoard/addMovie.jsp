@@ -245,7 +245,7 @@ jQuery(document).ready(function() {
            			};
                
                console.log(movieInputData);
-           	
+               
            	$.ajax({
            		url : "${pageContext.request.contextPath}/ajaxAddMovie.do",
                	data : movieInputData,
@@ -262,9 +262,14 @@ jQuery(document).ready(function() {
               				console.log(index)
               			});
               			
-              			$("#searchMovieAjax").removeClass();
-              			$("#searchMovieAjax").addClass("btn btn-success");
-              			$("#searchMovieAjax").val("성공");
+              			if(ajaxResult.items.length > 0){
+              				console.log("데이터 크기 : " + ajaxResult.items.length)
+	              			$("#searchMovieAjax").removeClass();
+    	          			$("#searchMovieAjax").addClass("btn btn-success");
+        	      			$("#searchMovieAjax").val("성공");
+              			}else{
+              				alert("검색하신 영화 자료가 없습니다.");
+              			}
                	},
                	error : function(request, status, error){
                		$("#searchMovieAjax").removeClass();

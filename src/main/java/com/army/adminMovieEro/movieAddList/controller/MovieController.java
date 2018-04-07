@@ -247,6 +247,7 @@ public class MovieController {
 	@ResponseBody
 	@RequestMapping("insertStillcut.do")
 	public ModelAndView insertVisualItems(HttpServletRequest request, ModelAndView mv) {
+		System.out.println("insertStillcut.do 도착.................");
 		String MV_TITLE = request.getParameter("MV_TITLE");
 		int MV_INFO_SEQ = Integer.parseInt(request.getParameter("MV_INFO_SEQ"));
 		String MV_STILLCUT = request.getParameter("MV_STILLCUT");
