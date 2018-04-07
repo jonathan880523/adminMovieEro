@@ -46,5 +46,8 @@ location.href="./logOut.do"
 	     <li>
 	         <a href="form.html"><i class="icon-chevron-right"></i>회원정보 목록</a>
 	     </li>
+	     <li>
+	         <a href="mainManage.do"><i class="icon-chevron-right"></i>메인화면 관리</a>
+	     </li>	     
 	 </ul>
 </div>	
