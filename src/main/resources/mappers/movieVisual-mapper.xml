@@ -4,26 +4,22 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="MovieVisual">
 
-	<insert id="insertStillcut" parameterType="MovieVisualVo">
+	<insert id="insertStillcut" parameterType="map">
 		INSERT INTO MOVIE_VISUAL_ITEMS
-		(MV_VISUAL_SEQ, MV_INFO_SEQ, MV_STILLCUT)
+		(MV_VISUAL_SEQ, MV_INFO_SEQ, MV_TITLE, MV_STILLCUT)
 		VALUES
-		(MOVIE_VISUAL_ITEMS_SEQ.NEXTVAL, #{MV_INFO_SEQ}, #{MV_STILLCUT})
+		(MOVIE_VISUAL_ITEMS_SEQ.NEXTVAL, #{MVInfoSeq}, #{MVTitle}, #{StillcutURL})
 	</insert>
 	
-	<insert id="insertTrailer" parameterType="MovieVisualVo">
+	<insert id="insertTrailer" parameterType="map">
 		INSERT INTO MOVIE_VISUAL_ITEMS
-		(MV_VISUAL_SEQ, MV_INFO_SEQ, MV_TRAILER)
+		(MV_VISUAL_SEQ, MV_INFO_SEQ, MV_TITLE, MV_TRAILER)
 		VALUES
-		(MOVIE_VISUAL_ITEMS_SEQ.NEXTVAL, #{MV_INFO_SEQ}, #{MV_TRAILER})
+		(MOVIE_VISUAL_ITEMS_SEQ.NEXTVAL, #{MVInfoSeq}, #{MVTitle}, #{trailerURL})
 	</insert>
 	
 	<select id="loadVisualItems" resultType="MovieVisualVo">
-		SELECT * FROM MOVIE_VISUAL_ITEMS WHERE MV_INFO_SEQ = #{numMOVIE_INFO_SEQ}
-	</select>
-	
-	<select id="loadLastItem" resultType="MovieVisualVo">
-		SELECT * FROM MOVIE_VISUAL_ITEMS WHERE MV_STILLCUT = #{MOVIE_STILLCUT}
+		SELECT * FROM MOVIE_VISUAL_ITEMS WHERE MV_INFO_SEQ = #{MVInfoSeq}
 	</select>
 
 </mapper>

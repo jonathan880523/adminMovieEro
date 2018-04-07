@@ -1,16 +1,15 @@
 package com.army.adminMovieEro.movieAddList.model.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.army.adminMovieEro.movieAddList.model.vo.MovieVisualVo;
 
 public interface MovieVisualService {
 
-	public int insertStillcut(MovieVisualVo visualVo);
+	public void insertStillcut(Map<String, String> stillcutMap);
 	
-	public int insertTrailer(MovieVisualVo vo);
+	public void insertTrailer(Map<String, String> trailerMap);
 	
-	public List<MovieVisualVo> loadVisualItems(int numMOVIE_INFO_SEQ);
-	
-	public MovieVisualVo loadLastItem(String MOVIE_STILLCUT);
+	public List<MovieVisualVo> loadVisualItems(String MVInfoSeq);
 }

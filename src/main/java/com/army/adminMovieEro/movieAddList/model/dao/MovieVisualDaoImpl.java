@@ -15,29 +15,21 @@ public class MovieVisualDaoImpl implements MovieVisualDao {
 	@Autowired SqlSession sqlSession;
 
 	@Override
-	public int insertStillcut(MovieVisualVo visualVo) {
+	public void insertStillcut(Map<String, String> stillcutMap) {
 		System.out.println("Dao insertStillcut 실행...............");
-		int insertStillcutResult = sqlSession.insert("MovieVisual.insertStillcut",visualVo);
-		System.out.println(insertStillcutResult + "개 입력 성공");
-		return insertStillcutResult;
+		sqlSession.insert("MovieVisual.insertStillcut",stillcutMap);
 	}
 
 	@Override
-	public int insertTrailer(MovieVisualVo vo) {
-		return 0;
+	public void insertTrailer(Map<String, String> trailerMap) {
+		sqlSession.insert("MovieVisual.insertTrailer",trailerMap);
 	}
 
 	@Override
-	public List<MovieVisualVo> loadVisualItems(int numMOVIE_INFO_SEQ) {
+	public List<MovieVisualVo> loadVisualItems(String MVInfoSeq) {
 		System.out.println("Dao loadMovieItems 실행.....................");
-		List<MovieVisualVo> movieVisualList = sqlSession.selectList("MovieVisual.loadVisualItems", numMOVIE_INFO_SEQ);
-			return movieVisualList;
-	}
-
-	@Override
-	public MovieVisualVo loadLastItem(String MOVIE_STILLCUT) {
-		MovieVisualVo movieVo = sqlSession.selectOne("MovieVisual.loadLastItem", MOVIE_STILLCUT);
-		return movieVo;
+		List<MovieVisualVo> movieVisualList = sqlSession.selectList("MovieVisual.loadVisualItems", MVInfoSeq);
+		return movieVisualList;
 	}
 
 }

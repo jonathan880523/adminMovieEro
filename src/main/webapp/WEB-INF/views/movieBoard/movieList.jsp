@@ -26,9 +26,6 @@
 									<div class="btn-group">
 										<button type="button" id="insertVisualItemsBtn" class="btn btn-primary">영상추가<i class="icon-film icon-white"></i></button>
 									</div>
-									<div class="btn-group">
-										<button type="button" id="insertDetailInfoBtn" class="btn btn-primary">영화정보 추가<i class="icon-list icon-white"></i></button>
-									</div>
 								</div>
 								<table id="movieListTable" border="0" class="table table-striped table-bordered">
 									<thead>
@@ -41,12 +38,12 @@
 										</tr>
 									</thead>
 									<tbody>
-										<c:set var="movieListResult" value="${requestScope.movieList}" /> 
+										<c:set var="movieListResult" value="${requestScope.movieList}" />
 										<c:forEach var="listMap" items="${movieListResult}">
 										<tr class="odd gradeX">
 											<!-- ${listMap.MV_INFO_SEQ}는 getMV_INFO_SEQ와 같다 -->
-									 		<td><input type="checkbox" name="movieUniNumDel" value="${listMap.MV_INFO_SEQ}"></td>
-									    	<td>${listMap.MV_TITLE}</a></td>
+									 		<td><input type="checkbox" class="movieUniSeq" name="movieUniNumDel" value="${listMap.MV_INFO_SEQ}"></td>
+									    	<td>${listMap.MV_TITLE}</td>
 									    	<td>${listMap.MV_DIRECTOR}</td>
 									    	<td>${listMap.MV_PUB_DATE}</td>
 									    	<td><input type="text" value="미등록" readOnly></td>
@@ -71,9 +68,13 @@
    $(document).ready(function(){
    		//영화 추가 페이지로 이동
    		$("#insertMovieBtn").on('click', function(){
-	   		formObj.attr('action','${pageContext.request.contextPath}/addMovie.do');
-	   		formObj.attr('method','get');
-	   		formObj.submit();
+   			if(movieUniSeq == null){
+   				alert("사진/영상을 추가할 영화를 선택해 주세요")
+   			}else{
+		   		formObj.attr('action','${pageContext.request.contextPath}/addMovie.do');
+		   		formObj.attr('method','get');
+		   		formObj.submit();
+   			}
    		});
    	
    		//영화 목록에서 영화 삭제
@@ -86,13 +87,6 @@
 	   	//영상 추가 목록으로 이동
 	   	$("#insertVisualItemsBtn").on('click', function(){
 	   		formObj.attr('action','${pageContext.request.contextPath}/loadVisualItems.do');
-	   		formObj.attr('method','get');
-	   		formObj.submit();
-	   		});
-	   	
-	   	//영화 정보 추가로 이동
-	   	$("#insertDetailInfoBtn").on('click', function(){
-	   		formObj.attr('action','${pageContext.request.contextPath}/addMovieDetail.do');
 	   		formObj.attr('method','get');
 	   		formObj.submit();
 	   		});

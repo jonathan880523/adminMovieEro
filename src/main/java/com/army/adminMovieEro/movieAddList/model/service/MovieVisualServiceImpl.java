@@ -15,28 +15,22 @@ public class MovieVisualServiceImpl implements MovieVisualService {
 	@Autowired MovieVisualDao movieVisualDao;
 
 	@Override
-	public int insertStillcut(MovieVisualVo visualVo) {
+	public void insertStillcut(Map<String, String> stillcutMap) {
 		System.out.println("Service insertStillcut 실행.................");
-		int insertStillcutResult = movieVisualDao.insertStillcut(visualVo);
-		return insertStillcutResult;
+		movieVisualDao.insertStillcut(stillcutMap);
 	}
 
 	@Override
-	public int insertTrailer(MovieVisualVo vo) {
-		return 0;
+	public void insertTrailer(Map<String, String> trailerMap) {
+		System.out.println("Service insertTrailer 실행.................");
+		movieVisualDao.insertStillcut(trailerMap);
 	}
 
 	@Override
-	public List<MovieVisualVo> loadVisualItems(int numMOVIE_INFO_SEQ) {
+	public List<MovieVisualVo> loadVisualItems(String MVInfoSeq) {
 		System.out.println("Service loadVisualItems 실행.................");
-		List<MovieVisualVo> movieVisualList = movieVisualDao.loadVisualItems(numMOVIE_INFO_SEQ); 
+		List<MovieVisualVo> movieVisualList = movieVisualDao.loadVisualItems(MVInfoSeq); 
 		return movieVisualList;
-	}
-
-	@Override
-	public MovieVisualVo loadLastItem(String MOVIE_STILLCUT) {
-		MovieVisualVo movieVo = movieVisualDao.loadLastItem(MOVIE_STILLCUT);
-		return movieVo;
 	}
 
 }
