@@ -93,11 +93,11 @@ public class MovieListVo {
 		MV_IMAGE = mV_IMAGE;
 	}
 
-	public int getMOVIE_INFO_SEQ() {
+	public int getMV_INFO_SEQ() {
 		return MV_INFO_SEQ;
 	}
 
-	public void setMOVIE_INFO_SEQ(int mV_INFO_SEQ) {
+	public void setMV_INFO_SEQ(int mV_INFO_SEQ) {
 		MV_INFO_SEQ = mV_INFO_SEQ;
 	}
 

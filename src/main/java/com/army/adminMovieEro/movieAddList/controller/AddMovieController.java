@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.codehaus.jackson.map.ObjectMapper;
 import org.jsoup.Jsoup;
@@ -74,7 +75,7 @@ public class AddMovieController {
 	public ModelAndView loadMoive(ModelAndView mv) {
 		logger.info("loadMovie.do 도착...............");
 		List<MovieListVo> movieList = new ArrayList<MovieListVo>();
-
+		
 		movieList = movieListService.loadMovieList();
 		if (movieList != null) {
 			System.out.println("movieList" + movieList.toString());
@@ -173,9 +174,11 @@ public class AddMovieController {
 
 	// 영화 등록 controller
 	@RequestMapping(value = "insertMovie.do", method = RequestMethod.GET)
-	public String insertMovie(HttpServletRequest request) {
+	public String insertMovie(HttpServletRequest request, HttpSession getMVInfoMap) {
 		Map<String, String> resultMap = new HashMap<String, String>();
-
+		List<MovieListVo> movieList = new ArrayList<MovieListVo>();
+		Map<String, String> sessionMap = new HashMap<String, String>();
+		
 		resultMap.put("resultTitle", request.getParameter("resultTitle"));
 		System.out.println("영화 제목 : " + resultMap.get(0));
 		resultMap.put("resultSubtitle", request.getParameter("resultSubtitle"));
@@ -189,8 +192,18 @@ public class AddMovieController {
 		System.out.println("영화 이미지URL : " + resultMap.get("resultImage"));
 
 		insertResultMovieService.insertResultMovie(resultMap);
+		movieList = movieListService.loadMovieList();
+		int sessionSeq = movieList.get(0).getMV_INFO_SEQ();
+		String sessionLink = movieList.get(0).getMV_LINK();
+		sessionMap.put("sessionSeq", Integer.toString(sessionSeq));
+		sessionMap.put("sessionLink", sessionLink);
+		getMVInfoMap.setAttribute("sessionMap", sessionMap);
+		if(getMVInfoMap != null) {
+			System.out.println("getMVInfoMap : " + getMVInfoMap);
+			System.out.println("세션 생성 성공");
+		}
 
-		return "redirect:loadMovie.do";
+		return "redirect:addMovieDetail.do";
 
 	}
 
@@ -203,25 +216,23 @@ public class AddMovieController {
 
 		System.out.println("삭제할 UniqueNumber : " + movieUniNum);
 
-		int resultDeleteMovie = deleteMovieService.deleteMovie(movieUniNum);
+		movieDetailServie.deleteMovieDetail(movieUniNum);
+		deleteMovieService.deleteMovie(movieUniNum);
 
-		if (resultDeleteMovie > 0) {
-			return "redirect:loadMovie.do";
-		}
-		return "#";
+		return "redirect:loadMovie.do";
 	}
 
 	// 영화 스틸컷, 트레일러 목록 불러오기
 	@RequestMapping("loadVisualItems.do")
 	public ModelAndView loadVisualItems(HttpServletRequest request, ModelAndView mv) {
 		System.out.println("loadVisualItems.do 도착.......................");
-		String MOVIE_INFO_SEQ = request.getParameter("movieUniNumDel");
-		if(MOVIE_INFO_SEQ == null) {
+		String MVInfoSeq = request.getParameter("movieUniNumDel");
+		if(MVInfoSeq == null) {
 			mv.setViewName("redirect:loadMovie.do");
 			return mv;
 		}
 		
-		int numMOVIE_INFO_SEQ = Integer.parseInt(MOVIE_INFO_SEQ);
+		int numMOVIE_INFO_SEQ = Integer.parseInt(MVInfoSeq);
 		System.out.println("가져올 영화 정보 테이터 시퀀스 : " + numMOVIE_INFO_SEQ);
 
 		List<MovieVisualVo> movieVisualList = movieVisualService.loadVisualItems(numMOVIE_INFO_SEQ);
@@ -311,9 +322,14 @@ public class AddMovieController {
 	}
 	
 	@RequestMapping("addMovieDetail.do")
-	public String addMovieDetail(ModelAndView mv, HttpServletRequest request, MovieDetailVo MovieDetailInfo) {
-		String movieUniNum = request.getParameter("movieUniNumDel");
-		String MovieLink = request.getParameter("MVLink");
+	public String addMovieDetail(Map<String, String> seqLnkMap, HttpServletRequest request, HttpSession getMVInfoMap) {
+		seqLnkMap = (Map<String, String>) getMVInfoMap.getAttribute("sessionMap");
+		String sessionSeq = seqLnkMap.get("sessionSeq");
+		String sessionLink = seqLnkMap.get("sessionLink");
+		String movieUniNum = sessionSeq;
+		System.out.println("추가할 seq : " + movieUniNum);
+		String MovieLink = sessionLink;
+		System.out.println("추가할 link : " + MovieLink);
 		List list = new ArrayList();
 		try {
 			Document doc = Jsoup.connect(MovieLink).get();
@@ -357,28 +373,19 @@ public class AddMovieController {
 			String actor = (String)list.get(6);
 			String grade = (String)list.get(7);
 			
-			//vo에 자료 넣기
-			MovieDetailInfo.setMV_INFO_SEQ(Integer.parseInt(movieUniNum));
-			MovieDetailInfo.setMV_LINK(MovieLink);
-			MovieDetailInfo.setMV_TITLE(setMVTitle);
-			MovieDetailInfo.setMV_GENRE(genre);
-			MovieDetailInfo.setMV_COUNTRY(country);
-			MovieDetailInfo.setMV_RUNTIME(runtime);
-			MovieDetailInfo.setMV_RELEASE_DATE(releaseDate);
-			MovieDetailInfo.setMV_DIRECTOR(director);
-			MovieDetailInfo.setMV_ACTOR(actor);
-			MovieDetailInfo.setMV_GRADE(grade);
-			
-			//list에 vo넣기
-			List<MovieDetailVo> MVInfoList = new ArrayList<MovieDetailVo>();
-			MVInfoList.add(MovieDetailInfo);
-			
-			for(int i=0; i < MVInfoList.size(); i++) {
-				System.out.println("저장할 영화 디테일 자료" + MVInfoList.get(i));
-			}
-			
-			System.out.println("처리......................");
-			int result = movieDetailServie.addMovieDetail(MVInfoList);
+			Map<String, String> MovieDetailMap = new HashMap<String, String>();
+			MovieDetailMap.put("MVInfoSeq", movieUniNum);
+			MovieDetailMap.put("MovieLink", MovieLink);
+			MovieDetailMap.put("MVTitle", setMVTitle);
+			MovieDetailMap.put("genre", genre);
+			MovieDetailMap.put("country", country);
+			MovieDetailMap.put("runtime", runtime);
+			MovieDetailMap.put("releaseDate", releaseDate);
+			MovieDetailMap.put("director", director);
+			MovieDetailMap.put("actor", actor);
+			MovieDetailMap.put("grade", grade);
+			System.out.println("map의 사이즈 : " + MovieDetailMap.size());
+			int result = movieDetailServie.addMovieDetail(MovieDetailMap);
 			if(result > 0) {
 				System.out.println("입력 성공");
 			}else {
@@ -388,6 +395,7 @@ public class AddMovieController {
 		}catch(Exception e) {
 			e.getLocalizedMessage();
 		}
+		getMVInfoMap.invalidate();
 		return "redirect:loadDetailInfo.do";
 	}
 	

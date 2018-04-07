@@ -44,7 +44,8 @@
 										<c:set var="movieListResult" value="${requestScope.movieList}" /> 
 										<c:forEach var="listMap" items="${movieListResult}">
 										<tr class="odd gradeX">
-									 		<td><input type="checkbox" name="movieUniNumDel" value="${listMap.MOVIE_INFO_SEQ}"></td>
+											<!-- ${listMap.MV_INFO_SEQ}는 getMV_INFO_SEQ와 같다 -->
+									 		<td><input type="checkbox" name="movieUniNumDel" value="${listMap.MV_INFO_SEQ}"></td>
 									    	<td>${listMap.MV_TITLE}</a></td>
 									    	<td>${listMap.MV_DIRECTOR}</td>
 									    	<td>${listMap.MV_PUB_DATE}</td>

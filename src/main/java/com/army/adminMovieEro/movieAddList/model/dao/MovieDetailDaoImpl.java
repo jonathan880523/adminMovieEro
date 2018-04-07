@@ -2,6 +2,7 @@ package com.army.adminMovieEro.movieAddList.model.dao;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,10 +17,10 @@ public class MovieDetailDaoImpl implements MovieDetailDao {
 	SqlSession sqlSession;
 	
 	@Override
-	public int addMovieDetail(List<MovieDetailVo> MovieDetailInfo) {
+	public int addMovieDetail(Map<String, String> MovieDetailMap) {
 		System.out.println("Dao addMovieDetail 실행....................");
-		int result = sqlSession.insert("MovieInfoDetail.addDetailInfo", MovieDetailInfo);
-		
+		int result = sqlSession.insert("MovieInfoDetail.addDetailInfo", MovieDetailMap);
+		System.out.println("result : " + result);
 		if(result > 0) {
 			System.out.println("입력 성공");
 		}else {
@@ -35,6 +36,12 @@ public class MovieDetailDaoImpl implements MovieDetailDao {
 		List<MovieDetailVo> detailResult = new ArrayList<MovieDetailVo>();
 		detailResult = sqlSession.selectList("MovieInfoDetail.loadDetailInfo");
 		return detailResult;
+	}
+
+	@Override
+	public void deleteMovieDetail(String movieUniNum) {
+		System.out.println("Dao deleteMovieDetail 실행........................");
+		sqlSession.delete("MovieInfoDetail.deleteDetailInfo", movieUniNum);
 	}
 
 }

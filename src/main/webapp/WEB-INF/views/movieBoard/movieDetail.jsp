@@ -12,28 +12,15 @@
 				   	<!-- block -->
 					<div class="block">
 					    <div class="navbar navbar-inner block-header">
-					        <div class="muted pull-left">영화 리스트</div>
+					        <div class="muted pull-left">영화 디테일</div>
 					    </div>
 						<div class="block-content collapse in">
 							<div class="span12">
 								<div class="table-toolbar" style="margin-bottom:14px;">
-									<div class="btn-group">
-										<button type="button" id="insertMovieBtn" class="btn btn-primary">추가<i class="icon-plus icon-white"></i></button>
-									</div>
-									<div class="btn-group">
-										<button type="button" id="deleteBtn" class="btn btn-primary">삭제<i class="icon-remove icon-white"></i></button>
-									</div>
-									<div class="btn-group">
-										<button type="button" id="insertVisualItemsBtn" class="btn btn-primary">영상추가<i class="icon-film icon-white"></i></button>
-									</div>
-									<div class="btn-group">
-										<button type="button" id="insertDetailInfoBtn" class="btn btn-primary">영화정보 추가<i class="icon-list icon-white"></i></button>
-									</div>
 								</div>
 								<table id="movieListTable" border="0" class="table table-striped table-bordered">
 									<thead>
 										<tr>
-											<th><input type="checkbox"></th>
 											<th>제목</th>
 											<th>장르</th>
 											<th>국가</th>
@@ -48,7 +35,7 @@
 										<c:set var="movieDetailResult" value="${requestScope.detailResult}" /> 
 										<c:forEach var="listMap" items="${movieDetailResult}">
 										<tr class="odd gradeX">
-									 		<td><input type="checkbox" name="movieUniNumDel" value="${listMap.MOVIE_INFO_SEQ}"></td>
+									 		<input type="hidden" name="hiddenSeq" value="${listMap.MV_INFO_SEQ}">
 									    	<td>${listMap.MV_TITLE}</a></td>
 									    	<td>${listMap.MV_GENRE}</td>
 									    	<td>${listMap.MV_COUNTRY}</td>

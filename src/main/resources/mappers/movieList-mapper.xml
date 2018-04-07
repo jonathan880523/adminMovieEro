@@ -6,11 +6,12 @@
 
 	<select id="loadMovieList" resultType="MovieListVo">
 		SELECT * FROM MOVIE_INFO
+		ORDER BY MV_INFO_SEQ DESC
 	</select>
 
-	<delete id="deleteMovie">
+	<delete id="deleteMovie" parameterType="string">
 		DELETE FROM MOVIE_INFO WHERE MV_INFO_SEQ =
-		#{MV_INFO_SEQ}
+		#{movieUniNum}
 	</delete>
 	
 	<select id="loadMovieTitle" resultType="MovieListVo">

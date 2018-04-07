@@ -17,5 +17,4 @@ public class InsertResultMovieServiceImpl implements InsertResultMovieService {
 		System.out.println("insertResultMovieService 도착...................");
 		insertResultMovieDao.insertResultMovie(resultMap);
 	}
-
 }

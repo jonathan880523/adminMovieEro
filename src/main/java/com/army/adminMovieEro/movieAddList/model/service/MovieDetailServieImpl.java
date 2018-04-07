@@ -2,6 +2,7 @@ package com.army.adminMovieEro.movieAddList.model.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,10 +17,10 @@ public class MovieDetailServieImpl implements MovieDetailServie {
 	MovieDetailDao movieDetailDao;
 	
 	@Override
-	public int addMovieDetail(List<MovieDetailVo> MovieDetailInfo) {
+	public int addMovieDetail(Map<String, String> MovieDetailMap) {
 		System.out.println("Service addMovieDetail 실행..................");
 		
-		return movieDetailDao.addMovieDetail(MovieDetailInfo);
+		return movieDetailDao.addMovieDetail(MovieDetailMap);
 
 	}
 
@@ -29,6 +30,12 @@ public class MovieDetailServieImpl implements MovieDetailServie {
 		List<MovieDetailVo> detailResult = new ArrayList<MovieDetailVo>();
 		detailResult = movieDetailDao.loadMovieDetail();
 		return detailResult;
+	}
+
+	@Override
+	public void deleteMovieDetail(String movieUniNum) {
+		System.out.println("Service deleteMovieDetail 실행............");
+		movieDetailDao.deleteMovieDetail(movieUniNum);
 	}
 
 }
