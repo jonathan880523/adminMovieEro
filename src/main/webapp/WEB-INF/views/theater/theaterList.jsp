@@ -64,18 +64,19 @@ div.wizard-navigation .nav-pills>li+li {
 									</div>
 									<div class="btn-group">
 										<button type="button" id="insertVisualItemsBtn" class="btn btn-primary">사진추가<i class="icon-film icon-white"></i></button>
-										<input type="file"  name="image" />
+										<input type="file"  name="image"/>
 									</div>
 								</div>
-								<table id="movieListTable" border="0" class="table table-striped table-bordered">
+								<table id="movieListTable"  class="table table-striped table-bordered">
 									<thead>
 										<tr>
-											<th><input type="checkbox"></th>
-											<th>지점명</th>
-											<th>주소</th>
-											<th>가격</th>
-											<th>정보</th>
-											<th>이미지</th>
+											<th style="width: 2%;"><input type="checkbox" ></th>
+											<th style="width: 15%;">지점명</th>
+											<th style="width: 15%;">주소</th>
+											<th style="width: 10%;">가격</th>
+											<th style="width: 20%;">정보</th>
+											<th style="width: 20%;">영화관이미지</th>
+											<th style="width: 18%;">이미지<th>
 										</tr>
 									</thead>
 									<tbody>
@@ -87,15 +88,14 @@ div.wizard-navigation .nav-pills>li+li {
 									    	<td>${theater.RENTAL_SERVICE_POSITION}</td>
 									    	<td>${theater.RENTAL_SERVICE_PRICE}</td>
 									    	<td>${theater.RENTAL_SERVICE_INFO}</td>
+									    	<td><img id="table_imgbox" src="resources/images/theater/${theater.RENTAL_SERVICE_IMAGE}"  style="width: 200px; height: 100px;" /></td>
 									    	<td>
-									    	
-									    	<c:set var="theaterImage" value="${requestScope.theaterImage}"></c:set>
+										 	<c:set var="theaterImage" value="${requestScope.theaterImage}"></c:set>
 											<c:forEach var="theaterImg" items="${theaterImage}">
 											<c:if test="${theater.RENTAL_SERVICE_NO eq theaterImg.RENTAL_SERVICE_NO}">
-											<input>
 											${theaterImg.RENTAL_SERVICE_OIMAGE}<br>
-											<button id ="imaView" onclick="imaView();">사진보기</button>
-											<button id="imgDelete"  onclick="imaDelete();">삭제하기</button><br>
+											<a href="resources/images/theater/${theaterImg.RENTAL_SERVICE_IMAGE}" target="_blank">이미지보기</a>
+											<a href="fileDelete.do?file=${theaterImg.RENTAL_SERVICE_IMAGE}&num=${theaterImg.RENTAL_SERVICE_NO}">삭제하기</a>
 											</c:if>
 											</c:forEach>
 									    	</td>	
@@ -117,33 +117,33 @@ div.wizard-navigation .nav-pills>li+li {
 var formObj = $('form[name="form"]');
 
 $(document).ready(function(){
-		//영화 추가 페이지로 이동
+		//영화관 목록 추가
 		$("#insertMovieBtn").on('click', function(){
    		formObj.attr('action','${pageContext.request.contextPath}/addtheater.do');
    		formObj.attr('method','post');
    		formObj.submit();
 		});
 	
-		//영화 목록에서 영화 삭제
+		//영화관 목록 삭제
 		$("#deleteBtn").on('click', function(){
    		formObj.attr('action','${pageContext.request.contextPath}/deledtTheater.do');
    		formObj.attr('method','post');
    		formObj.submit();
 		});
-	   	//영상 추가 목록으로 이동
+	   	//이미지 추가 
    	$("#insertVisualItemsBtn").on('click', function(){
-   		formObj.attr('action','${pageContext.request.contextPath}/theaterFileUpload.do');
-   		formObj.attr('method','post');
-   		formObj.submit();
+
+   		if($('input:checkbox[name="RENTAL_SERVICE_NO"]').is(":checked") == false){
+   			alert("추가할 영화관을 선택해주세요");
+   		}
+   		else
+   		{
+   	   		formObj.attr('action','${pageContext.request.contextPath}/theaterFileUpload.do');
+   	   		formObj.attr('method','post');
+   	   		formObj.submit();}
 		});
+	   	
 })
 
-function imaView() {
-	alert("버튼1을 누르셨습니다.");
-}
-
-function DeleteView() {
-	alert("버튼2을 누르셨습니다.");
-}
 
 </script>

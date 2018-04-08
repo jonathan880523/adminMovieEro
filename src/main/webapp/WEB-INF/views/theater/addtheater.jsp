@@ -43,7 +43,7 @@
                                           </form>
                                            </div>
                                             <div class="tab-pane" id="tab2">
-                                                <form name ="theaterinsert" class="form-horizontal" method="post" action="insertTheater.do">
+                                                <form name ="theaterinsert" class="form-horizontal" method="post" action="insertTheater.do" enctype="multipart/form-data">
                                                     <div class="control-group">
                                                       <label class="control-label" for="focusedInput">지점</label>
                                                       <div class="controls">
@@ -68,15 +68,17 @@
                                                         <input class="input-xlarge focused" id="RENTAL_SERVICE_POSITION" name="RENTAL_SERVICE_POSITION" type="text" value="" readonly>
                                                       </div>
                                                     </div>
-                                                     <div>
-                                                
-                                              	  </div>
+													<div class="control-group">
+													<label class="control-label" for="focusedInput">장소</label>
+													<div class="controls">
+                                         		 	<img id="table_imgbox" src="<c:out value='${jiginAdminFileVo.savefilename}'/>"  style="width: 200px; height: 150px;" /><br/>
+													<input type="file" id="jFile" name="savefilename" value="파일찾기" accept="image/*"/><br/><br/>
+													<input type="button" style="display: none" class="table-btn-3"  id="remove" value="삭제"/>
+													</div>
+													</div>                                                   
                                                     </form>
                                                     </div>
-                                                   
-                                                 
                                             </div>
-                                           
                                             <ul class="pager wizard">
                                                 <li class="previous first" style="display:none;"><a href="javascript:void(0);">First</a></li>
                                                 <li class="previous"><a href="javascript:void(0);">Previous</a></li>
@@ -93,7 +95,6 @@
 	            <!-- /wizard -->
                 </div>
             </div>
-        </div>
         <!--/.fluid-container-->
 
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
@@ -146,5 +147,43 @@ jQuery(document).ready(function() {
            });
        }); 
 	
+        $(function() {
+            $("#jFile").on('change', function(){
+                readURL(this);
+                $("#remove").toggle(); // hide remove link.
+                $("#add").toggle(); // hide remove link.
+            });
+            
+            /* toggle key use */
+            $("#remove").click(function(e) {
+                alert('success');
+                e.preventDefault(); // prevent default action of link
+                $('#table_imgbox').attr('src', ""); //clear image src
+                $("#jFile").val(""); // clear image input value
+                $("#remove").toggle(); // hide remove link.
+                $("#add").toggle(); // hide remove link.
+            });
+        });
+     
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+            var reader = new FileReader();
+        
+            reader.onload = function (e) {
+                
+                 if( $("#jFile").val() != "" ){
+                     var ext = $('#jFile').val().split('.').pop().toLowerCase();
+                     if($.inArray(ext, ['png']) == -1 && $.inArray(ext, ['jpg']) == -1) {
+                        alert('이미지 파일만 업로드 할수 있습니다.');
+                        $("#jFile").val("");
+                        return;
+                      }
+                 }
+                    $('#table_imgbox').attr('src', e.target.result);
+                }
+              reader.readAsDataURL(input.files[0]);
+            }
+        }
+
 </script>
 <jsp:include page="../inc/footer.jsp" flush="false" />

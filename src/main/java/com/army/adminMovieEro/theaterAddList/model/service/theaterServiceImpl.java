@@ -61,4 +61,10 @@ public class theaterServiceImpl implements theaterService {
 		return theaterServiceImpl.selectImage();
 	}
 
+	@Override
+	public int deleteBoard(String image) {
+		// TODO Auto-generated method stub
+		return theaterServiceImpl.deleteBoard(image);
+	}
+
 }

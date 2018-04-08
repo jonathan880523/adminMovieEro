@@ -43,9 +43,17 @@ public class AddTheaterController {
 	}
 	
 	@RequestMapping("insertTheater.do")
-	public ModelAndView addtheater(HttpServletRequest request, ModelAndView mv, theaterVO board)
+	public ModelAndView addtheater(HttpServletRequest request ,@RequestParam(value = "savefilename", required = false) MultipartFile file,
+		   ModelAndView mv, theaterVO board)
 			throws IOException {
-		
+		 SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+		 String fileName = file.getOriginalFilename();
+		 String renameFileName = sdf.format(new java.sql.Date(System.currentTimeMillis())) + "."
+				+ fileName.substring(fileName.lastIndexOf(".") + 1);
+	     File f = new File("D:\\workspace\\adminMovieEro\\src\\main\\webapp\\resources\\images\\theater\\"+renameFileName);
+	     file.transferTo(f);
+	     board.setRENTAL_SERVICE_OIMAGE(fileName);
+	     board.setRENTAL_SERVICE_IMAGE(renameFileName);
 		if (theaterServiceImpl.insertBoard(board) > 0) {
 		mv.setViewName("redirect:theaterList.do");
 
@@ -85,5 +93,12 @@ public class AddTheaterController {
 		 			e.printStackTrace();
 		 		}
 			    return "redirect:theaterList.do";
+	    }
+	 @RequestMapping("fileDelete.do")   
+	 public String deleteImage(@RequestParam(value = "file", required = false) String file,
+			 @RequestParam("num") int bnum,theaterImageVo board)throws Exception {
+		 		new File("D:\\\\workspace\\\\adminMovieEro\\\\src\\\\main\\\\webapp\\\\resources\\\\images\\\\theater\\\\"+file).delete();
+		 		theaterServiceImpl.deleteBoard(file);
+		 		return "redirect:theaterList.do";
 	    }
 }
