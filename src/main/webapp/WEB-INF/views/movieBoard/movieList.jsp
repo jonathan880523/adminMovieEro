@@ -68,13 +68,10 @@
    $(document).ready(function(){
    		//영화 추가 페이지로 이동
    		$("#insertMovieBtn").on('click', function(){
-   			if(movieUniSeq == null){
-   				alert("사진/영상을 추가할 영화를 선택해 주세요")
-   			}else{
 		   		formObj.attr('action','${pageContext.request.contextPath}/addMovie.do');
 		   		formObj.attr('method','get');
 		   		formObj.submit();
-   			}
+   		
    		});
    	
    		//영화 목록에서 영화 삭제
@@ -89,7 +86,7 @@
 	   		formObj.attr('action','${pageContext.request.contextPath}/loadVisualItems.do');
 	   		formObj.attr('method','get');
 	   		formObj.submit();
-	   		});
+	   	});
    })
 </script>
 <jsp:include page="../inc/footer.jsp" flush="false" />

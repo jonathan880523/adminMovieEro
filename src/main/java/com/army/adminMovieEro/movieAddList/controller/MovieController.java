@@ -184,8 +184,8 @@ public class MovieController {
 		resultMap.put("resultPubDate", request.getParameter("resultPubDate"));
 		resultMap.put("resultUserRating", request.getParameter("resultUserRating"));
 		resultMap.put("resultLink", request.getParameter("resultLink"));
+		System.out.println("영화 링크 : " + request.getParameter("resultLink"));
 		resultMap.put("resultImage", request.getParameter("resultImage"));
-		System.out.println("영화 이미지URL : " + resultMap.get("resultImage"));
 
 		insertResultMovieService.insertResultMovie(resultMap);
 		movieList = movieListService.loadMovieList();
@@ -333,6 +333,7 @@ public class MovieController {
 			for(Element e : MVTitles) {
 				list.add(e.text());
 			}
+			
 			Element summaryValue = doc.select(".info_spec .step1+dd").get(0);
 			Elements summaryValues = summaryValue.select("span");
 			for(Element e : summaryValues) {
@@ -378,6 +379,7 @@ public class MovieController {
 			MovieDetailMap.put("director", director);
 			MovieDetailMap.put("actor", actor);
 			MovieDetailMap.put("grade", grade);
+			System.out.println("중간 중간");
 			System.out.println("map의 사이즈 : " + MovieDetailMap.size());
 			int result = movieDetailServie.addMovieDetail(MovieDetailMap);
 			if(result > 0) {
@@ -395,6 +397,16 @@ public class MovieController {
 	
 	@RequestMapping("loadDetailInfo.do")
 	public ModelAndView loadDetailInfo(ModelAndView mv) {
+		System.out.println("loadDetailInfo.do 도착.......................");
+		List<MovieDetailVo> detailResult = new ArrayList<MovieDetailVo>();
+		detailResult = movieDetailServie.loadMovieDetail();
+		mv.addObject("detailResult", detailResult).setViewName("redirect:loadMovie.do");
+		return mv;
+	}
+	
+	@RequestMapping("loadDetail.do")
+	public ModelAndView loadDetail(ModelAndView mv) {
+		System.out.println("loadDetailInfo.do 도착.......................");
 		List<MovieDetailVo> detailResult = new ArrayList<MovieDetailVo>();
 		detailResult = movieDetailServie.loadMovieDetail();
 		mv.addObject("detailResult", detailResult).setViewName("movieBoard/movieDetail");
