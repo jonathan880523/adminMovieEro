@@ -22,4 +22,6 @@ public interface theaterService {
 	public int deleteBoard(int boardNum);
 	
 	public int getListCount();
+	
+	public int deleteBoard(String image);
 }

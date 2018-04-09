@@ -20,12 +20,12 @@
 				   	<!-- block -->
 					<div class="block">
 					    <div class="navbar navbar-inner block-header">
-					        <div class="muted pull-left">메인화면 리스트</div>
+					        <div class="muted pull-left">박스 오피스</div>
 					    </div>
 					    <div class="tab_menu">
 					    	<ul class="cf">
-					    		<li class="on"><a href="mainManage.do">비주얼 이미지</a></li>
-					    		<li><a href="boxOffice.do">박스 오피스</a></li>
+					    		<li><a href="visualList.do">비주얼 이미지</a></li>
+					    		<li class="on"><a href="boxOfficeList.do">박스 오피스</a></li>
 					    	</ul>
 					    </div>
 						<div class="block-content collapse in">

@@ -62,4 +62,10 @@ public class theaterDaoImpl implements theaterDao {
 		return new ArrayList<theaterImageVo>(sqlSession.selectList("TheaterVo.selectImage"));
 	}
 
+	@Override
+	public int deleteBoard(String image) {
+		// TODO Auto-generated method stub
+		return sqlSession.delete("TheaterVo.deleteImg",image);
+	}
+
 }

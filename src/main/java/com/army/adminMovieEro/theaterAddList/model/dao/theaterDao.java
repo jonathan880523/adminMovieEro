@@ -24,6 +24,8 @@ public interface theaterDao {
 	
 	public int deleteBoard(int boardNum);
 	
+	public int deleteBoard(String image);
+	
 	public int getListCount();
 	
 }
