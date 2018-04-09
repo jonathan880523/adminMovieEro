@@ -51,6 +51,9 @@ public class AddTheaterController {
 		 String renameFileName = sdf.format(new java.sql.Date(System.currentTimeMillis())) + "."
 				+ fileName.substring(fileName.lastIndexOf(".") + 1);
 	     File f = new File("D:\\workspace\\adminMovieEro\\src\\main\\webapp\\resources\\images\\theater\\"+renameFileName);
+	     if(!f.exists()) {    //디렉토리 없으면 생성.
+	         f.mkdirs();
+	        }
 	     file.transferTo(f);
 	     board.setRENTAL_SERVICE_OIMAGE(fileName);
 	     board.setRENTAL_SERVICE_IMAGE(renameFileName);
