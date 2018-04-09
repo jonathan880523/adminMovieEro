@@ -41,7 +41,7 @@
                                  <tbody id="stillcutTBody">
                                  	<c:forEach var="listStillcut" items="${stillcut}">
                                     		<tr class="odd gradeX">
-                                      	<td><input type="checkbox" name="movieUniNumDel" value="${listStillcut.MV_STILLCUT_SEQ}"></td>
+                                      	<td><input type="checkbox" name="stillcutSeq" value="${listStillcut.MV_STILLCUT_SEQ}"></td>
                                           <td>${listStillcut.MV_STILLCUT}</td>
                                      	</tr>
                                  	</c:forEach>
@@ -63,7 +63,7 @@
                          <div class="span12">
                             <div class="table-toolbar">
                                <div class="btn-group span2">
-                                  <button type="button" id="deleteSelectedBtn" class="btn btn-primary">삭제<i class="icon-remove icon-white"></i></button>
+                                  <button type="button" id="deleteTrailerBtn" class="btn btn-primary">삭제<i class="icon-remove icon-white"></i></button>
                                </div>
                                <div class="btn-group span2">
                                   <button type="button" id="addTrailerBtn"class="btn btn-primary addVisualBtn">추가<i class="icon-inbox icon-white"></i></button>
@@ -83,7 +83,7 @@
                                  <tbody>
                                  	<c:forEach var="listTrailer" items="${trailer}">
                                     		<tr class="odd gradeX">
-                                      	<td><input type="checkbox" name="movieUniNumDel" value="${listTrailer.MV_TRAILER_SEQ}"></td>
+                                      	<td><input type="checkbox" name="trailerSeq" value="${listTrailer.MV_TRAILER_SEQ}"></td>
                                           <td>${listTrailer.MV_TRAILER}</td>
                                      	</tr>
                                  	</c:forEach>
@@ -113,6 +113,18 @@
 		
  		$("#addTrailerBtn").on('click', function(){
 	   		formObj.attr('action','${pageContext.request.contextPath}/insertVisualItems.do');
+	   		formObj.attr('method','get');
+	   		formObj.submit();
+ 		});
+ 		
+ 		$("#deleteStillcutBtn").on('click', function(){
+	   		formObj.attr('action','${pageContext.request.contextPath}/deleteVisualItems.do');
+	   		formObj.attr('method','get');
+	   		formObj.submit();
+ 		});
+ 		
+ 		$("#deleteTrailerBtn").on('click', function(){
+	   		formObj.attr('action','${pageContext.request.contextPath}/deleteVisualItems.do');
 	   		formObj.attr('method','get');
 	   		formObj.submit();
  		});

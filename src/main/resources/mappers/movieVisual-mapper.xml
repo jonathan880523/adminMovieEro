@@ -25,5 +25,13 @@
 	<select id="loadTrailer" resultType="MovieVisualVo">
 		SELECT * FROM MOVIE_TRAILER WHERE MV_INFO_SEQ = #{MVInfoSeq}
 	</select>
+	
+	<delete id="deleteStillcut" parameterType="string">
+		DELETE FROM MOVIE_STILLCUT WHERE MV_STILLCUT_SEQ = #{stillcutSeq}
+	</delete>
+	
+	<delete id="deleteTrailer" parameterType="string">
+		DELETE FROM MOVIE_TRAILER WHERE MV_TRAILER_SEQ = #{trailerSeq}
+	</delete>
 
 </mapper>

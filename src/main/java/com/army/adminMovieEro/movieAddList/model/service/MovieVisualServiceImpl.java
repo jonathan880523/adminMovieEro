@@ -40,4 +40,16 @@ public class MovieVisualServiceImpl implements MovieVisualService {
 		return movieVisualList;
 	}
 
+	@Override
+	public void deleteStillcut(String stillcutSeq) {
+		System.out.println("Service deleteStillcut 실행.............");
+		movieVisualDao.deleteStillcut(stillcutSeq);
+	}
+
+	@Override
+	public void deleteTrailer(String trailerSeq) {
+		System.out.println("Service deleteTrailer 실행...............");
+		movieVisualDao.deleteTrailer(trailerSeq);
+	}
+
 }

@@ -39,4 +39,24 @@ public class MovieVisualDaoImpl implements MovieVisualDao {
 		return movieTrailerList;
 	}
 
+	@Override
+	public int deleteStillcut(String stillcutSeq) {
+		System.out.println("Dao deleteStillcut 실행................");
+		int resultDelStillcut = sqlSession.delete("MovieVisual.deleteStillcut", stillcutSeq);
+		if(resultDelStillcut > 0) {
+			System.out.println("스틸컷 삭제 성공");
+		}
+		return resultDelStillcut;
+	}
+
+	@Override
+	public int deleteTrailer(String trailerSeq) {
+		System.out.println("Dao deleteTrailer 실행..................");
+		int resultDelTrailer = sqlSession.delete("MovieVisual.deleteTrailer", trailerSeq);
+		if(resultDelTrailer > 0) {
+			System.out.println("트레일러 삭제 성공");
+		}
+		return resultDelTrailer;
+	}
+
 }

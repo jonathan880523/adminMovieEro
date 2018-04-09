@@ -13,4 +13,8 @@ public interface MovieVisualDao {
 	public List<MovieVisualVo> loadStillcut(String MVInfoSeq);
 	
 	public List<MovieVisualVo> loadTrailer(String MVInfoSeq);
+	
+	public int deleteStillcut(String stillcutSeq);
+	
+	public int deleteTrailer(String trailerSeq);
 }

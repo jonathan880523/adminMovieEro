@@ -14,4 +14,10 @@ public interface MovieVisualService {
 	public List<MovieVisualVo> loadStillcut(String MVInfoSeq);
 	
 	public List<MovieVisualVo> loadTrailer(String MVInfoSeq);
+	
+	public void deleteStillcut(String stillcutSeq);
+	
+	public void deleteTrailer(String trailerSeq);
+	
+	
 }

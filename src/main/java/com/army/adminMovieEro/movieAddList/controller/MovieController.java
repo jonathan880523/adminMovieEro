@@ -302,6 +302,24 @@ public class MovieController {
 		return mv;
 	}
 	
+	@RequestMapping("deleteVisualItems.do")
+	public ModelAndView deleteVisualItems(ModelAndView mv, HttpServletRequest request) {
+		System.out.println("deleteVisualItems.do 도착...................");
+		String stillcutSeq = request.getParameter("stillcutSeq");
+		System.out.println("stillcutSeq : " + stillcutSeq);
+		String trailerSeq = request.getParameter("trailerSeq");
+		System.out.println("trailerSeq : " + trailerSeq);
+		
+		if(stillcutSeq != null) {
+			movieVisualService.deleteStillcut(stillcutSeq);
+		}else if(trailerSeq != null){
+			movieVisualService.deleteTrailer(trailerSeq);
+		}
+		
+		mv.setViewName("redirect:reloadVisualItems.do");
+		return mv;
+	}
+	
 	@RequestMapping("searchReview.do")
 	public ModelAndView searchReview(HttpServletRequest request, ModelAndView mv) {
 		System.out.println("searchReview.do 도착...................");
