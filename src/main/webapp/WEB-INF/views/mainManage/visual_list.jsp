@@ -24,8 +24,8 @@
 					    </div>
 					    <div class="tab_menu">
 					    	<ul class="cf">
-					    		<li class="on"><a href="mainManage.do">비주얼 이미지</a></li>
-					    		<li><a href="boxOffice.do">박스 오피스</a></li>
+					    		<li class="on"><a href="visualList.do">비주얼 이미지</a></li>
+					    		<li><a href="boxOfficeList.do">박스 오피스</a></li>
 					    	</ul>
 					    </div>
 						<div class="block-content collapse in">

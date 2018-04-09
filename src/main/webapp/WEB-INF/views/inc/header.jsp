@@ -41,13 +41,13 @@ location.href="./logOut.do"
 	         <a href="theaterList.do"><i class="icon-chevron-right"></i>영화관 목록</a>
 	     </li>
 	     <li>
-	         <a href="stats.html"><i class="icon-chevron-right"></i>공지사항 목록</a>
+	         <a href="#"><i class="icon-chevron-right"></i>공지사항 목록</a>
 	     </li>
 	     <li>
-	         <a href="form.html"><i class="icon-chevron-right"></i>회원정보 목록</a>
+	         <a href="#"><i class="icon-chevron-right"></i>회원정보 목록</a>
 	     </li>
 	     <li>
-	         <a href="mainManage.do"><i class="icon-chevron-right"></i>메인화면 관리</a>
+	         <a href="visualList.do"><i class="icon-chevron-right"></i>메인화면 관리</a>
 	     </li>	     
 	 </ul>
 </div>	
