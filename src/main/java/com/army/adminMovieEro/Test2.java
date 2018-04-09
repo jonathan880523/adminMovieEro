@@ -47,6 +47,13 @@ public class Test2 {
 				list.add(e.text());
 			}
 			
+			Element storyValue = doc.select(".story_area").get(0);
+			Elements storyValues = storyValue.select("p");
+			for(Element e : storyValues) {
+				list.add(e.text());
+			}
+			
+			
 			MVInfo.put("MVTitle", list.get(0));
 			MVInfo.put("genre", list.get(1));
 			MVInfo.put("country", list.get(2));
@@ -55,6 +62,7 @@ public class Test2 {
 			MVInfo.put("director", list.get(5));
 			MVInfo.put("actor", list.get(6));
 			MVInfo.put("grade", list.get(7));
+			MVInfo.put("story", list.get(8));
 			
 			List MVInfoList = new ArrayList();
 			MVInfoList.add(MVInfo);

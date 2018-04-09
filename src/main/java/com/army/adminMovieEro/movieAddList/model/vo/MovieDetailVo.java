@@ -12,14 +12,17 @@ public class MovieDetailVo {
 	private String MV_ACTOR;
 	private String MV_DIRECTOR;
 	private String MV_GRADE;
+	private String MV_STORY;
 	
 	public MovieDetailVo() {
 		super();
 	}
 
+	
+	
 	public MovieDetailVo(int mV_DETAIL_SEQ, int mV_INFO_SEQ, String mV_LINK, String mV_TITLE, String mV_GENRE,
 			String mV_COUNTRY, String mV_RUNTIME, String mV_RELEASE_DATE, String mV_ACTOR, String mV_DIRECTOR,
-			String mV_GRADE) {
+			String mV_GRADE, String mV_STORY) {
 		super();
 		MV_DETAIL_SEQ = mV_DETAIL_SEQ;
 		MV_INFO_SEQ = mV_INFO_SEQ;
@@ -32,7 +35,10 @@ public class MovieDetailVo {
 		MV_ACTOR = mV_ACTOR;
 		MV_DIRECTOR = mV_DIRECTOR;
 		MV_GRADE = mV_GRADE;
+		MV_STORY = mV_STORY;
 	}
+
+
 
 	public int getMV_DETAIL_SEQ() {
 		return MV_DETAIL_SEQ;
@@ -122,11 +128,20 @@ public class MovieDetailVo {
 		MV_GRADE = mV_GRADE;
 	}
 
+	public String getMV_STORY() {
+		return MV_STORY;
+	}
+
+	public void setMV_STORY(String mV_STORY) {
+		MV_STORY = mV_STORY;
+	}
+
 	@Override
 	public String toString() {
 		return "MovieDetailVo [MV_DETAIL_SEQ=" + MV_DETAIL_SEQ + ", MV_INFO_SEQ=" + MV_INFO_SEQ + ", MV_LINK=" + MV_LINK
 				+ ", MV_TITLE=" + MV_TITLE + ", MV_GENRE=" + MV_GENRE + ", MV_COUNTRY=" + MV_COUNTRY + ", MV_RUNTIME="
 				+ MV_RUNTIME + ", MV_RELEASE_DATE=" + MV_RELEASE_DATE + ", MV_ACTOR=" + MV_ACTOR + ", MV_DIRECTOR="
-				+ MV_DIRECTOR + ", MV_GRADE=" + MV_GRADE + "]";
+				+ MV_DIRECTOR + ", MV_GRADE=" + MV_GRADE + ", MV_STORY=" + MV_STORY + "]";
 	}
+	
 }

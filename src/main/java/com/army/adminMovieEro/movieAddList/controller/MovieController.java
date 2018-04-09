@@ -409,6 +409,12 @@ public class MovieController {
 				list.add(e.text());
 			}
 			
+			Element storyValue = doc.select(".story_area").get(0);
+			Elements storyValues = storyValue.select("p");
+			for(Element e : storyValues) {
+				list.add(e.text());
+			}
+			
 			//String으로 casting
 			String setMVTitle = (String) list.get(0);
 			String genre = (String)list.get(1);
@@ -418,6 +424,7 @@ public class MovieController {
 			String director = (String)list.get(5);
 			String actor = (String)list.get(6);
 			String grade = (String)list.get(7);
+			String story = (String)list.get(8);
 			
 			Map<String, String> MovieDetailMap = new HashMap<String, String>();
 			MovieDetailMap.put("MVInfoSeq", movieUniNum);
@@ -430,13 +437,15 @@ public class MovieController {
 			MovieDetailMap.put("director", director);
 			MovieDetailMap.put("actor", actor);
 			MovieDetailMap.put("grade", grade);
+			MovieDetailMap.put("story", story);
 			System.out.println("중간 중간");
 			System.out.println("map의 사이즈 : " + MovieDetailMap.size());
+			
 			int result = movieDetailServie.addMovieDetail(MovieDetailMap);
 			if(result > 0) {
 				System.out.println("입력 성공");
 			}else {
-				System.out.println("입력 실패");
+				System.err.println("입력 실패");
 			}
 			
 		}catch(Exception e) {

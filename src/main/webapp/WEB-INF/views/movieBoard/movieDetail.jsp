@@ -30,6 +30,9 @@
 											<th>감독</th>
 											<th>등급</th>
 										</tr>
+										<tr>
+											<th colspan=8>줄거리</th>
+										</tr>
 									</thead>
 									<tbody>
 										<c:set var="movieDetailResult" value="${requestScope.detailResult}" /> 
@@ -45,7 +48,10 @@
 									    	<td>${listMap.MV_DIRECTOR}</td>
 									    	<td>${listMap.MV_GRADE}</td>
 										</tr>
-									</c:forEach>
+										<tr>
+											<td colspan=8>${listMap.MV_STORY}</td>
+										</tr>
+										</c:forEach>
 									</tbody>
 								</table>
 							</div>

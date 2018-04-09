@@ -7,9 +7,9 @@
 	<insert id="addDetailInfo" parameterType="map">
 		INSERT INTO MOVIE_INFO_DETAIL 
 		(MV_DETAIL_SEQ, MV_INFO_SEQ, MV_LINK, MV_TITLE, MV_GENRE, MV_COUNTRY, MV_RUNTIME,
-		MV_RELEASE_DATE, MV_ACTOR, MV_DIRECTOR, MV_GRADE) VALUES(
+		MV_RELEASE_DATE, MV_ACTOR, MV_DIRECTOR, MV_GRADE, MV_STORY) VALUES(
 		MOVIE_DETAIL_SEQ.NEXTVAL, #{MVInfoSeq}, #{MovieLink}, #{MVTitle}, #{genre},
-		#{country}, #{runtime}, #{releaseDate}, #{actor}, #{director}, #{grade} 
+		#{country}, #{runtime}, #{releaseDate}, #{actor}, #{director}, #{grade}, #{story}
 		)
 	</insert>
 	
