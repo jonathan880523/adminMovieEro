@@ -1,7 +1,8 @@
 package com.army.adminMovieEro.movieAddList.model.vo;
 
 public class MovieVisualVo {
-	private int MV_VISUAL_SEQ;
+	private int MV_STILLCUT_SEQ;
+	private int MV_TRAILER_SEQ;
 	private int MV_INFO_SEQ;
 	private String MV_TITLE;
 	private String MV_STILLCUT;
@@ -9,21 +10,31 @@ public class MovieVisualVo {
 	
 	public MovieVisualVo() {}
 
-	public MovieVisualVo(int mV_VISUAL_SEQ, int mV_INFO_SEQ, String mV_TITLE, String mV_STILLCUT, String mV_TRAILER) {
+	public MovieVisualVo(int mV_STILLCUT_SEQ, int mV_TRAILER_SEQ, int mV_INFO_SEQ, String mV_TITLE, String mV_STILLCUT,
+			String mV_TRAILER) {
 		super();
-		MV_VISUAL_SEQ = mV_VISUAL_SEQ;
+		MV_STILLCUT_SEQ = mV_STILLCUT_SEQ;
+		MV_TRAILER_SEQ = mV_TRAILER_SEQ;
 		MV_INFO_SEQ = mV_INFO_SEQ;
 		MV_TITLE = mV_TITLE;
 		MV_STILLCUT = mV_STILLCUT;
 		MV_TRAILER = mV_TRAILER;
 	}
 
-	public int getMV_VISUAL_SEQ() {
-		return MV_VISUAL_SEQ;
+	public int getMV_STILLCUT_SEQ() {
+		return MV_STILLCUT_SEQ;
 	}
 
-	public void setMV_VISUAL_SEQ(int mV_VISUAL_SEQ) {
-		MV_VISUAL_SEQ = mV_VISUAL_SEQ;
+	public void setMV_STILLCUT_SEQ(int mV_STILLCUT_SEQ) {
+		MV_STILLCUT_SEQ = mV_STILLCUT_SEQ;
+	}
+
+	public int getMV_TRAILER_SEQ() {
+		return MV_TRAILER_SEQ;
+	}
+
+	public void setMV_TRAILER_SEQ(int mV_TRAILER_SEQ) {
+		MV_TRAILER_SEQ = mV_TRAILER_SEQ;
 	}
 
 	public int getMV_INFO_SEQ() {
@@ -60,7 +71,8 @@ public class MovieVisualVo {
 
 	@Override
 	public String toString() {
-		return "MovieVisualVo [MV_VISUAL_SEQ=" + MV_VISUAL_SEQ + ", MV_INFO_SEQ=" + MV_INFO_SEQ + ", MV_TITLE="
-				+ MV_TITLE + ", MV_STILLCUT=" + MV_STILLCUT + ", MV_TRAILER=" + MV_TRAILER + "]";
-	};
+		return "MovieVisualVo [MV_STILLCUT_SEQ=" + MV_STILLCUT_SEQ + ", MV_TRAILER_SEQ=" + MV_TRAILER_SEQ
+				+ ", MV_INFO_SEQ=" + MV_INFO_SEQ + ", MV_TITLE=" + MV_TITLE + ", MV_STILLCUT=" + MV_STILLCUT
+				+ ", MV_TRAILER=" + MV_TRAILER + "]";
+	}
 }

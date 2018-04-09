@@ -23,13 +23,20 @@ public class MovieVisualServiceImpl implements MovieVisualService {
 	@Override
 	public void insertTrailer(Map<String, String> trailerMap) {
 		System.out.println("Service insertTrailer 실행.................");
-		movieVisualDao.insertStillcut(trailerMap);
+		movieVisualDao.insertTrailer(trailerMap);
 	}
 
 	@Override
-	public List<MovieVisualVo> loadVisualItems(String MVInfoSeq) {
-		System.out.println("Service loadVisualItems 실행.................");
-		List<MovieVisualVo> movieVisualList = movieVisualDao.loadVisualItems(MVInfoSeq); 
+	public List<MovieVisualVo> loadStillcut(String MVInfoSeq) {
+		System.out.println("Service loadStillcut 실행.................");
+		List<MovieVisualVo> movieVisualList = movieVisualDao.loadStillcut(MVInfoSeq); 
+		return movieVisualList;
+	}
+
+	@Override
+	public List<MovieVisualVo> loadTrailer(String MVInfoSeq) {
+		System.out.println("Service loadTrailer 실행.................");
+		List<MovieVisualVo> movieVisualList = movieVisualDao.loadTrailer(MVInfoSeq); 
 		return movieVisualList;
 	}
 

@@ -26,10 +26,17 @@ public class MovieVisualDaoImpl implements MovieVisualDao {
 	}
 
 	@Override
-	public List<MovieVisualVo> loadVisualItems(String MVInfoSeq) {
+	public List<MovieVisualVo> loadStillcut(String MVInfoSeq) {
 		System.out.println("Dao loadMovieItems 실행.....................");
-		List<MovieVisualVo> movieVisualList = sqlSession.selectList("MovieVisual.loadVisualItems", MVInfoSeq);
-		return movieVisualList;
+		List<MovieVisualVo> movieStillcutList = sqlSession.selectList("MovieVisual.loadStillcut", MVInfoSeq);
+		return movieStillcutList;
+	}
+
+	@Override
+	public List<MovieVisualVo> loadTrailer(String MVInfoSeq) {
+		System.out.println("Dao loadMovieItems 실행.....................");
+		List<MovieVisualVo> movieTrailerList = sqlSession.selectList("MovieVisual.loadTrailer", MVInfoSeq);
+		return movieTrailerList;
 	}
 
 }

@@ -11,5 +11,7 @@ public interface MovieVisualService {
 	
 	public void insertTrailer(Map<String, String> trailerMap);
 	
-	public List<MovieVisualVo> loadVisualItems(String MVInfoSeq);
+	public List<MovieVisualVo> loadStillcut(String MVInfoSeq);
+	
+	public List<MovieVisualVo> loadTrailer(String MVInfoSeq);
 }

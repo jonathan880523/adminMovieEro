@@ -5,21 +5,25 @@
 <mapper namespace="MovieVisual">
 
 	<insert id="insertStillcut" parameterType="map">
-		INSERT INTO MOVIE_VISUAL_ITEMS
-		(MV_VISUAL_SEQ, MV_INFO_SEQ, MV_TITLE, MV_STILLCUT)
+		INSERT INTO MOVIE_STILLCUT
+		(MV_STILLCUT_SEQ, MV_INFO_SEQ, MV_TITLE, MV_STILLCUT)
 		VALUES
-		(MOVIE_VISUAL_ITEMS_SEQ.NEXTVAL, #{MVInfoSeq}, #{MVTitle}, #{StillcutURL})
+		(MOVIE_STILLCUT_SEQ.NEXTVAL, #{MVInfoSeq}, #{MVTitle}, #{StillcutURL})
 	</insert>
 	
 	<insert id="insertTrailer" parameterType="map">
-		INSERT INTO MOVIE_VISUAL_ITEMS
-		(MV_VISUAL_SEQ, MV_INFO_SEQ, MV_TITLE, MV_TRAILER)
+		INSERT INTO MOVIE_TRAILER
+		(MV_TRAILER_SEQ, MV_INFO_SEQ, MV_TITLE, MV_TRAILER)
 		VALUES
-		(MOVIE_VISUAL_ITEMS_SEQ.NEXTVAL, #{MVInfoSeq}, #{MVTitle}, #{trailerURL})
+		(MOVIE_TRAILER_SEQ.NEXTVAL, #{MVInfoSeq}, #{MVTitle}, #{trailerURL})
 	</insert>
 	
-	<select id="loadVisualItems" resultType="MovieVisualVo">
-		SELECT * FROM MOVIE_VISUAL_ITEMS WHERE MV_INFO_SEQ = #{MVInfoSeq}
+	<select id="loadStillcut" resultType="MovieVisualVo">
+		SELECT * FROM MOVIE_STILLCUT WHERE MV_INFO_SEQ = #{MVInfoSeq} 
+	</select>
+	
+	<select id="loadTrailer" resultType="MovieVisualVo">
+		SELECT * FROM MOVIE_TRAILER WHERE MV_INFO_SEQ = #{MVInfoSeq}
 	</select>
 
 </mapper>

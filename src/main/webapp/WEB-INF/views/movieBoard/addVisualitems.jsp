@@ -10,18 +10,12 @@
             <div class="row-fluid">
          	<div class="span4" id="content">
                  <!-- block -->
-                 <c:set var="movieVisualListResult" value="${requestScope.resultVisualItems}" />
-                 <c:set var="ifNullTitle" value="${requestScope.nullTitle}"/>
+                 <c:set var="visualSession" value="${sessionScope.visualMap}" />
+                 <c:set var="stillcut" value="${requestScope.resultStillcutList}"/>
+                 <c:set var="trailer" value="${requestScope.resultTrailerList}"/>
                  <div class="block">
                      <div class="navbar navbar-inner block-header">
-						 <c:if test="${not empty movieVisualListResult}">
-						 	<div class="muted pull-left"><c:out value="${movieVisualListResult.MV_TITLE}"></c:out>: 스틸컷</div>
-                         	<input type="hidden" name="MVInfoSeq" value="${movieVisualListResult.MV_INFO_SEQ}">
-                         	<input type="hidden" name="MVTitle" value="${movieVisualListResult.MV_TITLE}">
-						 </c:if>
-						 <c:if test="${empty movieVisualListResult}">
-                         	<div class="muted pull-left"><c:out value="${ifNullTitle}"></c:out>: 스틸컷</div>
-						 </c:if>
+						 <div class="muted pull-left"><c:out value="${visualSession.MVTitle}"></c:out>: 스틸컷</div>
                      </div>
                      <div class="block-content collapse in">
                          <div class="span12">
@@ -30,7 +24,7 @@
                                   <button type="button" id="deleteStillcutBtn" class="btn btn-primary">삭제<i class="icon-remove icon-white"></i></button>
                                </div>
                                <div class="btn-group span2">
-                                  <button type="button" id="addStillcutBtn" class="btn btn-primary addVisualBtn">추가<i class="icon-inbox icon-white"></i></button>
+                                  <button type="button" id="addStillcutBtn" class="btn btn-primary">추가<i class="icon-inbox icon-white"></i></button>
                                </div>
                                <div class="btn-group span8">
                 				  		<input type="text" id="stillcutURL" name="stillcutURL" class="span12" placeholder="스틸컷 URL을 입력해주세요(enter)" value="">	
@@ -45,10 +39,10 @@
                                       </tr>
                                   </thead>
                                  <tbody id="stillcutTBody">
-                                 	<c:forEach var="listMap" items="${movieVisualListResult}">
+                                 	<c:forEach var="listStillcut" items="${stillcut}">
                                     		<tr class="odd gradeX">
-                                      	<td><input type="checkbox" name="movieUniNumDel" value="${listMap.MV_VISUAL_SEQ}"></td>
-                                          <td>${listMap.MV_STILLCUT}</td>
+                                      	<td><input type="checkbox" name="movieUniNumDel" value="${listStillcut.MV_STILLCUT_SEQ}"></td>
+                                          <td>${listStillcut.MV_STILLCUT}</td>
                                      	</tr>
                                  	</c:forEach>
                                  </tbody>
@@ -63,12 +57,7 @@
                  <!-- block -->
                  <div class="block">
                      <div class="navbar navbar-inner block-header">
-                         <c:if test="${empty movieVisualListResult}">
-                         	<div class="muted pull-left"><c:out value="${ifNullTitle}"></c:out>: 트레일러</div>
-						 </c:if>
-						 <c:if test="${not empty movieVisualListResult}">
-						 	<div class="muted pull-left"><c:out value="${movieVisualListResult.MV_TITLE}"></c:out>: 트레일러</div>
-						 </c:if>
+                         	<div class="muted pull-left"><c:out value="${visualSession.MVTitle}"></c:out>: 트레일러</div>
                      </div>
                      <div class="block-content collapse in">
                          <div class="span12">
@@ -77,10 +66,10 @@
                                   <button type="button" id="deleteSelectedBtn" class="btn btn-primary">삭제<i class="icon-remove icon-white"></i></button>
                                </div>
                                <div class="btn-group span2">
-                                  <button type="button" class="btn btn-primary addVisualBtn">추가<i class="icon-inbox icon-white"></i></button>
+                                  <button type="button" id="addTrailerBtn"class="btn btn-primary addVisualBtn">추가<i class="icon-inbox icon-white"></i></button>
                                </div>
                                <div class="btn-group span8">
-                				  		<input type="text" id="addStillcutURL" name="trailerURL" class="span12" placeholder="트레일러 URL을 입력해주세요(enter)" value="">	
+                				  		<input type="text" id="trailerURL" name="trailerURL" class="span12" placeholder="트레일러 URL을 입력해주세요(enter)" value="">	
                                </div>
                             </div>
                              
@@ -92,10 +81,10 @@
                                       </tr>
                                   </thead>
                                  <tbody>
-                                 	<c:forEach var="listMap" items="${movieVisualListResult}">
+                                 	<c:forEach var="listTrailer" items="${trailer}">
                                     		<tr class="odd gradeX">
-                                      	<td><input type="checkbox" name="movieUniNumDel" value="${listMap.MV_VISUAL_SEQ}"></td>
-                                          <td>${listMap.MV_TRAILER}</td>
+                                      	<td><input type="checkbox" name="movieUniNumDel" value="${listTrailer.MV_TRAILER_SEQ}"></td>
+                                          <td>${listTrailer.MV_TRAILER}</td>
                                      	</tr>
                                  	</c:forEach>
                                  </tbody>
@@ -116,12 +105,17 @@
 		var formObj = $('form[role="form"]');
 	  	
 		//영화 추가 페이지로 이동
- 		$(".addVisualBtn").on('click', function(){
+ 		$("#addStillcutBtn").on('click', function(){
 	   		formObj.attr('action','${pageContext.request.contextPath}/insertVisualItems.do');
 	   		formObj.attr('method','get');
 	   		formObj.submit();
  		});
-  	
+		
+ 		$("#addTrailerBtn").on('click', function(){
+	   		formObj.attr('action','${pageContext.request.contextPath}/insertVisualItems.do');
+	   		formObj.attr('method','get');
+	   		formObj.submit();
+ 		});
   })
 </script>
 <jsp:include page="../inc/footer.jsp" flush="false" />

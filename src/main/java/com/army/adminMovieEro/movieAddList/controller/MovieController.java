@@ -220,53 +220,86 @@ public class MovieController {
 
 	// 영화 스틸컷, 트레일러 목록 불러오기
 	@RequestMapping("loadVisualItems.do")
-	public ModelAndView loadVisualItems(HttpServletRequest request, ModelAndView mv, MovieListVo vo) {
+	public ModelAndView loadVisualItems(HttpServletRequest request, ModelAndView mv, MovieListVo vo, 
+			HttpSession visualSession, Map<String, String> visualMap) {
 		System.out.println("loadVisualItems.do 도착.......................");
 		//영화 제목 불러오기
 		String MVInfoSeq = request.getParameter("movieUniNumDel");
-		vo = movieListService.loadMovieTitle(Integer.parseInt(MVInfoSeq));
+		vo = movieListService.loadMovieTitle(MVInfoSeq);
 		String MVTitle = vo.getMV_TITLE();
 		System.out.println("사진/영상 추가할 영화 : " + MVTitle);
+		visualMap.put("MVInfoSeq", MVInfoSeq);
+		visualMap.put("MVTitle", MVTitle);
+		visualSession.setAttribute("visualMap", visualMap);
 		
-		List<MovieVisualVo> resultItems = new ArrayList<MovieVisualVo>();
-		resultItems = movieVisualService.loadVisualItems(MVInfoSeq);
-		System.out.println("resultItems : " + resultItems);
-		if(resultItems.size() <= 0) {
-			System.out.println("resultItems == null");
-			mv.addObject("nullTitle", MVTitle)
-			  .setViewName("movieBoard/addVisualitems");
-		}else {
-			System.out.println("resultItems != null");
-			mv.addObject("resultVisualItems", resultItems)
-			  .setViewName("movieBoard/addVisualitems");
-		}
+		List<MovieVisualVo> movieStillcutList = new ArrayList<MovieVisualVo>();
+		List<MovieVisualVo> movieTrailerList = new ArrayList<MovieVisualVo>();
+		
+		movieStillcutList = movieVisualService.loadStillcut(MVInfoSeq);
+		movieTrailerList = movieVisualService.loadTrailer(MVInfoSeq);
+		
+		mv.addObject("resultStillcutList", movieStillcutList)
+		  .addObject("resultTrailerList", movieTrailerList)
+		  .setViewName("movieBoard/addVisualitems");
+		
 		return mv;
 	}
 
 	// 영화 스틸컷 추가
 	@RequestMapping("insertVisualItems.do")
-	public String insertVisualItems(HttpServletRequest request, Map<String, String> visualMap) {
-		System.out.println("insertStillcut.do 도착.................");
-		String MVTitle = request.getParameter("MVTitle");
-		String MVInfoSeq = request.getParameter("MVInfoSeq");
-		String StillcutURL = request.getParameter("stillcutURL");
+	public String insertVisualItems(HttpServletRequest request, Map<String, String> stillcutMap,
+			Map<String, String> trailerMap, HttpSession visualSession, Map<String, String> comeVisualMap) {
+		System.out.println("insertVisualItems.do 도착.................");
+		comeVisualMap = (Map<String, String>) visualSession.getAttribute("visualMap");
+		String MVTitle = comeVisualMap.get("MVTitle");
+		String MVInfoSeq = comeVisualMap.get("MVInfoSeq");
+		System.out.println("사진/영상 추가할 영화 제목 : " + MVTitle);
+		System.out.println("사진/영상 추가할 영화 시퀀스 : " + MVInfoSeq);
+		String stillcutURL = request.getParameter("stillcutURL");
+		System.out.println("사진URL : " + stillcutURL);
 		String trailerURL = request.getParameter("trailerURL");
+		System.out.println("영상URL : " + trailerURL);
 		
-		if(StillcutURL != null) {
-			visualMap.put("MVTitle", MVTitle);
-			visualMap.put("MVInfoSeq", MVInfoSeq);
-			visualMap.put("StillcutURL", StillcutURL);
+		if(!stillcutURL.equals("")) {
+			System.err.println("stillcut 입력");
+			stillcutMap.put("MVTitle", MVTitle);
+			stillcutMap.put("MVInfoSeq", MVInfoSeq);
+			stillcutMap.put("StillcutURL", stillcutURL);
 			
-			movieVisualService.insertStillcut(visualMap);
-		}else if(trailerURL != null) {
-			visualMap.put("MVTitle", MVTitle);
-			visualMap.put("MVInfoSeq", MVInfoSeq);
-			visualMap.put("trailerURL", trailerURL);
+			movieVisualService.insertStillcut(stillcutMap);
+		}else if(!trailerURL.equals("")) {
+			System.err.println("trailer 입력");
+			trailerMap.put("MVTitle", MVTitle);
+			trailerMap.put("MVInfoSeq", MVInfoSeq);
+			trailerMap.put("trailerURL", trailerURL);
 			
-			movieVisualService.insertTrailer(visualMap);
+			movieVisualService.insertTrailer(trailerMap);
 		}
 		
-		return "redirect:loadVisualItems.do";
+		return "redirect:reloadVisualItems.do";
+	}
+	
+	@RequestMapping("reloadVisualItems.do")
+	public ModelAndView reloadVisualItems(ModelAndView mv, HttpSession getVisualSession, 
+			Map<String, String> getVisualMap) {
+		getVisualMap = (Map<String, String>) getVisualSession.getAttribute("visualMap");
+		String MVTitle = getVisualMap.get("MVTitle");
+		String MVInfoSeq = getVisualMap.get("MVInfoSeq");
+		System.out.println("가져올 시퀀스 : " + MVInfoSeq);
+		
+		List<MovieVisualVo> movieStillcutList = new ArrayList<MovieVisualVo>();
+		List<MovieVisualVo> movieTrailerList = new ArrayList<MovieVisualVo>();
+		
+		movieStillcutList = movieVisualService.loadStillcut(MVInfoSeq);
+		System.out.println("movieStillcutList : " + movieStillcutList);
+		movieTrailerList = movieVisualService.loadTrailer(MVInfoSeq);
+		System.out.println("movieTrailerList : " + movieTrailerList);
+		
+		mv.addObject("resultStillcutList", movieStillcutList)
+		  .addObject("resultTrailerList", movieTrailerList)
+		  .setViewName("movieBoard/addVisualitems");
+		
+		return mv;
 	}
 	
 	@RequestMapping("searchReview.do")

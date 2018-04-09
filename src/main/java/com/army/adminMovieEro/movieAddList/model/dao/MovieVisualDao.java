@@ -7,6 +7,10 @@ import com.army.adminMovieEro.movieAddList.model.vo.MovieVisualVo;
 
 public interface MovieVisualDao {
 	public void insertStillcut(Map<String, String> stillcutMap);
+	
 	public void insertTrailer(Map<String, String> trailerMap);
-	public List<MovieVisualVo> loadVisualItems(String MVInfoSeq);
+	
+	public List<MovieVisualVo> loadStillcut(String MVInfoSeq);
+	
+	public List<MovieVisualVo> loadTrailer(String MVInfoSeq);
 }
