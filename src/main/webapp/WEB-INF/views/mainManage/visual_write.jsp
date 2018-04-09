@@ -32,36 +32,16 @@
 							<div class="span12">
 								<div class="table-toolbar" style="margin-bottom:14px;">
 									<div class="btn_board">
-										<!-- <a class="btn" href=""><i class="icon-eye-open"></i>목록</a> -->
+										<a class="btn" href=""><i class="icon-eye-open"></i>목록</a>
 										<!-- <a class="btn btn-inverse" href=""><i class="icon-refresh icon-white"></i>수정</a> -->
-										<a class="btn btn-primary" href=""><i class="icon-pencil icon-white"></i>추가</a>
-										<!-- <a class="btn btn-danger" href=""><i class="icon-remove icon-white"></i>삭제</a> -->
-									</div>
+										<a class="btn btn-primary" href=""><i class="icon-pencil icon-white"></i>확인</a>
+										<a class="btn btn-danger" href=""><i class="icon-remove icon-white"></i>삭제</a>
+									</div>	
 								</div>
-								<table id="movieListTable" border="0" class="table table-striped table-bordered">
-									<colgroup>
-										<col width="35%">
-										<col width="50%">
-										<col width="15%">
-									</colgroup>
-									<thead>
-										<tr>
-											<th>영화제목</th>
-											<th>이미지주소</th>
-											<th>등록여부</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr class="odd gradeX">
-									    	<td><a href="visualView.do">view페이지로 이동</a></td>
-									    	<td></td>
-									    	<td><input type="text" value="미등록" readOnly></td>
-										</tr>
-										<c:set var="movieListResult" value="${requestScope.movieList}" /> 
-										<c:forEach var="listMap" items="${movieListResult}">
-										</c:forEach>
-									</tbody>
-								</table>
+
+								<textarea name="ckeditorVisual" id="ckeditorVisual" rows="10" cols="80">
+								</textarea>
+
 							</div>
 						</div>
 					</div>
@@ -71,5 +51,10 @@
 		</form>
 	</div>
 </div>
-
+<script src="vendors/ckeditor/ckeditor.js"></script>
+<script>
+	CKEDITOR.replace('ckeditorVisual');
+	var ckContent = CKEDITOR.instances.ckeditorNoti
+	ckContent.getData();
+</script>
 <jsp:include page="../inc/footer.jsp" flush="false" />

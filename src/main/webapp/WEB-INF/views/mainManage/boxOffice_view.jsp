@@ -56,7 +56,7 @@
 									<tbody>
 										<tr class="odd gradeX">
 									 		<td><input type="checkbox" name="movieUniNumDel" value=""></td>
-									    	<td><a href="#">view페이지로 이동</a></td>
+									    	<td><a href="">test</a></td>
 									    	<td></td>
 									    	<td><input type="text" value="미등록" readOnly></td>
 										</tr>
