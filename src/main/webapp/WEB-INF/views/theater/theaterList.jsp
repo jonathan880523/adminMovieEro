@@ -88,7 +88,9 @@ div.wizard-navigation .nav-pills>li+li {
 									    	<td>${theater.RENTAL_SERVICE_POSITION}</td>
 									    	<td>${theater.RENTAL_SERVICE_PRICE}</td>
 									    	<td>${theater.RENTAL_SERVICE_INFO}</td>
-									    	<td><img id="table_imgbox" src="resources/images/theater/${theater.RENTAL_SERVICE_IMAGE}"  style="width: 200px; height: 100px;" /></td>
+									    	<td><img id="table_imgbox" src="resources/images/theater/${theater.RENTAL_SERVICE_IMAGE}"  style="width: 200px; height: 100px;" />
+									    	<input type="hidden" name = "RENTAL_SERVICE_IMAGE" value="${theater. RENTAL_SERVICE_IMAGE}">
+									    	</td>
 									    	<td>
 										 	<c:set var="theaterImage" value="${requestScope.theaterImage}"></c:set>
 											<c:forEach var="theaterImg" items="${theaterImage}">
@@ -96,6 +98,7 @@ div.wizard-navigation .nav-pills>li+li {
 											${theaterImg.RENTAL_SERVICE_OIMAGE}<br>
 											<a href="resources/images/theater/${theaterImg.RENTAL_SERVICE_IMAGE}" target="_blank">이미지보기</a>
 											<a href="fileDelete.do?file=${theaterImg.RENTAL_SERVICE_IMAGE}&num=${theaterImg.RENTAL_SERVICE_NO}">삭제하기</a>
+											<br>
 											</c:if>
 											</c:forEach>
 									    	</td>	

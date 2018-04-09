@@ -27,7 +27,6 @@ public class AddTheaterController {
 	
 	@RequestMapping("theaterList.do")
 	public ModelAndView goMain(ModelAndView mv, theaterVO board) {
-		
 		ArrayList<theaterVO> theaterlist = theaterServiceImpl.selectList();
 		ArrayList<theaterImageVo> theaterImage = theaterServiceImpl.selectImage();
 		mv.addObject("theaterlist",theaterlist).addObject("theaterImage",theaterImage).setViewName("theater/theaterList");
@@ -66,9 +65,14 @@ public class AddTheaterController {
 		return mv;
 	}
 	@RequestMapping("deledtTheater.do")
-	public ModelAndView deleteTheater(ModelAndView mv, HttpServletRequest request, @RequestParam("RENTAL_SERVICE_NO") int boardNum) {
-	
-	if(theaterServiceImpl.deleteBoard(boardNum)>0) {
+	public ModelAndView deleteTheater(ModelAndView mv, HttpServletRequest request, @RequestParam("RENTAL_SERVICE_NO") int boardNum, @RequestParam("RENTAL_SERVICE_IMAGE") String filename) {
+		ArrayList<theaterImageVo> deleteimg = theaterServiceImpl.selectImage(boardNum);
+		if(theaterServiceImpl.deleteBoard(boardNum)>0) {
+		new File("D:\\\\workspace\\\\adminMovieEro\\\\src\\\\main\\\\webapp\\\\resources\\\\images\\\\theater\\\\"+filename).delete();
+		System.out.println("크기"+deleteimg.size());
+		for(int i = 0; i<deleteimg.size(); i++) {
+			new File("D:\\\\workspace\\\\adminMovieEro\\\\src\\\\main\\\\webapp\\\\resources\\\\images\\\\theater\\\\"+deleteimg.get(i).getRENTAL_SERVICE_IMAGE()).delete();
+		}
 		mv.setViewName("redirect:theaterList.do");
 	}else {
 		mv.addObject("error", "등록실패!");

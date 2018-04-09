@@ -21,6 +21,10 @@
 	select * from rental_movie_image
 	</select>
 	
+	<select id="deleteImage" resultType="theaterImageVo">
+	select * from rental_movie_image where RENTAL_SERVICE_NO = #{RENTAL_SERVICE_NO}
+	</select>
+	
 	<delete id="deleteImg">
 	delete from rental_movie_image where RENTAL_SERVICE_IMAGE=#{RENTAL_SERVICE_IMAGE}
 	</delete>

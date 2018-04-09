@@ -21,12 +21,6 @@ public class theaterServiceImpl implements theaterService {
 	}
 
 	@Override
-	public theaterVO selectBoard(int boardNum) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public int insertBoard(theaterVO b) {
 		// TODO Auto-generated method stub
 		return theaterServiceImpl.insertBoard(b);
@@ -44,11 +38,6 @@ public class theaterServiceImpl implements theaterService {
 		return theaterServiceImpl.deleteBoard(boardNum);
 	}
 
-	@Override
-	public int getListCount() {
-		// TODO Auto-generated method stub
-		return theaterServiceImpl.getListCount();
-	}
 
 	@Override
 	public int insertImage(theaterImageVo b) {
@@ -65,6 +54,12 @@ public class theaterServiceImpl implements theaterService {
 	public int deleteBoard(String image) {
 		// TODO Auto-generated method stub
 		return theaterServiceImpl.deleteBoard(image);
+	}
+
+	@Override
+	public ArrayList<theaterImageVo> selectImage(int bnum) {
+		// TODO Auto-generated method stub
+		return theaterServiceImpl.selectImage(bnum);
 	}
 
 }
