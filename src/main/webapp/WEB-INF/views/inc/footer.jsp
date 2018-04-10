@@ -22,7 +22,8 @@
         <script src="vendors/wysiwyg/bootstrap-wysihtml5.js"></script>
 
         <script src="vendors/wizard/jquery.bootstrap.wizard.min.js"></script>
-
+		<!-- ckeditor 추가 -->
+		<script src="resources/api/ckeditor/ckeditor.js"></script>
 	<script type="text/javascript" src="vendors/jquery-validation/dist/jquery.validate.min.js"></script>
 	<script src="assets/form-validation.js"></script>
         
