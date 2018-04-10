@@ -40,7 +40,7 @@
 										<tr class="odd gradeX">
 											<%-- ${listMap.MV_INFO_SEQ}는 getMV_INFO_SEQ와 같다 --%>
 									 		<td><input type="checkbox" class="movieUniSeq" name="NOTICE_BOARD_NO" value="${listMap.NOTICE_BOARD_NO}"></td>
-									    	<td>${listMap.NOTICE_BOARD_TITLE}</td>
+									    	<td><a href="noticeModifyForm.do?NOTICE_BOARD_NO=${listMap.NOTICE_BOARD_NO}" id="modifyBtn">${listMap.NOTICE_BOARD_TITLE}</a></td>
 									    	<td>${listMap.MB_ID}</td>
 									    	<td id="noticeNO">${listMap.NOTICE_BOARD_DATE}</td>
 										</tr>
@@ -61,26 +61,24 @@
 	var formObj = $('form[role="form"]');
 
    $(document).ready(function(){
-   		//영화 추가 페이지로 이동
    		$("#insertMovieBtn").on('click', function(){
 		   		formObj.attr('action','${pageContext.request.contextPath}/noticeInsertForm.do');
 		   		formObj.attr('method','get');
 		   		formObj.submit();
    		});
    	
-   		//영화 목록에서 영화 삭제
    		$("#deleteBtn").on('click', function(){
 	   		formObj.attr('action','${pageContext.request.contextPath}/noticeDeleteForm.do');
 	   		formObj.attr('method','get');
 	   		formObj.submit();
    		});
    	
-	   	//영상 추가 목록으로 이동
-	   	$("#insertVisualItemsBtn").on('click', function(){
-	   		formObj.attr('action','${pageContext.request.contextPath}/loadVisualItems.do');
+	   /* 	//영상 추가 목록으로 이동
+	   	$("#modifyBtn").on('click', function(){
+	   		formObj.attr('action','${pageContext.request.contextPath}/noticeModifyForm.do');
 	   		formObj.attr('method','get');
 	   		formObj.submit();
-	   	});
+	   	}); */
    })
 </script>
 <jsp:include page="../inc/footer.jsp" flush="false" />

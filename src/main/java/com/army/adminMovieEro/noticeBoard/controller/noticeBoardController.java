@@ -171,18 +171,18 @@ public class noticeBoardController {
 		if(noticeVO != null) {
 			System.out.println("noticeModifyForm.do 실행후 들어갔나??"+noticeVO);
 			mv.addObject("noticeVO", noticeVO)
-			.setViewName("noticeBoard/noticeBoardModifyForm");
+			.setViewName("noticeBoard/noticeModifyForm");
 		}else {
 			System.out.println("수정하기 불러오기 실패");
 			mv.addObject("error","수정하기 폼 불러오기 실패")
 			//밑에 Admin은 User로 바꾸던가 조건문으로 권한에따라 다르게 바꿀것.
-			.setViewName("redirect:noticeBoardListAdmin.do");
+			.setViewName("redirect:noticeAdmin.do");
 		}
 		return mv;
 	}
 	
 	//수정 작업을 수행하는 컨트롤러
-	@RequestMapping(value = "noticeBoardModify.do")
+	@RequestMapping(value = "noticeModify.do")
 	public ModelAndView noticeBoardModify(HttpServletRequest request,
 			 ModelAndView mv, noticeVO noticeVO, @RequestParam("NOTICE_BOARD_NO") int NOTICE_BOARD_NO) {
 		System.out.println("noticeBoardModify 도착");
@@ -190,7 +190,7 @@ public class noticeBoardController {
 		System.out.println(noticeVO.getNOTICE_BOARD_CONTENT());
 		
 		if(NTService.modifyNoticeBoard(noticeVO) > 0) {
-			System.out.println("noticeBoardModify 쿼리문 실행 완료");
+			System.out.println("noticeModify 쿼리문 실행 완료");
 			System.out.println("수정 완료");
 			mv.setViewName("redirect:noticeAdmin.do");
 		}else {
