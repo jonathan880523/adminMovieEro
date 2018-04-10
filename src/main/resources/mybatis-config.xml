@@ -16,10 +16,7 @@
 		<typeAlias type="com.army.adminMovieEro.movieAddList.model.vo.MovieReviewVo" alias="MovieReviewVo"/>
 		<typeAlias type="com.army.adminMovieEro.movieAddList.model.vo.MovieDetailVo" alias="MovieDetailVo"/>
 		<typeAlias type="com.army.adminMovieEro.noticeBoard.model.vo.noticeVO" alias="noticeVO"/>
-		
-		<!-- <typeAlias type="com.army.movieEro.member.vo.MemberVO" alias="Member"/>
-		<typeAlias type="org.kh.firstSpring.notice.model.vo.Notice" alias="Notice"/>
-		<typeAlias type="org.kh.firstSpring.board.model.vo.Board" alias="Board"/> -->
+		<typeAlias type="com.army.adminMovieEro.mainManage.model.vo.VisualImageVO" alias="VisualImageVO"/>
 	</typeAliases>
 	
 	<mappers>
@@ -31,8 +28,6 @@
 		<mapper resource="mappers/movieReview-mapper.xml"/>
 		<mapper resource="mappers/movieDetail-mapper.xml"/>
 		<mapper resource="mappers/notice-mapper.xml"/>
- 		<!-- <mapper resource="mappers/member-mapper.xml"/>
-		<mapper resource="mappers/notice-mapper.xml"/>
-		<mapper resource="mappers/board-mapper.xml"/> -->
+		<mapper resource="mappers/mainManage-mapper.xml"/>
 	</mappers>
 </configuration>
