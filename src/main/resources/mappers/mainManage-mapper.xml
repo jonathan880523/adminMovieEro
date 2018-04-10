@@ -5,7 +5,7 @@
 <mapper namespace="mainManage">
 	
 	<!-- 비주얼 이미지 관리 -->
-	<insert id="create">
+	<insert id="createVisual">
 	insert into ADMIN_VISUAL(img_num, movie_title, img_url) 
 	values(#{img_num}, #{movie_title}, #{img_url})
 	</insert>

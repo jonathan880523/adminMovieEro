@@ -17,32 +17,27 @@ public class VisualImageDaoImpl implements VisualImageDao {
 	
 	@Override
 	public void create(VisualImageVO vo) throws Exception {
-		// TODO Auto-generated method stub
-		
+		session.insert("mainManage.createVisual", vo);
 	}
 
 	@Override
 	public VisualImageVO read(Integer img_num) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return session.selectOne("mainManage.readVisual", img_num);
 	}
 
 	@Override
 	public void update(VisualImageVO vo) throws Exception {
-		// TODO Auto-generated method stub
-		
+		session.update("mainManage.updateVisual", vo);
 	}
 
 	@Override
 	public void delete(Integer img_num) throws Exception {
-		// TODO Auto-generated method stub
-		
+		session.delete("mainManage.deleteVisual", img_num);
 	}
 
 	@Override
 	public List<VisualImageVO> listAll() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return session.selectList("mainManage.listAllVisual");
 	}
 
 }
