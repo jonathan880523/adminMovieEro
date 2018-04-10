@@ -21,8 +21,8 @@ public class VisualImageServiceImpl implements VisualImageService {
 	}
 
 	@Override
-	public VisualImageVO read(Integer img_num) throws Exception {
-		return visualImageDao.read(img_num);
+	public VisualImageVO read(int img_no) throws Exception {
+		return visualImageDao.read(img_no);
 	}
 
 	@Override
@@ -31,7 +31,7 @@ public class VisualImageServiceImpl implements VisualImageService {
 	}	
 	
 	@Override
-	public void remove(Integer img_num) throws Exception {
+	public void remove(int img_num) throws Exception {
 		visualImageDao.delete(img_num);
 	}
 

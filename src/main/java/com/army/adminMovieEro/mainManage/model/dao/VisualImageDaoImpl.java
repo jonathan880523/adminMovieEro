@@ -21,7 +21,7 @@ public class VisualImageDaoImpl implements VisualImageDao {
 	}
 
 	@Override
-	public VisualImageVO read(Integer img_num) throws Exception {
+	public VisualImageVO read(int img_num) throws Exception {
 		return session.selectOne("mainManage.readVisual", img_num);
 	}
 
@@ -31,8 +31,8 @@ public class VisualImageDaoImpl implements VisualImageDao {
 	}
 
 	@Override
-	public void delete(Integer img_num) throws Exception {
-		session.delete("mainManage.deleteVisual", img_num);
+	public void delete(int img_no) throws Exception {
+		session.delete("mainManage.deleteVisual", img_no);
 	}
 
 	@Override

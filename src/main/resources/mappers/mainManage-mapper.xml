@@ -6,27 +6,27 @@
 	
 	<!-- 비주얼 이미지 관리 -->
 	<insert id="createVisual">
-	insert into ADMIN_VISUAL(img_num, movie_title, img_url) 
-	values(#{img_num}, #{movie_title}, #{img_url})
+	insert into ADMIN_VISUAL(img_no, movie_title, img_url) 
+	values(visual_sq.nextVal, #{movie_title}, #{img_url})
 	</insert>
 
-	<select id="readVisual">
-	select * from ADMIN_VISUAL where img_num = #{img_num}
+	<select id="readVisual" resultType="VisualImageVO">
+	select * from ADMIN_VISUAL where img_no = #{img_no}
 	</select>
 
 	<update id="updateVisual">
 	update ADMIN_VISUAL set movie_title=#{movie_title}, img_url=#{img_url}
-	where img_num = #{img_num}
+	where img_no = #{img_no}
 	</update>
 
 	<delete id="deleteVisual">
-	delete from ADMIN_VISUAL where img_num = #{img_num}
+	delete from ADMIN_VISUAL where img_no = #{img_no}
 	</delete>
 
-	<select id="listAllVisual">
+	<select id="listAllVisual" resultType="VisualImageVO">
 	<![CDATA[
-	select * from ADMIN_VISUAL where img_num > 0 
-	order by img_num desc
+	select * from ADMIN_VISUAL where img_no > 0 
+	order by img_no desc
 	]]>
 	</select>
 	
