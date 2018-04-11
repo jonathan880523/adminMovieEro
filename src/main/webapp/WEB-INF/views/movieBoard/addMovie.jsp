@@ -18,7 +18,7 @@
                                         <div class="navbar">
                                           <div class="navbar-inner">
                                             <div class="container">
-                                        <ul>
+                                        <ul class="movie_nav_sel">
                                             <li><a href="#tab1" data-toggle="tab">영화 검색 옵션</a></li>
                                             <li><a href="#tab2" data-toggle="tab">영화 선택</a></li>
                                             <li><a href="#tab3" data-toggle="tab">결과</a></li>
@@ -259,7 +259,7 @@ jQuery(document).ready(function() {
               					value : index, 
               				}).html(item.title + " / " + item.director)
               				  .appendTo("#allMovieList");
-              				console.log(index)
+              				console.log(index);
               			});
               			
               			if(ajaxResult.items.length > 0){

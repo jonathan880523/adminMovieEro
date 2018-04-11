@@ -27,7 +27,7 @@
                                   <button type="button" id="addStillcutBtn" class="btn btn-primary">추가<i class="icon-inbox icon-white"></i></button>
                                </div>
                                <div class="btn-group span8">
-                				  		<input type="text" id="stillcutURL" name="stillcutURL" class="span12" placeholder="스틸컷 URL을 입력해주세요(enter)" value="">	
+                				  		<input type="text" id="stillcutURL" name="stillcutURL" class="span12" placeholder="스틸컷URL을 입력해주세요(enter)" value="">	
                                </div>
                             </div>
                              
