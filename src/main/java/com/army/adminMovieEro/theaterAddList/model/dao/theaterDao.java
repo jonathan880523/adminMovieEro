@@ -12,8 +12,6 @@ public interface theaterDao {
 
 	public ArrayList<theaterVO> selectList();
 	
-	public theaterVO selectBoard(int boardNum);
-	
 	public ArrayList<theaterImageVo> selectImage();
 	
 	public int insertBoard(theaterVO b);
@@ -24,8 +22,9 @@ public interface theaterDao {
 	
 	public int deleteBoard(int boardNum);
 	
+	public ArrayList<theaterImageVo> selectImage(int bnum);
+	
 	public int deleteBoard(String image);
 	
-	public int getListCount();
 	
 }

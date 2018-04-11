@@ -41,7 +41,7 @@ location.href="./logOut.do"
 	         <a href="theaterList.do"><i class="icon-chevron-right"></i>영화관 목록</a>
 	     </li>
 	     <li>
-	         <a href="#"><i class="icon-chevron-right"></i>공지사항 목록</a>
+	         <a href="noticeAdmin.do"><i class="icon-chevron-right"></i>공지사항 목록</a>
 	     </li>
 	     <li>
 	         <a href="#"><i class="icon-chevron-right"></i>회원정보 목록</a>

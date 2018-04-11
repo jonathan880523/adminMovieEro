@@ -11,8 +11,6 @@ public interface theaterService {
 	
 	public ArrayList<theaterImageVo> selectImage();
 	
-	public theaterVO selectBoard(int boardNum);
-	
 	public int insertBoard(theaterVO b);
 	
 	public int insertImage(theaterImageVo b);
@@ -21,7 +19,7 @@ public interface theaterService {
 	
 	public int deleteBoard(int boardNum);
 	
-	public int getListCount();
-	
 	public int deleteBoard(String image);
+	
+	public ArrayList<theaterImageVo> selectImage(int bnum);
 }

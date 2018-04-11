@@ -21,11 +21,6 @@ public class theaterDaoImpl implements theaterDao {
 		return new ArrayList<theaterVO>(sqlSession.selectList("TheaterVo.selectList"));
 	}
 
-	@Override
-	public theaterVO selectBoard(int boardNum) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public int insertBoard(theaterVO b) {
@@ -44,11 +39,6 @@ public class theaterDaoImpl implements theaterDao {
 		return sqlSession.delete("TheaterVo.deledtList",boardNum);
 	}
 
-	@Override
-	public int getListCount() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
 	@Override
 	public int insertImage(theaterImageVo b) {
@@ -66,6 +56,13 @@ public class theaterDaoImpl implements theaterDao {
 	public int deleteBoard(String image) {
 		// TODO Auto-generated method stub
 		return sqlSession.delete("TheaterVo.deleteImg",image);
+	}
+
+
+	@Override
+	public ArrayList<theaterImageVo> selectImage(int bnum) {
+		// TODO Auto-generated method stub
+		return new ArrayList<theaterImageVo>(sqlSession.selectList("TheaterVo.deleteImage",bnum));
 	}
 
 }

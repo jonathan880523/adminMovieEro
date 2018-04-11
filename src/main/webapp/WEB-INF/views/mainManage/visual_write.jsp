@@ -13,14 +13,14 @@
 <div class="container-fluid">
 	<div class="row-fluid">
 	    <!-- form -->
-		<form role="form">
+		<form role="form" method="POST" action="visualWrite.do">
 		 <!--/span-->
 			<div class="span9" id="content">
 				<div class="row-fluid">
 				   	<!-- block -->
 					<div class="block">
 					    <div class="navbar navbar-inner block-header">
-					        <div class="muted pull-left">메인화면 리스트</div>
+					        <div class="muted pull-left">비주얼이미지 등록</div>
 					    </div>
 					    <div class="tab_menu">
 					    	<ul class="cf">
@@ -32,15 +32,23 @@
 							<div class="span12">
 								<div class="table-toolbar" style="margin-bottom:14px;">
 									<div class="btn_board">
-										<a class="btn" href=""><i class="icon-eye-open"></i>목록</a>
+										<a class="btn" href="visualList.do"><i class="icon-eye-open"></i>목록</a>
 										<!-- <a class="btn btn-inverse" href=""><i class="icon-refresh icon-white"></i>수정</a> -->
-										<a class="btn btn-primary" href=""><i class="icon-pencil icon-white"></i>확인</a>
+										<button class="btn btn-primary" type="submit"><i class="icon-pencil icon-white"></i>등록</button>
 										<a class="btn btn-danger" href=""><i class="icon-remove icon-white"></i>삭제</a>
 									</div>	
 								</div>
 
-								<textarea name="ckeditorVisual" id="ckeditorVisual" rows="10" cols="80">
-								</textarea>
+								<ul>
+									<li><input type="text" name="movie_title" /></li>
+									<li><input type="file" name="img_url" /></li>
+									<li>
+										<label for="isAddY">등록 <input type="radio" id="isAddY" name="is_add" value="y" /></label>
+										<label for="isAddN">미등록  <input type="radio" id="isAddN" name="is_add" value="n" checked="checked" /></label>
+									</li>
+								</ul>								
+								
+								<!-- <textarea name="ckeditorVisual" id="ckeditorVisual" rows="10" cols="80"></textarea> -->
 
 							</div>
 						</div>
@@ -53,8 +61,10 @@
 </div>
 <script src="vendors/ckeditor/ckeditor.js"></script>
 <script>
+/*
 	CKEDITOR.replace('ckeditorVisual');
 	var ckContent = CKEDITOR.instances.ckeditorNoti
 	ckContent.getData();
+*/
 </script>
 <jsp:include page="../inc/footer.jsp" flush="false" />
