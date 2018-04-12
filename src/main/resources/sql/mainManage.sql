@@ -13,7 +13,7 @@ create table admin_visual(
 	img_no number PRIMARY KEY,
 	movie_title varchar2(300),
 	img_url varchar2(300),
-    reg_date date,
+    reg_date date DEFAULT sysdate,
 	is_add varchar2(1) DEFAULT 'n'
 );
 

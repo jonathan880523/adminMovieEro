@@ -29,7 +29,14 @@
 		<beans:property name="contentType" value="text/html; charset=UTF-8"/>
 	</beans:bean>
 	
+	<!-- 업로드 파일 10메가로 제한 -->
 	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<beans:property name="maxUploadSize" value="10485760"></beans:property>
+	</beans:bean>
+
+	<!-- 업로드 경로 설정 : 경로에 해당 폴더를 생성해 놓을것 -->
+	<beans:bean id="uploadPath" class="java.lang.String">
+		<beans:constructor-arg value="C:\\uploadTest\\upload"></beans:constructor-arg>
 	</beans:bean>
 	
 	<context:component-scan base-package="com.army.adminMovieEro" />
