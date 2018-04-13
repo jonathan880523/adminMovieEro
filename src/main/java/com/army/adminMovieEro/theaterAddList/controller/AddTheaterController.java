@@ -14,15 +14,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.army.adminMovieEro.theaterAddList.model.dao.theaterDaoImpl;
+import com.army.adminMovieEro.theaterAddList.model.service.theaterServiceImpl;
 import com.army.adminMovieEro.theaterAddList.model.vo.theaterImageVo;
 import com.army.adminMovieEro.theaterAddList.model.vo.theaterVO;
-
 
 @Controller
 public class AddTheaterController {
 
-	@Autowired theaterDaoImpl theaterServiceImpl;
+	@Autowired 
+	private theaterServiceImpl theaterServiceImpl;
 	
 	
 	@RequestMapping("theaterList.do")

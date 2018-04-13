@@ -3,6 +3,7 @@ package com.army.adminMovieEro.theaterAddList.model.dao;
 import java.util.ArrayList;
 
 import org.apache.ibatis.session.SqlSession;
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -13,18 +14,16 @@ import com.army.adminMovieEro.theaterAddList.model.vo.theaterVO;
 public class theaterDaoImpl implements theaterDao {
 
 	@Autowired
-	SqlSession sqlSession;
+	private SqlSessionTemplate sqlSession;
 	
 	@Override
 	public ArrayList<theaterVO> selectList() {
-		// TODO Auto-generated method stub
 		return new ArrayList<theaterVO>(sqlSession.selectList("TheaterVo.selectList"));
 	}
 
 
 	@Override
 	public int insertBoard(theaterVO b) {
-		// TODO Auto-generated method stub
 		return sqlSession.insert("TheaterVo.insertList",b);
 	}
 
@@ -42,26 +41,22 @@ public class theaterDaoImpl implements theaterDao {
 
 	@Override
 	public int insertImage(theaterImageVo b) {
-		// TODO Auto-generated method stub
 		return sqlSession.insert("TheaterVo.insertImage",b);
 	}
 
 	@Override
 	public ArrayList<theaterImageVo> selectImage() {
-		// TODO Auto-generated method stub
 		return new ArrayList<theaterImageVo>(sqlSession.selectList("TheaterVo.selectImage"));
 	}
 
 	@Override
 	public int deleteBoard(String image) {
-		// TODO Auto-generated method stub
 		return sqlSession.delete("TheaterVo.deleteImg",image);
 	}
 
 
 	@Override
 	public ArrayList<theaterImageVo> selectImage(int bnum) {
-		// TODO Auto-generated method stub
 		return new ArrayList<theaterImageVo>(sqlSession.selectList("TheaterVo.deleteImage",bnum));
 	}
 

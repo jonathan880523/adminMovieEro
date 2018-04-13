@@ -12,54 +12,48 @@ import com.army.adminMovieEro.theaterAddList.model.vo.theaterVO;
 @Service("theaterServiceImpl")
 public class theaterServiceImpl implements theaterService {
 	
-	@Autowired theaterDaoImpl theaterServiceImpl;
+	@Autowired 
+	private theaterDaoImpl theaterDaoImpl;
 	
 	@Override
 	public ArrayList<theaterVO> selectList() {
-		// TODO Auto-generated method stub
-		return theaterServiceImpl.selectList();
+		return theaterDaoImpl.selectList();
 	}
 
 	@Override
 	public int insertBoard(theaterVO b) {
-		// TODO Auto-generated method stub
-		return theaterServiceImpl.insertBoard(b);
+		return theaterDaoImpl.insertBoard(b);
 	}
 
 	@Override
 	public int updateBoard(theaterVO b) {
-		// TODO Auto-generated method stub
-		return theaterServiceImpl.updateBoard(b);
+		return theaterDaoImpl.updateBoard(b);
 	}
 
 	@Override
 	public int deleteBoard(int boardNum) {
-		// TODO Auto-generated method stub
-		return theaterServiceImpl.deleteBoard(boardNum);
+		return theaterDaoImpl.deleteBoard(boardNum);
 	}
 
 
 	@Override
 	public int insertImage(theaterImageVo b) {
-		// TODO Auto-generated method stub
-		return theaterServiceImpl.insertImage(b);
+		return theaterDaoImpl.insertImage(b);
 	}
 
 	@Override
 	public ArrayList<theaterImageVo> selectImage() {
-		return theaterServiceImpl.selectImage();
+		return theaterDaoImpl.selectImage();
 	}
 
 	@Override
 	public int deleteBoard(String image) {
-		// TODO Auto-generated method stub
-		return theaterServiceImpl.deleteBoard(image);
+		return theaterDaoImpl.deleteBoard(image);
 	}
 
 	@Override
 	public ArrayList<theaterImageVo> selectImage(int bnum) {
-		// TODO Auto-generated method stub
-		return theaterServiceImpl.selectImage(bnum);
+		return theaterDaoImpl.selectImage(bnum);
 	}
 
 }

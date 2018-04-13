@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.army.adminMovieEro.theaterAddList.model.vo.theaterImageVo;
 import com.army.adminMovieEro.theaterAddList.model.vo.theaterVO;
 
-@RequestMapping
 public interface theaterDao {
 
 	public ArrayList<theaterVO> selectList();
