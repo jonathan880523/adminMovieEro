@@ -9,4 +9,9 @@
 		SELECT ADMIN_ID, ADMIN_PW FROM ADMIN_MEMBER 
 		WHERE ADMIN_ID = #{ADMIN_ID}
 	</select>
+	
+	<select id="getPosition" parameterType="string" resultType="AdminMemberVo">
+		SELECT * FROM ADMIN_MEMBER 
+		WHERE ADMIN_ID = #{ADMIN_ID}
+	</select>
 </mapper>

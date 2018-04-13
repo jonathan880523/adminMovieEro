@@ -32,9 +32,9 @@
 										<tr>
 											<th><input type="checkbox"></th>
 											<th>제목</th>
-											<th>감독</th>
 											<th>제작년도</th>
-											<th>등록여부</th>
+											<th>감독</th>
+											<th>배우</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -44,9 +44,9 @@
 											<!-- ${listMap.MV_INFO_SEQ}는 getMV_INFO_SEQ와 같다 -->
 									 		<td><input type="checkbox" class="movieUniSeq" name="movieUniNumDel" value="${listMap.MV_INFO_SEQ}"></td>
 									    	<td>${listMap.MV_TITLE}</td>
-									    	<td>${listMap.MV_DIRECTOR}</td>
 									    	<td>${listMap.MV_PUB_DATE}</td>
-									    	<td><input type="text" value="미등록" readOnly></td>
+									    	<td>${listMap.MV_DIRECTOR}</td>
+									    	<td>${listMap.MV_ACTOR}</td>
 									    	<input type="hidden" name="MVLink" value="${listMap.MV_LINK}">
 										</tr>
 									</c:forEach>

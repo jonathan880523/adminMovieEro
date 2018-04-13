@@ -177,7 +177,7 @@
                                                     	<input class="input-xlarge focused" id="resultImage" name="resultImage" type="hidden" value="" readOnly>
                                                     </div>
                                                   </fieldset>
-                                                  <input type="submit" class="btn btn-primary" value="전송">
+                                                  <input type="submit" class="btn btn-primary sj-submit" value="전송">
                                                 </form>
                                             </div>
                                             <ul class="pager wizard">
@@ -185,7 +185,7 @@
                                                 <li class="previous"><a href="javascript:void(0);">Previous</a></li>
                                                 <li class="next last" style="display:none;"><a href="javascript:void(0);">Last</a></li>
                                                 <li class="next"><a href="javascript:void(0);">Next</a></li>
-                                                <li class="next finish" style="display:none;"><a href="javascript:">Finish</a></li>
+                                                <%-- <li class="next finish" style="display:none;"><a type="submit" id="submitAnchor" href="${pageContext.request.contextPath}/insertMovie.do">Finish</a></li> --%>
                                             </ul>
                                         </div>  
                                     </div>
@@ -278,9 +278,6 @@ jQuery(document).ready(function() {
               			
                		alert("code:"+request.status+"\n"+
                				"message:"+request.responseText+"\n"+"error:"+error);
-               	},
-               	complete : function(data){
-               		
                	}
                });
            });

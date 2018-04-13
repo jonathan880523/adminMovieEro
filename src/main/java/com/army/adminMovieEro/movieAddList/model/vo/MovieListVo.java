@@ -9,14 +9,14 @@ public class MovieListVo {
 	private String MV_USER_RATING;
 	private String MV_LINK;
 	private String MV_IMAGE;
-	private int MV_INFO_SEQ;
+	private String MV_INFO_SEQ;
 
 	public MovieListVo() {
 		super();
 	}
 
 	public MovieListVo(String mV_TITLE, String mV_SUB_TITLE, String mV_PUB_DATE, String mV_DIRECTOR, String mV_ACTOR,
-			String mV_USER_RATING, String mV_LINK, String mV_IMAGE, int mV_INFO_SEQ) {
+			String mV_USER_RATING, String mV_LINK, String mV_IMAGE, String mV_INFO_SEQ) {
 		super();
 		MV_TITLE = mV_TITLE;
 		MV_SUB_TITLE = mV_SUB_TITLE;
@@ -93,11 +93,11 @@ public class MovieListVo {
 		MV_IMAGE = mV_IMAGE;
 	}
 
-	public int getMV_INFO_SEQ() {
+	public String getMV_INFO_SEQ() {
 		return MV_INFO_SEQ;
 	}
 
-	public void setMV_INFO_SEQ(int mV_INFO_SEQ) {
+	public void setMV_INFO_SEQ(String mV_INFO_SEQ) {
 		MV_INFO_SEQ = mV_INFO_SEQ;
 	}
 

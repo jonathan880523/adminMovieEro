@@ -31,4 +31,11 @@ public class LoginDaoImpl implements LoginDao {
 		
 	}
 
+	@Override
+	public AdminMemberVo loadPosition(String ADMIN_ID) {
+		AdminMemberVo getPosition = new AdminMemberVo();
+		getPosition = sqlSession.selectOne("AdminMemberVo.getPosition", ADMIN_ID);
+		return getPosition;
+	}
+
 }

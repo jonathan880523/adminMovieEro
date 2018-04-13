@@ -22,7 +22,6 @@ public class MovieReviewServiceImpl implements MovieReviewService {
 	@Override
 	public List<MovieReviewVo> loadReview() {
 		System.out.println("Service loadReview 실행.................");
-		
 		return movieReviewDao.loadReview();
 	}
 	
@@ -39,6 +38,12 @@ public class MovieReviewServiceImpl implements MovieReviewService {
 			return resultDeleteReview;
 		}
 		
+	}
+
+	@Override
+	public List<MovieReviewVo> loadSpecificReview(String MVInfoSeq) {
+		System.out.println("Service loadSpecificReview 실행.................");
+		return movieReviewDao.loadSpecificReview(MVInfoSeq);
 	};
 
 }

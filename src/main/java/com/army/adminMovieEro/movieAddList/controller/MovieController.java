@@ -57,6 +57,63 @@ public class MovieController {
 	MovieDetailServie movieDetailServie;
 
 	public static final Logger logger = LoggerFactory.getLogger(MovieController.class);
+	
+	@RequestMapping(value="/main.do")
+	public ModelAndView goMain(ModelAndView mv) {
+		
+		System.out.println("main.do 도착....................");
+		List<MovieListVo> mainMovieList = new ArrayList<MovieListVo>();
+		mainMovieList = movieListService.loadMovieList();
+		System.out.println("mainMovieList : " + mainMovieList);
+		List<MovieVisualVo> movieStillcutList = new ArrayList<MovieVisualVo>();
+		List<MovieVisualVo> movieTrailerList = new ArrayList<MovieVisualVo>();
+		List<MovieReviewVo> reviewList = new ArrayList<MovieReviewVo>();
+		List<Map<String, Object>> movieInfoList = new ArrayList<Map<String, Object>>();
+		String movieName = null;
+		int stillcutSize = 0;
+		int trailerSize = 0;
+		int reviewSize = 0;
+		
+		for(int i = 0; i < mainMovieList.size(); i++) {
+			//리스트 불러오기
+			mainMovieList = movieListService.loadMovieList();
+			//i번째 이름 불러오기
+			movieName = mainMovieList.get(i).getMV_TITLE();
+			System.out.println("movieName : " + movieName);
+			//i번째 영화 시퀀스 불러오기
+			String MVInfoSeq =  mainMovieList.get(i).getMV_INFO_SEQ();
+			System.out.println("찾을 seq : " + MVInfoSeq);
+			//스틸컷 가져와서 사이즈 구하기
+			movieStillcutList = movieVisualService.loadStillcut(MVInfoSeq);
+			stillcutSize = movieStillcutList.size();
+			//트레일러 가져와서 사이즈 구하기
+			movieTrailerList = movieVisualService.loadTrailer(MVInfoSeq);
+			trailerSize = movieTrailerList.size();
+			//리뷰 가져와서 사이즈 구하기
+			reviewList = movieReviewService.loadSpecificReview(MVInfoSeq);
+			reviewSize = reviewList.size();
+			//영화 정보 맵에 넣기
+			Map<String, Object> movieMainMap = new HashMap<String, Object>();
+			movieMainMap.put("MVTItle", movieName);
+			movieMainMap.put("stillcutSize", stillcutSize);
+			movieMainMap.put("trailerSize", trailerSize);
+			movieMainMap.put("reviewSize", reviewSize);
+			System.out.println("movieMainMap.toString() : " + movieMainMap.toString());
+			//맵 리스트에 담기
+			movieInfoList.add(i, movieMainMap);
+			//자료 두 개 비교하기
+			System.out.println("movieInfoList.get(i).toString()" + movieInfoList.get(i).toString());
+			System.out.println("true or false? : " + movieMainMap.toString().equals(movieInfoList.get(i).toString()));
+		}
+		for(int i = 0; i < movieInfoList.size(); i++) {
+			//리스트에 담긴 아이템 자료 출력
+			System.out.println("movieInfoList.get("+i+").toString() : " + movieInfoList.get(i).toString());
+		}
+		
+		mv.addObject("movieInfoList", movieInfoList).setViewName("main/index");
+		
+		return mv;
+	}
 
 	// 영화 추가 controller
 	@RequestMapping(value = "addMovie.do")
@@ -189,9 +246,9 @@ public class MovieController {
 
 		insertResultMovieService.insertResultMovie(resultMap);
 		movieList = movieListService.loadMovieList();
-		int sessionSeq = movieList.get(0).getMV_INFO_SEQ();
+		String sessionSeq = movieList.get(0).getMV_INFO_SEQ();
 		String sessionLink = movieList.get(0).getMV_LINK();
-		sessionMap.put("sessionSeq", Integer.toString(sessionSeq));
+		sessionMap.put("sessionSeq", sessionSeq);
 		sessionMap.put("sessionLink", sessionLink);
 		getMVInfoMap.setAttribute("sessionMap", sessionMap);
 		if(getMVInfoMap != null) {
@@ -377,14 +434,14 @@ public class MovieController {
 		System.out.println("추가할 link : " + MovieLink);
 		List list = new ArrayList();
 		try {
+			Map<String, String> MovieDetailMap = new HashMap<String, String>();
 			Document doc = Jsoup.connect(MovieLink).get();
 
 			Element MVTitle = doc.select(".h_movie a:eq(0)").get(0);
 			Elements MVTitles = MVTitle.select("a");
 			for(Element e : MVTitles) {
-				list.add(e.text());
+				MovieDetailMap.put("MVTitle", e.text());
 			}
-			
 			Element summaryValue = doc.select(".info_spec .step1+dd").get(0);
 			Elements summaryValues = summaryValue.select("span");
 			for(Element e : summaryValues) {
@@ -394,51 +451,34 @@ public class MovieController {
 			Element directorValue = doc.select(".info_spec .step2+dd p").get(0);
 			Elements directorValues = directorValue.select("a");
 			for(Element e : directorValues) {
-				list.add(e.text());
+				MovieDetailMap.put("director", e.text());
 			}
 			
 			Element actorValue = doc.select(".info_spec .step3+dd").get(0);
 			Elements actorValues = actorValue.select("p");
 			for(Element e : actorValues) {
-				list.add(e.text());
+				MovieDetailMap.put("actor", e.text());
 			}
 			
 			Element gradeValue = doc.select(".info_spec .step4+dd p").get(0);
 			Elements gradeValues = gradeValue.select("a");
 			for(Element e : gradeValues) {
-				list.add(e.text());
+				MovieDetailMap.put("grade", e.text());
 			}
 			
 			Element storyValue = doc.select(".story_area").get(0);
 			Elements storyValues = storyValue.select("p");
 			for(Element e : storyValues) {
-				list.add(e.text());
+				MovieDetailMap.put("story", e.text());
 			}
 			
-			//String으로 casting
-			String setMVTitle = (String) list.get(0);
-			String genre = (String)list.get(1);
-			String country = (String)list.get(2);
-			String runtime = (String)list.get(3);
-			String releaseDate = (String)list.get(4);
-			String director = (String)list.get(5);
-			String actor = (String)list.get(6);
-			String grade = (String)list.get(7);
-			String story = (String)list.get(8);
-			
-			Map<String, String> MovieDetailMap = new HashMap<String, String>();
-			MovieDetailMap.put("MVInfoSeq", movieUniNum);
+			MovieDetailMap.put("genre", (String) list.get(0));
+			MovieDetailMap.put("country", (String) list.get(1));
+			MovieDetailMap.put("runtime", (String) list.get(2));
+			MovieDetailMap.put("releaseDate", (String) list.get(3));
 			MovieDetailMap.put("MovieLink", MovieLink);
-			MovieDetailMap.put("MVTitle", setMVTitle);
-			MovieDetailMap.put("genre", genre);
-			MovieDetailMap.put("country", country);
-			MovieDetailMap.put("runtime", runtime);
-			MovieDetailMap.put("releaseDate", releaseDate);
-			MovieDetailMap.put("director", director);
-			MovieDetailMap.put("actor", actor);
-			MovieDetailMap.put("grade", grade);
-			MovieDetailMap.put("story", story);
-			System.out.println("중간 중간");
+			MovieDetailMap.put("MVInfoSeq", movieUniNum);
+			
 			System.out.println("map의 사이즈 : " + MovieDetailMap.size());
 			
 			int result = movieDetailServie.addMovieDetail(MovieDetailMap);

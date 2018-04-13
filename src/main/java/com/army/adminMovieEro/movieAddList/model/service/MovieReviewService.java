@@ -8,5 +8,6 @@ public interface MovieReviewService {
 
 	public List<MovieReviewVo> searchReview(String MVTitle);
 	public List<MovieReviewVo> loadReview();
+	public List<MovieReviewVo> loadSpecificReview(String MVInfoSeq);
 	public boolean deleteReview(int reviewSeq);
 }

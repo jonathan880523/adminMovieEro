@@ -31,4 +31,10 @@ public class MovieReviewDaoImpl implements MovieReviewDao {
 		return sqlSession.delete("Review.deleteReview", reviewSeq);
 	}
 
+	@Override
+	public List<MovieReviewVo> loadSpecificReview(String MVInfoSeq) {
+		System.out.println("Dao loadSpecificReview 실행..................");
+		return sqlSession.selectList("Review.loadSpecificReviewList", MVInfoSeq);
+	}
+
 }

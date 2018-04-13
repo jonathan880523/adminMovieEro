@@ -11,10 +11,5 @@ public class MainIndex {
 
 	private static final Logger logger = LoggerFactory.getLogger(MainIndex.class);
 	
-	@RequestMapping(value="/main.do")
-	public String goMain() {
-		logger.info("MainIndex 도착....................");
-		
-		return "main/index";
-	}
+	
 }

@@ -12,6 +12,10 @@
 		SELECT * FROM MOVIE_REVIEW
 	</select>
 	
+	<select id="loadSpecificReviewList" resultType="MovieReviewVo">
+		SELECT * FROM MOVIE_REVIEW WHERE MV_INFO_SEQ = #{MVInfoSeq}
+	</select>
+	
 	<delete id="deleteReview">
 		DELETE FROM MOVIE_REVIEW WHERE MV_RV_SEQ = #{reviewSeq}
 	</delete>
