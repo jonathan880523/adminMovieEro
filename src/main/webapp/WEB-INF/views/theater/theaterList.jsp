@@ -129,9 +129,13 @@ $(document).ready(function(){
 	
 		//영화관 목록 삭제
 		$("#deleteBtn").on('click', function(){
+			if($('input:checkbox[name="RENTAL_SERVICE_NO"]').is(":checked") == false){
+	   			alert("삭제할 영화관을 선택해주세요")}
+		else{
    		formObj.attr('action','${pageContext.request.contextPath}/deledtTheater.do');
    		formObj.attr('method','post');
    		formObj.submit();
+	   		}
 		});
 	   	//이미지 추가 
    	$("#insertVisualItemsBtn").on('click', function(){

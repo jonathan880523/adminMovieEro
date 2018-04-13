@@ -98,13 +98,13 @@ public class AddTheaterController {
 			     theaterServiceImpl.insertImage(board);
 		 		}catch(IOException e){
 		 			e.printStackTrace();
-		 		}
+		 		}		
 			    return "redirect:theaterList.do";
 	    }
 	 @RequestMapping("fileDelete.do")   
 	 public String deleteImage(@RequestParam(value = "file", required = false) String file,
 			 @RequestParam("num") int bnum,theaterImageVo board)throws Exception {
-		 		new File("D:\\\\workspace\\\\adminMovieEro\\\\src\\\\main\\\\webapp\\\\resources\\\\images\\\\theater\\\\"+file).delete();
+		 		new File("D:\\workspace\\adminMovieEro\\src\\main\\webapp\\resources\\images\\theater\\"+file).delete();
 		 		theaterServiceImpl.deleteBoard(file);
 		 		return "redirect:theaterList.do";
 	    }
