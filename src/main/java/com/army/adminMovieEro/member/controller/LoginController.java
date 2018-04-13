@@ -53,6 +53,7 @@ public class LoginController {
 			return mv;
 		}else {
 			session.invalidate();
+			System.out.println("세션 종료");
 			mv.setViewName("redirect:/");
 			return mv;
 		}

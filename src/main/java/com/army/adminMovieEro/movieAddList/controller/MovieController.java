@@ -60,7 +60,6 @@ public class MovieController {
 	
 	@RequestMapping(value="/main.do")
 	public ModelAndView goMain(ModelAndView mv) {
-		
 		System.out.println("main.do 도착....................");
 		List<MovieListVo> mainMovieList = new ArrayList<MovieListVo>();
 		mainMovieList = movieListService.loadMovieList();
@@ -69,45 +68,34 @@ public class MovieController {
 		List<MovieVisualVo> movieTrailerList = new ArrayList<MovieVisualVo>();
 		List<MovieReviewVo> reviewList = new ArrayList<MovieReviewVo>();
 		List<Map<String, Object>> movieInfoList = new ArrayList<Map<String, Object>>();
-		String movieName = null;
-		int stillcutSize = 0;
-		int trailerSize = 0;
-		int reviewSize = 0;
 		
 		for(int i = 0; i < mainMovieList.size(); i++) {
 			//리스트 불러오기
 			mainMovieList = movieListService.loadMovieList();
 			//i번째 이름 불러오기
-			movieName = mainMovieList.get(i).getMV_TITLE();
+			String movieName = mainMovieList.get(i).getMV_TITLE();
 			System.out.println("movieName : " + movieName);
 			//i번째 영화 시퀀스 불러오기
 			String MVInfoSeq =  mainMovieList.get(i).getMV_INFO_SEQ();
 			System.out.println("찾을 seq : " + MVInfoSeq);
 			//스틸컷 가져와서 사이즈 구하기
 			movieStillcutList = movieVisualService.loadStillcut(MVInfoSeq);
-			stillcutSize = movieStillcutList.size();
+			int stillcutSize = movieStillcutList.size();
 			//트레일러 가져와서 사이즈 구하기
 			movieTrailerList = movieVisualService.loadTrailer(MVInfoSeq);
-			trailerSize = movieTrailerList.size();
+			int trailerSize = movieTrailerList.size();
 			//리뷰 가져와서 사이즈 구하기
 			reviewList = movieReviewService.loadSpecificReview(MVInfoSeq);
-			reviewSize = reviewList.size();
+			int reviewSize = reviewList.size();
 			//영화 정보 맵에 넣기
 			Map<String, Object> movieMainMap = new HashMap<String, Object>();
 			movieMainMap.put("MVTItle", movieName);
 			movieMainMap.put("stillcutSize", stillcutSize);
 			movieMainMap.put("trailerSize", trailerSize);
 			movieMainMap.put("reviewSize", reviewSize);
-			System.out.println("movieMainMap.toString() : " + movieMainMap.toString());
 			//맵 리스트에 담기
 			movieInfoList.add(i, movieMainMap);
 			//자료 두 개 비교하기
-			System.out.println("movieInfoList.get(i).toString()" + movieInfoList.get(i).toString());
-			System.out.println("true or false? : " + movieMainMap.toString().equals(movieInfoList.get(i).toString()));
-		}
-		for(int i = 0; i < movieInfoList.size(); i++) {
-			//리스트에 담긴 아이템 자료 출력
-			System.out.println("movieInfoList.get("+i+").toString() : " + movieInfoList.get(i).toString());
 		}
 		
 		mv.addObject("movieInfoList", movieInfoList).setViewName("main/index");
@@ -316,6 +304,8 @@ public class MovieController {
 		System.out.println("사진URL : " + stillcutURL);
 		String trailerURL = request.getParameter("trailerURL");
 		System.out.println("영상URL : " + trailerURL);
+		String trailerDesc = request.getParameter("trailerDesc");
+		System.out.println("영상설명 : " + trailerDesc);
 		
 		if(!stillcutURL.equals("")) {
 			System.err.println("stillcut 입력");
@@ -329,6 +319,7 @@ public class MovieController {
 			trailerMap.put("MVTitle", MVTitle);
 			trailerMap.put("MVInfoSeq", MVInfoSeq);
 			trailerMap.put("trailerURL", trailerURL);
+			trailerMap.put("trailerDesc", trailerDesc);
 			
 			movieVisualService.insertTrailer(trailerMap);
 		}

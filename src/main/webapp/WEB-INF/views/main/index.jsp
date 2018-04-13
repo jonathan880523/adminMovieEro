@@ -8,8 +8,7 @@
                 <div class="span9" id="content">
                     <div class="row-fluid">
                         <div class="alert alert-success">
-							<button type="button" class="close" data-dismiss="alert">&times;</button>
-                            <h4>${getPosition}</h4>
+                            <h4>${getPosition}님</h4>
                         	환영합니다</div>
                         	<div class="navbar">
                         	</div>

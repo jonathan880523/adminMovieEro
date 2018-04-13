@@ -27,7 +27,7 @@
                                   <button type="button" id="addStillcutBtn" class="btn btn-primary">추가<i class="icon-inbox icon-white"></i></button>
                                </div>
                                <div class="btn-group span8">
-                				  		<input type="text" id="stillcutURL" name="stillcutURL" class="span12" placeholder="스틸컷URL을 입력해주세요(enter)" value="">	
+                				  		<input type="text" id="stillcutURL" name="stillcutURL" class="span12" placeholder="스틸컷URL을 입력해주세요" value="">	
                                </div>
                             </div>
                              
@@ -69,7 +69,10 @@
                                   <button type="button" id="addTrailerBtn"class="btn btn-primary addVisualBtn">추가<i class="icon-inbox icon-white"></i></button>
                                </div>
                                <div class="btn-group span8">
-                				  		<input type="text" id="trailerURL" name="trailerURL" class="span12" placeholder="트레일러 URL을 입력해주세요(enter)" value="">	
+                				  		<input type="text" id="trailerURL" name="trailerURL" class="span12" placeholder="트레일러 URL을 입력해주세요" value="">	
+                               </div>
+                               <div class="btn-group span8">
+                				  		<input type="text" id="trailerURL" name="trailerDesc" class="span12" placeholder="간단한 설명을 써주세요" value="">	
                                </div>
                             </div>
                              
@@ -85,6 +88,7 @@
                                     		<tr class="odd gradeX">
                                       	<td><input type="checkbox" name="trailerSeq" value="${listTrailer.MV_TRAILER_SEQ}"></td>
                                           <td>${listTrailer.MV_TRAILER}</td>
+                                          <td>${listTrailer.MV_DESC}</td>
                                      	</tr>
                                  	</c:forEach>
                                  </tbody>

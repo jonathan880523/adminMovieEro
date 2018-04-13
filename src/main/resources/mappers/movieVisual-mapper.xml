@@ -13,9 +13,9 @@
 	
 	<insert id="insertTrailer" parameterType="map">
 		INSERT INTO MOVIE_TRAILER
-		(MV_TRAILER_SEQ, MV_INFO_SEQ, MV_TITLE, MV_TRAILER)
+		(MV_TRAILER_SEQ, MV_INFO_SEQ, MV_TITLE, MV_TRAILER, MV_DESC)
 		VALUES
-		(MOVIE_TRAILER_SEQ.NEXTVAL, #{MVInfoSeq}, #{MVTitle}, #{trailerURL})
+		(MOVIE_TRAILER_SEQ.NEXTVAL, #{MVInfoSeq}, #{MVTitle}, #{trailerURL}, #{trailerDesc})
 	</insert>
 	
 	<select id="loadStillcut" resultType="MovieVisualVo">
