@@ -58,7 +58,7 @@ public class noticeBoardController {
 			endPage = maxPage;
 
 		System.out.println("selectListAdmin 도착전");
-		ArrayList<noticeVO> list = NTService.selectListAdmin(currentPage, limit);
+		ArrayList<noticeVO> list = NTService.selectListAdmin();
 		System.out.println("selectListAdmin 도착" + list);
 		
 		if (list != null && list.size() > 0) {

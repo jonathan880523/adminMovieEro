@@ -8,7 +8,7 @@ public interface noticeDao {
 
 	public int insertNoticeBoard(noticeVO noticeVO);
 
-	public ArrayList<noticeVO> selectListAdmin(int currentPage, int limit);
+	public ArrayList<noticeVO> selectListAdmin();
 		
 	public noticeVO selectNoticeBoard(int NOTICE_BOARD_NO);
 

@@ -21,10 +21,8 @@ public class noticeDaoImpl implements noticeDao{
 	}
 
 	@Override
-	public ArrayList<noticeVO> selectListAdmin(int currentPage, int limit) {
-		int offset = (currentPage - 1) * limit;
-		RowBounds rows = new RowBounds(offset, limit);
-		return new ArrayList<noticeVO>(sqlSession.selectList("noticeVO.selectListAdmin",null,rows));
+	public ArrayList<noticeVO> selectListAdmin() {
+		return new ArrayList<noticeVO>(sqlSession.selectList("noticeVO.selectListAdmin"));
 	}
 
 	@Override

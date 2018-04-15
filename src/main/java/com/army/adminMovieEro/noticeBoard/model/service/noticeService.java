@@ -8,7 +8,7 @@ import com.army.adminMovieEro.noticeBoard.model.vo.noticeVO;
 public interface noticeService {
 	public int insertNoticeBoard(noticeVO noticeVO); 
 	
-	public ArrayList<noticeVO> selectListAdmin(int currentPage, int limit);
+	public ArrayList<noticeVO> selectListAdmin();
 	
 	public noticeVO selectNoticeBoard(int NOTICE_BOARD_NO);
 

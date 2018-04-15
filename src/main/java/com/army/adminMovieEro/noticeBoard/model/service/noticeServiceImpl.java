@@ -19,9 +19,9 @@ public class noticeServiceImpl implements noticeService{
 	}
 
 	@Override
-	public ArrayList<noticeVO> selectListAdmin(int currentPage, int limit) {
+	public ArrayList<noticeVO> selectListAdmin() {
 		
-		return NTDao.selectListAdmin(currentPage,limit);
+		return NTDao.selectListAdmin();
 	}
 
 	@Override
