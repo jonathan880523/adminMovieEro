@@ -16,7 +16,14 @@
 						<c:set var="loadMVTitle" value="${resultMVTitle}"/>
 						<div class="navbar navbar-inner block-header">
 							<div class="muted pull-left">
-								<input name="seachTitle" type="text" value="">
+								<input name="searchValue" type="text" value="">
+								<select id="searchOption" name="searchOption">
+									<option selected disabled>선택</option>
+									<option id="MVTitle" value="reviewMVTitle">영화 제목</option>
+									<option id="reviewSubject" value="reviewSubject">제목</option>
+									<option id="reviewUserId" value="reviewUserId">작성자</option>
+									<option id="reviewContext" value="reviewContext">내용</option>
+								</select>
 								<button id="searchReviewBtn" class="btn btn-primary" type="submit" style="margin-bottom:14px;">검색</button>
 								<button id="deleteReviewBtn" class="btn btn-primary" style="margin-bottom:14px;">삭제</button>
 								<button id="reloadReviewBtn" class="btn btn-primary" style="margin-bottom:14px;">초기화</button>

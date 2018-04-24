@@ -289,10 +289,10 @@ public class MovieController {
 	@RequestMapping("searchReview.do")
 	public ModelAndView searchReview(HttpServletRequest request, ModelAndView mv) {
 		System.out.println("controller searchReview.do 도착...................");
-		String MVTitle = request.getParameter("seachTitle");
-		List<MovieReviewVo> vo = new ArrayList<MovieReviewVo>();
-		vo = movieservice.searchReview(MVTitle);
-		mv.addObject("resultMVTitle", vo)
+		String searchValue = request.getParameter("searchValue");
+		String searchOption = request.getParameter("searchOption");
+		List<MovieReviewVo> resultOpt = movieservice.searchReview(searchOption, searchValue);
+		mv.addObject("resultMVTitle", resultOpt)
 		  .setViewName("movieBoard/movieReview");
 		return mv;
 	}
@@ -300,8 +300,8 @@ public class MovieController {
 	@RequestMapping("loadReview.do")
 	public ModelAndView loadReview(ModelAndView mv) {
 		System.out.println("controller loadReview.do 도착...................");
-		List<MovieReviewVo> vo = movieservice.loadReview();
-		mv.addObject("resultMVTitle", vo)
+		List<MovieReviewVo> resultList = movieservice.loadReview();
+		mv.addObject("resultMVTitle", resultList)
 		.setViewName("movieBoard/movieReview");
 		
 		return mv;

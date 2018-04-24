@@ -4,8 +4,20 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Review">
 
-	<select id="searchReviewList" parameterType="string" resultType="MovieReviewVo">
-		SELECT * FROM MOVIE_REVIEW WHERE MV_TITLE like '%'||#{MVTitle}||'%'
+	<select id="searchTitle" parameterType="string" resultType="MovieReviewVo">
+		SELECT * FROM MOVIE_REVIEW WHERE MV_TITLE like '%'||#{searchValue}||'%'
+	</select>
+
+	<select id="searchSubject" parameterType="string" resultType="MovieReviewVo">
+		SELECT * FROM MOVIE_REVIEW WHERE MV_RV_TITLE like '%'||#{searchValue}||'%'
+	</select>
+
+	<select id="searchUserId" parameterType="string" resultType="MovieReviewVo">
+		SELECT * FROM MOVIE_REVIEW WHERE USER_ID like '%'||#{searchValue}||'%'
+	</select>
+
+	<select id="searchContext" parameterType="string" resultType="MovieReviewVo">
+		SELECT * FROM MOVIE_REVIEW WHERE MV_RV_CONTENTS like '%'||#{searchValue}||'%'
 	</select>
 	
 	<select id="loadReviewList" resultType="MovieReviewVo">

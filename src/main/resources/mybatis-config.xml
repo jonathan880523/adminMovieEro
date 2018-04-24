@@ -8,13 +8,13 @@
 	</settings>
 
 	<typeAliases>
-		<typeAlias type="com.army.adminMovieEro.movieAddList.model.vo.MovieListVo" alias="MovieListVo"/>
+		<typeAlias type="com.army.adminMovieEro.movie.model.vo.MovieListVo" alias="MovieListVo"/>
 		<typeAlias type="com.army.adminMovieEro.member.model.vo.AdminMemberVo" alias="AdminMemberVo"/>
-		<typeAlias type="com.army.adminMovieEro.movieAddList.model.vo.MovieVisualVo" alias="MovieVisualVo"/>
+		<typeAlias type="com.army.adminMovieEro.movie.model.vo.MovieVisualVo" alias="MovieVisualVo"/>
 		<typeAlias type="com.army.adminMovieEro.theaterAddList.model.vo.theaterVO" alias="TheaterVo"/>
 		<typeAlias type="com.army.adminMovieEro.theaterAddList.model.vo.theaterImageVo" alias="TheaterImageVo"/>
-		<typeAlias type="com.army.adminMovieEro.movieAddList.model.vo.MovieReviewVo" alias="MovieReviewVo"/>
-		<typeAlias type="com.army.adminMovieEro.movieAddList.model.vo.MovieDetailVo" alias="MovieDetailVo"/>
+		<typeAlias type="com.army.adminMovieEro.movie.model.vo.MovieReviewVo" alias="MovieReviewVo"/>
+		<typeAlias type="com.army.adminMovieEro.movie.model.vo.MovieDetailVo" alias="MovieDetailVo"/>
 		<typeAlias type="com.army.adminMovieEro.noticeBoard.model.vo.noticeVO" alias="noticeVO"/>
 		<typeAlias type="com.army.adminMovieEro.mainManage.model.vo.VisualImageVO" alias="VisualImageVO"/>
 	</typeAliases>

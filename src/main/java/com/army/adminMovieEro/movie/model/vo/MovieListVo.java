@@ -1,4 +1,4 @@
-package com.army.adminMovieEro.movieAddList.model.vo;
+package com.army.adminMovieEro.movie.model.vo;
 
 public class MovieListVo {
 	private String MV_TITLE;

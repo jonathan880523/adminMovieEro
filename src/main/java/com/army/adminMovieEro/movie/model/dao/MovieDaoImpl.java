@@ -1,5 +1,6 @@
 package com.army.adminMovieEro.movie.model.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -72,9 +73,19 @@ public class MovieDaoImpl implements MovieDao {
 	}
 
 	@Override
-	public List<MovieReviewVo> searchReview(String MVTitle) {
+	public List<MovieReviewVo> searchReview(String searchOption, String searchValue) {
 		System.out.println("Dao searchReview 실행..............");
-		return sqlSession.selectList("Review.searchReviewList", MVTitle);
+		List<MovieReviewVo> resultOption = new ArrayList<MovieReviewVo>();
+		if(searchOption.equals("reviewMVTitle")) {
+			resultOption = sqlSession.selectList("Review.searchTitle", searchValue);
+		}else if(searchOption.equals("reviewSubject")) {
+			resultOption = sqlSession.selectList("Review.searchSubject", searchValue);
+		}else if(searchOption.equals("reviewUserId")) {
+			resultOption = sqlSession.selectList("Review.searchUserId", searchValue);
+		}else if(searchOption.equals("reviewContext")) {
+			resultOption = sqlSession.selectList("Review.searchContext", searchValue);
+		}
+		return resultOption;
 	}
 
 	@Override

@@ -23,7 +23,7 @@ public interface MovieService {
 	
 	public MovieListVo loadMovieTitle(String numMOVIE_INFO_SEQ);
 	
-	public List<MovieReviewVo> searchReview(String MVTitle);
+	public List<MovieReviewVo> searchReview(String searchOption, String searchValue);
 	
 	public List<MovieReviewVo> loadReview();
 	

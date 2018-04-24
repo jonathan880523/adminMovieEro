@@ -1,4 +1,4 @@
-package com.army.adminMovieEro.movieAddList.model.vo;
+package com.army.adminMovieEro.movie.model.vo;
 
 public class MovieVisualVo {
 	private int MV_STILLCUT_SEQ;

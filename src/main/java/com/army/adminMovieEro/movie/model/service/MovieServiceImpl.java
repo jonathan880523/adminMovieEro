@@ -64,9 +64,9 @@ public class MovieServiceImpl implements MovieService {
 	}
 
 	@Override
-	public List<MovieReviewVo> searchReview(String MVTitle) {
+	public List<MovieReviewVo> searchReview(String searchOption, String searchValue) {
 		System.out.println("Service searchReview 실행................");
-		return movieDao.searchReview(MVTitle);
+		return movieDao.searchReview(searchOption, searchValue);
 	}
 
 	@Override
