@@ -27,7 +27,7 @@
                                   <button type="button" id="addStillcutBtn" class="btn btn-primary">추가<i class="icon-inbox icon-white"></i></button>
                                </div>
                                <div class="btn-group span8">
-                				  		<input type="text" id="stillcutURL" name="stillcutURL" class="span12" placeholder="스틸컷URL을 입력해주세요" value="">	
+                				  		<input type="file" id="stillcutFile" name="stillcutFile" class="span12" placeholder="파일을 추가해 주세요" value="">	
                                </div>
                             </div>
                              
@@ -112,6 +112,8 @@
  		$("#addStillcutBtn").on('click', function(){
 	   		formObj.attr('action','${pageContext.request.contextPath}/insertVisualItems.do');
 	   		formObj.attr('method','get');
+	   		formObj.attr('modelAttribute','uploadForm');
+	   		formObj.attr('enctype','multipart/form-data');
 	   		formObj.submit();
  		});
 		

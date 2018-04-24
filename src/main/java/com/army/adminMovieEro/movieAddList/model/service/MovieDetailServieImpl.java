@@ -19,7 +19,6 @@ public class MovieDetailServieImpl implements MovieDetailServie {
 	@Override
 	public int addMovieDetail(Map<String, String> MovieDetailMap) {
 		System.out.println("Service addMovieDetail 실행..................");
-		
 		return movieDetailDao.addMovieDetail(MovieDetailMap);
 
 	}
