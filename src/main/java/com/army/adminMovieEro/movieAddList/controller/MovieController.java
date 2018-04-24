@@ -18,8 +18,6 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -40,82 +38,48 @@ public class MovieController {
 	@Autowired
 	MovieService movieservice;
 
-	/*@Autowired
-	MovieListService movieListService;
-
-	@Autowired
-	InsertResultMovieService insertResultMovieService;
-
-	@Autowired
-	MovieVisualService movieVisualService;
-	
-	@Autowired
-	MovieReviewService movieReviewService;
-	
-	@Autowired
-	MovieDetailServie movieDetailServie;*/
-
-	public static final Logger logger = LoggerFactory.getLogger(MovieController.class);
-	
 	@RequestMapping(value="/main.do")
 	public ModelAndView goMain(ModelAndView mv) {
 		System.out.println("main.do 도착....................");
 		List<MovieListVo> mainMovieList = new ArrayList<MovieListVo>();
 		mainMovieList = movieservice.loadMovieList();
-		System.out.println("mainMovieList : " + mainMovieList);
 		List<MovieVisualVo> movieStillcutList = new ArrayList<MovieVisualVo>();
 		List<MovieVisualVo> movieTrailerList = new ArrayList<MovieVisualVo>();
 		List<MovieReviewVo> reviewList = new ArrayList<MovieReviewVo>();
 		List<Map<String, Object>> movieInfoList = new ArrayList<Map<String, Object>>();
 		
 		for(int i = 0; i < mainMovieList.size(); i++) {
-			//리스트 불러오기
 			mainMovieList = movieservice.loadMovieList();
-			//i번째 이름 불러오기
 			String movieName = mainMovieList.get(i).getMV_TITLE();
-			System.out.println("movieName : " + movieName);
-			//i번째 영화 시퀀스 불러오기
 			String MVInfoSeq =  mainMovieList.get(i).getMV_INFO_SEQ();
-			System.out.println("찾을 seq : " + MVInfoSeq);
-			//스틸컷 가져와서 사이즈 구하기
 			movieStillcutList = movieservice.loadStillcut(MVInfoSeq);
 			int stillcutSize = movieStillcutList.size();
-			//트레일러 가져와서 사이즈 구하기
 			movieTrailerList = movieservice.loadTrailer(MVInfoSeq);
 			int trailerSize = movieTrailerList.size();
-			//리뷰 가져와서 사이즈 구하기
 			reviewList = movieservice.loadSpecificReview(MVInfoSeq);
 			int reviewSize = reviewList.size();
-			//영화 정보 맵에 넣기
 			Map<String, Object> movieMainMap = new HashMap<String, Object>();
 			movieMainMap.put("MVTItle", movieName);
 			movieMainMap.put("stillcutSize", stillcutSize);
 			movieMainMap.put("trailerSize", trailerSize);
 			movieMainMap.put("reviewSize", reviewSize);
-			//맵 리스트에 담기
 			movieInfoList.add(i, movieMainMap);
-			//자료 두 개 비교하기
 		}
-		
 		mv.addObject("movieInfoList", movieInfoList).setViewName("main/index");
-		
 		return mv;
 	}
 
 	// 영화 추가 controller
 	@RequestMapping(value = "addMovie.do")
 	public String goAddMovie() {
-
-		logger.info("addMovie.do 도착...............");
-
+		System.out.println("controller addMovie.do 도착...............");
 		return "movieBoard/addMovie";
 	}
 
 	@RequestMapping("loadMovie.do")
 	public ModelAndView loadMoive(ModelAndView mv) {
-		logger.info("loadMovie.do 도착...............");
+		System.out.println("controller loadMovie.do 도착...............");
 		List<MovieListVo> movieList = new ArrayList<MovieListVo>();
-		
 		movieList = movieservice.loadMovieList();
 		if (movieList != null) {
 			System.out.println("movieList" + movieList.toString());
@@ -133,26 +97,18 @@ public class MovieController {
 		Map<String, String> map = null;
 		StringBuffer response = new StringBuffer();
 		try {
-			System.out.println("AjaxAddMovieController 도착.................");
-
+			System.out.println("controller ajaxAddMovie.do 도착.................");
 			String clientId = "yxO7C6C5LsdJtbHkbfHs";// 애플리케이션 클라이언트 아이디값";
 			String clientSecret = "TOjCC9nvUj";// 애플리케이션 클라이언트 시크릿값";
 
 			// ajax를 통해서 넘어온 request값
 			String query = request.getParameter("query");
 			query = URLEncoder.encode(query, "UTF-8");
-			System.out.println("query = " + query);
 			String display = request.getParameter("display");
-			System.out.println("display = " + display);
 			String genre = request.getParameter("genre");
-			System.out.println("genre = " + genre);
 			String country = request.getParameter("country");
-			System.out.println("country = " + country);
 			String yearfrom = request.getParameter("yearfrom");
-			System.out.println("yearfrom = " + yearfrom);
 			String yearto = request.getParameter("yearto");
-			System.out.println("yearto = " + yearto);
-
 			String apiURL = "https://openapi.naver.com/v1/search/movie.json?query=" + query; // json 결과과
 
 			if (display != "") {
@@ -161,22 +117,16 @@ public class MovieController {
 			}
 			if (genre != "") {
 				apiURL += "&genre=" + genre;
-				System.out.println(apiURL);
 			}
 			if (country != "") {
 				apiURL += "&country=" + country;
-				System.out.println(apiURL);
 			}
 			if (yearfrom != "") {
 				apiURL += "&yearfrom=" + yearfrom;
-				System.out.println(apiURL);
 			}
 			if (yearto != "") {
 				apiURL += "&yearto=" + yearto;
-				System.out.println(apiURL);
 			}
-			System.out.println("마지막 apiURL = " + apiURL);
-
 			URL url = new URL(apiURL);
 			HttpURLConnection con = (HttpURLConnection) url.openConnection();
 			con.setRequestMethod("GET");
@@ -194,20 +144,15 @@ public class MovieController {
 				response.append(inputLine);
 			}
 			br.close();
-			System.out.println(response.toString());
-
 			try {
 				map = new ObjectMapper().readValue(response.toString(), Map.class);
-
-				System.out.println("map = " + map);
-				System.out.println("map의 size" + map.size());
 				model.addAttribute("addMovieMap", map);
 			} catch (Exception e) {
 				e.getStackTrace();
 			}
 
 		} catch (Exception e) {
-			System.out.println(e);
+			System.err.println(e);
 		}
 		return map;
 	}
@@ -215,20 +160,18 @@ public class MovieController {
 	// 영화 등록 controller
 	@RequestMapping(value = "insertMovie.do", method = RequestMethod.GET)
 	public String insertMovie(HttpServletRequest request, HttpSession getMVInfoMap) {
+		System.out.println("controller insertMovie.do 도착..................");
 		Map<String, String> resultMap = new HashMap<String, String>();
 		List<MovieListVo> movieList = new ArrayList<MovieListVo>();
 		Map<String, String> sessionMap = new HashMap<String, String>();
 		
 		resultMap.put("resultTitle", request.getParameter("resultTitle"));
-		System.out.println("영화 제목 : " + resultMap.get(0));
 		resultMap.put("resultSubtitle", request.getParameter("resultSubtitle"));
 		resultMap.put("resultDirector", request.getParameter("resultDirector"));
-		System.out.println("영화 감독 : " + resultMap.get("resultDirector"));
 		resultMap.put("resultActor", request.getParameter("resultActor"));
 		resultMap.put("resultPubDate", request.getParameter("resultPubDate"));
 		resultMap.put("resultUserRating", request.getParameter("resultUserRating"));
 		resultMap.put("resultLink", request.getParameter("resultLink"));
-		System.out.println("영화 링크 : " + request.getParameter("resultLink"));
 		resultMap.put("resultImage", request.getParameter("resultImage"));
 
 		movieservice.insertResultMovie(resultMap);
@@ -238,11 +181,6 @@ public class MovieController {
 		sessionMap.put("sessionSeq", sessionSeq);
 		sessionMap.put("sessionLink", sessionLink);
 		getMVInfoMap.setAttribute("sessionMap", sessionMap);
-		if(getMVInfoMap != null) {
-			System.out.println("getMVInfoMap : " + getMVInfoMap);
-			System.out.println("세션 생성 성공");
-		}
-
 		return "redirect:addMovieDetail.do";
 
 	}
@@ -250,15 +188,10 @@ public class MovieController {
 	// 영화 목록에서 지우기
 	@RequestMapping("deleteMovie.do")
 	public String deleteMovie(HttpServletRequest request) {
-		System.out.println("deleteMovie.do 도착.......................");
-
+		System.out.println("controller deleteMovie.do 도착..................");
 		String movieUniNum = request.getParameter("movieUniNumDel");
-
-		System.out.println("삭제할 UniqueNumber : " + movieUniNum);
-
 		movieservice.deleteMovieDetail(movieUniNum);
 		movieservice.deleteMovie(movieUniNum);
-
 		return "redirect:loadMovie.do";
 	}
 
@@ -266,12 +199,11 @@ public class MovieController {
 	@RequestMapping("loadVisualItems.do")
 	public ModelAndView loadVisualItems(HttpServletRequest request, ModelAndView mv, MovieListVo vo, 
 			HttpSession visualSession, Map<String, String> visualMap) {
-		System.out.println("loadVisualItems.do 도착.......................");
+		System.out.println("controller loadVisualItems.do 도착..................");
 		//영화 제목 불러오기
 		String MVInfoSeq = request.getParameter("movieUniNumDel");
 		vo = movieservice.loadMovieTitle(MVInfoSeq);
 		String MVTitle = vo.getMV_TITLE();
-		System.out.println("사진/영상 추가할 영화 : " + MVTitle);
 		visualMap.put("MVInfoSeq", MVInfoSeq);
 		visualMap.put("MVTitle", MVTitle);
 		visualSession.setAttribute("visualMap", visualMap);
@@ -293,28 +225,21 @@ public class MovieController {
 	@RequestMapping("insertVisualItems.do")
 	public String insertVisualItems(HttpServletRequest request, Map<String, String> stillcutMap,
 			Map<String, String> trailerMap, HttpSession visualSession, Map<String, String> comeVisualMap) {
-		System.out.println("insertVisualItems.do 도착.................");
+		System.out.println("controller insertVisualItems.do 도착.................");
 		comeVisualMap = (Map<String, String>) visualSession.getAttribute("visualMap");
 		String MVTitle = comeVisualMap.get("MVTitle");
 		String MVInfoSeq = comeVisualMap.get("MVInfoSeq");
-		System.out.println("사진/영상 추가할 영화 제목 : " + MVTitle);
-		System.out.println("사진/영상 추가할 영화 시퀀스 : " + MVInfoSeq);
 		String stillcutURL = request.getParameter("stillcutURL");
-		System.out.println("사진URL : " + stillcutURL);
 		String trailerURL = request.getParameter("trailerURL");
-		System.out.println("영상URL : " + trailerURL);
 		String trailerDesc = request.getParameter("trailerDesc");
-		System.out.println("영상설명 : " + trailerDesc);
 		
 		if(!stillcutURL.equals("")) {
-			System.err.println("stillcut 입력");
 			stillcutMap.put("MVTitle", MVTitle);
 			stillcutMap.put("MVInfoSeq", MVInfoSeq);
 			stillcutMap.put("StillcutURL", stillcutURL);
 			
 			movieservice.insertStillcut(stillcutMap);
 		}else if(!trailerURL.equals("")) {
-			System.err.println("trailer 입력");
 			trailerMap.put("MVTitle", MVTitle);
 			trailerMap.put("MVInfoSeq", MVInfoSeq);
 			trailerMap.put("trailerURL", trailerURL);
@@ -322,25 +247,22 @@ public class MovieController {
 			
 			movieservice.insertTrailer(trailerMap);
 		}
-		
 		return "redirect:reloadVisualItems.do";
 	}
 	
 	@RequestMapping("reloadVisualItems.do")
 	public ModelAndView reloadVisualItems(ModelAndView mv, HttpSession getVisualSession, 
 			Map<String, String> getVisualMap) {
+		System.out.println("controller reloadVisualItems.do 도착.................");
 		getVisualMap = (Map<String, String>) getVisualSession.getAttribute("visualMap");
 		String MVTitle = getVisualMap.get("MVTitle");
 		String MVInfoSeq = getVisualMap.get("MVInfoSeq");
-		System.out.println("가져올 시퀀스 : " + MVInfoSeq);
 		
 		List<MovieVisualVo> movieStillcutList = new ArrayList<MovieVisualVo>();
 		List<MovieVisualVo> movieTrailerList = new ArrayList<MovieVisualVo>();
 		
 		movieStillcutList = movieservice.loadStillcut(MVInfoSeq);
-		System.out.println("movieStillcutList : " + movieStillcutList);
 		movieTrailerList = movieservice.loadTrailer(MVInfoSeq);
-		System.out.println("movieTrailerList : " + movieTrailerList);
 		
 		mv.addObject("resultStillcutList", movieStillcutList)
 		  .addObject("resultTrailerList", movieTrailerList)
@@ -351,41 +273,34 @@ public class MovieController {
 	
 	@RequestMapping("deleteVisualItems.do")
 	public ModelAndView deleteVisualItems(ModelAndView mv, HttpServletRequest request) {
-		System.out.println("deleteVisualItems.do 도착...................");
+		System.out.println("controller deleteVisualItems.do 도착...................");
 		String stillcutSeq = request.getParameter("stillcutSeq");
-		System.out.println("stillcutSeq : " + stillcutSeq);
 		String trailerSeq = request.getParameter("trailerSeq");
-		System.out.println("trailerSeq : " + trailerSeq);
 		
 		if(stillcutSeq != null) {
 			movieservice.deleteStillcut(stillcutSeq);
 		}else if(trailerSeq != null){
 			movieservice.deleteTrailer(trailerSeq);
 		}
-		
 		mv.setViewName("redirect:reloadVisualItems.do");
 		return mv;
 	}
 	
 	@RequestMapping("searchReview.do")
 	public ModelAndView searchReview(HttpServletRequest request, ModelAndView mv) {
-		System.out.println("searchReview.do 도착...................");
+		System.out.println("controller searchReview.do 도착...................");
 		String MVTitle = request.getParameter("seachTitle");
 		List<MovieReviewVo> vo = new ArrayList<MovieReviewVo>();
-		System.out.println("검색한 영화 이름 : " + MVTitle);
 		vo = movieservice.searchReview(MVTitle);
-		System.out.println("검색된 영화 갯수: " + vo.size());
 		mv.addObject("resultMVTitle", vo)
 		  .setViewName("movieBoard/movieReview");
-		
 		return mv;
 	}
 	
 	@RequestMapping("loadReview.do")
 	public ModelAndView loadReview(ModelAndView mv) {
-		System.out.println("loadReview.do 도착...................");
-		List<MovieReviewVo> vo = new ArrayList<MovieReviewVo>();
-		vo = movieservice.loadReview();
+		System.out.println("controller loadReview.do 도착...................");
+		List<MovieReviewVo> vo = movieservice.loadReview();
 		mv.addObject("resultMVTitle", vo)
 		.setViewName("movieBoard/movieReview");
 		
@@ -394,8 +309,7 @@ public class MovieController {
 	
 	@RequestMapping("deleteReview.do")
 	public ModelAndView deleteReview(int reviewSeq, ModelAndView mv) {
-		System.out.println("deleteReview.do 도착.....................");
-		System.out.println("삭제할 리뷰 시퀀스 : " + reviewSeq);
+		System.out.println("controller deleteReview.do 도착.....................");
 		boolean resultDeleteReview = movieservice.deleteReview(reviewSeq);
 		if(resultDeleteReview) {
 			mv.setViewName("redirect:loadReview.do");
@@ -408,7 +322,7 @@ public class MovieController {
 	
 	@RequestMapping("reloadReview.do")
 	public ModelAndView reloadReview(ModelAndView mv) {
-		System.out.println("reloadReview.do 도착......................");
+		System.out.println("controller reloadReview.do 도착......................");
 		mv.setViewName("redirect:loadReview.do");
 		return mv;
 	}
@@ -419,9 +333,7 @@ public class MovieController {
 		String sessionSeq = seqLnkMap.get("sessionSeq");
 		String sessionLink = seqLnkMap.get("sessionLink");
 		String movieUniNum = sessionSeq;
-		System.out.println("추가할 seq : " + movieUniNum);
 		String MovieLink = sessionLink;
-		System.out.println("추가할 link : " + MovieLink);
 		List list = new ArrayList();
 		try {
 			Map<String, String> MovieDetailMap = new HashMap<String, String>();
@@ -469,15 +381,6 @@ public class MovieController {
 			MovieDetailMap.put("MovieLink", MovieLink);
 			MovieDetailMap.put("MVInfoSeq", movieUniNum);
 			
-			System.out.println("map의 사이즈 : " + MovieDetailMap.size());
-			
-			int result = movieservice.addMovieDetail(MovieDetailMap);
-			if(result > 0) {
-				System.out.println("입력 성공");
-			}else {
-				System.err.println("입력 실패");
-			}
-			
 		}catch(Exception e) {
 			e.getLocalizedMessage();
 		}
@@ -487,9 +390,8 @@ public class MovieController {
 	
 	@RequestMapping("loadDetailInfo.do")
 	public ModelAndView loadDetailInfo(ModelAndView mv) {
-		System.out.println("loadDetailInfo.do 도착.......................");
-		List<MovieDetailVo> detailResult = new ArrayList<MovieDetailVo>();
-		detailResult = movieservice.loadMovieDetail();
+		System.out.println("controller loadDetailInfo.do 도착.......................");
+		List<MovieDetailVo> detailResult = movieservice.loadMovieDetail();
 		mv.addObject("detailResult", detailResult).setViewName("redirect:loadMovie.do");
 		return mv;
 	}
@@ -497,8 +399,7 @@ public class MovieController {
 	@RequestMapping("loadDetail.do")
 	public ModelAndView loadDetail(ModelAndView mv) {
 		System.out.println("loadDetailInfo.do 도착.......................");
-		List<MovieDetailVo> detailResult = new ArrayList<MovieDetailVo>();
-		detailResult = movieservice.loadMovieDetail();
+		List<MovieDetailVo> detailResult = movieservice.loadMovieDetail();
 		mv.addObject("detailResult", detailResult).setViewName("movieBoard/movieDetail");
 		return mv;
 	}

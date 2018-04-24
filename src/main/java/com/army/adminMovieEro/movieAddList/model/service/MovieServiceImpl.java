@@ -23,7 +23,6 @@ public class MovieServiceImpl implements MovieService {
 	public void insertResultMovie(Map<String, String> resultMap) {
 		System.out.println("insertResultMovieService 도착...................");
 		movieDao.insertResultMovie(resultMap);
-		
 	}
 
 	@Override
@@ -35,8 +34,7 @@ public class MovieServiceImpl implements MovieService {
 	@Override
 	public List<MovieDetailVo> loadMovieDetail() {
 		System.out.println("Service loadMovieDetail 실행....................");
-		List<MovieDetailVo> detailResult = new ArrayList<MovieDetailVo>();
-		detailResult = movieDao.loadMovieDetail();
+		List<MovieDetailVo> detailResult = movieDao.loadMovieDetail();
 		return detailResult;
 	}
 
@@ -44,14 +42,12 @@ public class MovieServiceImpl implements MovieService {
 	public void deleteMovieDetail(String movieUniNum) {
 		System.out.println("Service deleteMovieDetail 실행............");
 		movieDao.deleteMovieDetail(movieUniNum);
-		
 	}
 
 	@Override
 	public List<MovieListVo> loadMovieList() {
 		System.out.println("Service loadMovieList 실행..................");
-		List<MovieListVo> movieList = new ArrayList<MovieListVo>();
-		movieList = movieDao.loadMovieList();
+		List<MovieListVo> movieList = movieDao.loadMovieList();
 		return movieList;
 	}
 
@@ -59,14 +55,12 @@ public class MovieServiceImpl implements MovieService {
 	public void deleteMovie(String movieUniNum) {
 		System.out.println("Service deleteMovieService 실행..........................");
 		movieDao.deleteMovie(movieUniNum);
-		
 	}
 
 	@Override
 	public MovieListVo loadMovieTitle(String numMOVIE_INFO_SEQ) {
 		System.out.println("Service loadMovieTitle 실행..................");
-		MovieListVo movieVo = new MovieListVo();
-		movieVo = movieDao.loadMovieTitle(numMOVIE_INFO_SEQ);
+		MovieListVo movieVo = movieDao.loadMovieTitle(numMOVIE_INFO_SEQ);
 		return movieVo;
 	}
 
@@ -112,7 +106,6 @@ public class MovieServiceImpl implements MovieService {
 	public void insertTrailer(Map<String, String> trailerMap) {
 		System.out.println("Service insertTrailer 실행.................");
 		movieDao.insertTrailer(trailerMap);
-		
 	}
 
 	@Override
@@ -133,13 +126,11 @@ public class MovieServiceImpl implements MovieService {
 	public void deleteStillcut(String stillcutSeq) {
 		System.out.println("Service deleteStillcut 실행.............");
 		movieDao.deleteStillcut(stillcutSeq);
-		
 	}
 
 	@Override
 	public void deleteTrailer(String trailerSeq) {
 		System.out.println("Service deleteTrailer 실행...............");
 		movieDao.deleteTrailer(trailerSeq);
-		
 	}
 }

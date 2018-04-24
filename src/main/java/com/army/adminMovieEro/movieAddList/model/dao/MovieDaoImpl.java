@@ -41,8 +41,7 @@ public class MovieDaoImpl implements MovieDao {
 	@Override
 	public List<MovieDetailVo> loadMovieDetail() {
 		System.out.println("Dao loadMovieDetail 실행..........................");
-		List<MovieDetailVo> detailResult = new ArrayList<MovieDetailVo>();
-		detailResult = sqlSession.selectList("MovieInfoDetail.loadDetailInfo");
+		List<MovieDetailVo> detailResult = sqlSession.selectList("MovieInfoDetail.loadDetailInfo");
 		return detailResult;
 	}
 
@@ -55,25 +54,21 @@ public class MovieDaoImpl implements MovieDao {
 	@Override
 	public List<MovieListVo> loadMovieList() {
 		System.out.println("Dao MovieList 실행................");
-		List<MovieListVo> movieList = new ArrayList<MovieListVo>();
-		movieList = sqlSession.selectList("MovieListVo.loadMovieList");
-		System.out.println("영화 목록 불러오기 성공");
+		List<MovieListVo> movieList = sqlSession.selectList("MovieListVo.loadMovieList");
 		return movieList;
 	}
 
 	@Override
 	public void deleteMovie(String movieUniNum) {
 		System.out.println("Dao deleteMovie 실행...................");
-		System.out.println("삭제할 유니넘버  : " + movieUniNum);
+		System.err.println("삭제할 유니넘버  : " + movieUniNum);
 		sqlSession.delete("MovieListVo.deleteMovie", movieUniNum);
 	}
 
 	@Override
 	public MovieListVo loadMovieTitle(String numMOVIE_INFO_SEQ) {
 		System.out.println("Dao loadMovieTitle 실행................");
-		MovieListVo movieVo = new MovieListVo();
-		movieVo = sqlSession.selectOne("MovieListVo.loadMovieTitle", numMOVIE_INFO_SEQ);
-		System.out.println("movieVo.toString() : " + movieVo.toString());
+		MovieListVo movieVo = sqlSession.selectOne("MovieListVo.loadMovieTitle", numMOVIE_INFO_SEQ);
 		return movieVo;
 	}
 
@@ -105,14 +100,12 @@ public class MovieDaoImpl implements MovieDao {
 	public void insertStillcut(Map<String, String> stillcutMap) {
 		System.out.println("Dao insertStillcut 실행...............");
 		sqlSession.insert("MovieVisual.insertStillcut",stillcutMap);
-		
 	}
 
 	@Override
 	public void insertTrailer(Map<String, String> trailerMap) {
 		System.out.println("Dao insertTrailer 실행...............");
 		sqlSession.insert("MovieVisual.insertTrailer",trailerMap);
-		
 	}
 
 	@Override
@@ -133,9 +126,6 @@ public class MovieDaoImpl implements MovieDao {
 	public int deleteStillcut(String stillcutSeq) {
 		System.out.println("Dao deleteStillcut 실행................");
 		int resultDelStillcut = sqlSession.delete("MovieVisual.deleteStillcut", stillcutSeq);
-		if(resultDelStillcut > 0) {
-			System.out.println("스틸컷 삭제 성공");
-		}
 		return resultDelStillcut;
 	}
 
@@ -143,9 +133,6 @@ public class MovieDaoImpl implements MovieDao {
 	public int deleteTrailer(String trailerSeq) {
 		System.out.println("Dao deleteTrailer 실행..................");
 		int resultDelTrailer = sqlSession.delete("MovieVisual.deleteTrailer", trailerSeq);
-		if(resultDelTrailer > 0) {
-			System.out.println("트레일러 삭제 성공");
-		}
 		return resultDelTrailer;
 	}
 }
