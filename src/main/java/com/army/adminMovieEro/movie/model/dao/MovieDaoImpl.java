@@ -1,6 +1,5 @@
-package com.army.adminMovieEro.movieAddList.model.dao;
+package com.army.adminMovieEro.movie.model.dao;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -8,10 +7,10 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.army.adminMovieEro.movieAddList.model.vo.MovieDetailVo;
-import com.army.adminMovieEro.movieAddList.model.vo.MovieListVo;
-import com.army.adminMovieEro.movieAddList.model.vo.MovieReviewVo;
-import com.army.adminMovieEro.movieAddList.model.vo.MovieVisualVo;
+import com.army.adminMovieEro.movie.model.vo.MovieDetailVo;
+import com.army.adminMovieEro.movie.model.vo.MovieListVo;
+import com.army.adminMovieEro.movie.model.vo.MovieReviewVo;
+import com.army.adminMovieEro.movie.model.vo.MovieVisualVo;
 
 @Repository("movieDao")
 public class MovieDaoImpl implements MovieDao {

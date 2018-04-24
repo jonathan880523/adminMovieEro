@@ -1,17 +1,17 @@
-package com.army.adminMovieEro.movieAddList.model.service;
+package com.army.adminMovieEro.movie.model.dao;
 
 import java.util.List;
 import java.util.Map;
 
-import com.army.adminMovieEro.movieAddList.model.vo.MovieDetailVo;
-import com.army.adminMovieEro.movieAddList.model.vo.MovieListVo;
-import com.army.adminMovieEro.movieAddList.model.vo.MovieReviewVo;
-import com.army.adminMovieEro.movieAddList.model.vo.MovieVisualVo;
+import com.army.adminMovieEro.movie.model.vo.MovieDetailVo;
+import com.army.adminMovieEro.movie.model.vo.MovieListVo;
+import com.army.adminMovieEro.movie.model.vo.MovieReviewVo;
+import com.army.adminMovieEro.movie.model.vo.MovieVisualVo;
 
-public interface MovieService {
+public interface MovieDao {
 	public void insertResultMovie(Map<String, String> resultMap);
 	
-	public int addMovieDetail(Map<String, String> movieDetailMap);
+	public int addMovieDetail(Map<String, String> MovieDetailMap);
 
 	public List<MovieDetailVo> loadMovieDetail();
 	
@@ -29,8 +29,8 @@ public interface MovieService {
 	
 	public List<MovieReviewVo> loadSpecificReview(String MVInfoSeq);
 	
-	public boolean deleteReview(int reviewSeq);
-
+	public int deleteReview(int reviewSeq);
+	
 	public void insertStillcut(Map<String, String> stillcutMap);
 	
 	public void insertTrailer(Map<String, String> trailerMap);
@@ -39,7 +39,7 @@ public interface MovieService {
 	
 	public List<MovieVisualVo> loadTrailer(String MVInfoSeq);
 	
-	public void deleteStillcut(String stillcutSeq);
+	public int deleteStillcut(String stillcutSeq);
 	
-	public void deleteTrailer(String trailerSeq);
+	public int deleteTrailer(String trailerSeq);
 }

@@ -1,17 +1,16 @@
-package com.army.adminMovieEro.movieAddList.model.service;
+package com.army.adminMovieEro.movie.model.service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.army.adminMovieEro.movieAddList.model.dao.MovieDao;
-import com.army.adminMovieEro.movieAddList.model.vo.MovieDetailVo;
-import com.army.adminMovieEro.movieAddList.model.vo.MovieListVo;
-import com.army.adminMovieEro.movieAddList.model.vo.MovieReviewVo;
-import com.army.adminMovieEro.movieAddList.model.vo.MovieVisualVo;
+import com.army.adminMovieEro.movie.model.dao.MovieDao;
+import com.army.adminMovieEro.movie.model.vo.MovieDetailVo;
+import com.army.adminMovieEro.movie.model.vo.MovieListVo;
+import com.army.adminMovieEro.movie.model.vo.MovieReviewVo;
+import com.army.adminMovieEro.movie.model.vo.MovieVisualVo;
 
 @Service("movieService")
 public class MovieServiceImpl implements MovieService {

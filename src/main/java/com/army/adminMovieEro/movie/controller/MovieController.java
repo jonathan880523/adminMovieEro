@@ -1,4 +1,4 @@
-﻿package com.army.adminMovieEro.movieAddList.controller;
+﻿package com.army.adminMovieEro.movie.controller;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -26,11 +26,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.army.adminMovieEro.movieAddList.model.service.MovieService;
-import com.army.adminMovieEro.movieAddList.model.vo.MovieDetailVo;
-import com.army.adminMovieEro.movieAddList.model.vo.MovieListVo;
-import com.army.adminMovieEro.movieAddList.model.vo.MovieReviewVo;
-import com.army.adminMovieEro.movieAddList.model.vo.MovieVisualVo;
+import com.army.adminMovieEro.movie.model.service.MovieService;
+import com.army.adminMovieEro.movie.model.vo.MovieDetailVo;
+import com.army.adminMovieEro.movie.model.vo.MovieListVo;
+import com.army.adminMovieEro.movie.model.vo.MovieReviewVo;
+import com.army.adminMovieEro.movie.model.vo.MovieVisualVo;
 
 @Controller
 public class MovieController {
