@@ -21,26 +21,25 @@ public class LoginController {
 	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 	
 	@RequestMapping(value="/")
-	public String home() {
-		logger.info("LoginController 도착.......................");
+	public String logIn() {
+		logger.info("첫 페이지 도착.......................");
 		return "main/login";
 	}
 	
 	@RequestMapping(value="logOut.do")
 	public String logOut(HttpSession session) {
+		System.out.println("controller logOut.do 도착....................");
 		session.invalidate();
 		return "redirect:/";
 	}
 	
 	@RequestMapping(value="login.do", method=RequestMethod.GET)
 	public ModelAndView home(HttpServletRequest request, ModelAndView mv, HttpSession session) {
-		logger.info("LoginController 도착.......................");
+		logger.info("controller login.do 도착.......................");
 		AdminMemberVo adminVo = new AdminMemberVo();
 		String adminId = request.getParameter("adminId");
 		String adminPw = request.getParameter("adminPw");
 		
-		System.out.println("adminId = " + adminId);
-		System.out.println("adminPw = " + adminPw);
 		adminVo = loginService.loadPosition(adminId);
 		
 		boolean checkStatus =  loginService.checkAdmin(adminId, adminPw);
@@ -53,7 +52,6 @@ public class LoginController {
 			return mv;
 		}else {
 			session.invalidate();
-			System.out.println("세션 종료");
 			mv.setViewName("redirect:/");
 			return mv;
 		}

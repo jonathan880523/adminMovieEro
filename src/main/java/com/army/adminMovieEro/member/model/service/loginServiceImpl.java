@@ -12,9 +12,8 @@ public class loginServiceImpl implements loginService {
 	@Autowired LoginDao loginDao;
 	
 	public boolean checkAdmin(String ADMIN_ID, String ADMIN_PW) {
-		System.out.println("Service 도착.........\n아이디 : " + ADMIN_ID + ", 비밀번호 : " +  ADMIN_PW);
+		System.out.println("Service checkAdmin 실행.........");
 		boolean checkStatus = loginDao.loginAdmin(ADMIN_ID, ADMIN_PW);
-		
 		return checkStatus;
 	}
 
