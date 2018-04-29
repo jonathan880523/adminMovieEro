@@ -33,6 +33,13 @@ public class LoginController {
 		return "redirect:/";
 	}
 	
+	@RequestMapping(value = "makeAdminId.do") 
+	public String makeAdminId() {
+		logger.info("controller makeAdminId.do 도착................");
+		
+		return "/main/makeAdminId";
+	}
+	
 	@RequestMapping(value="login.do", method=RequestMethod.GET)
 	public ModelAndView home(HttpServletRequest request, ModelAndView mv, HttpSession session) {
 		logger.info("controller login.do 도착.......................");

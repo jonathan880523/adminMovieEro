@@ -403,4 +403,5 @@ public class MovieController {
 		mv.addObject("detailResult", detailResult).setViewName("movieBoard/movieDetail");
 		return mv;
 	}
+	
 }
