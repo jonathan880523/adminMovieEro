@@ -10,9 +10,11 @@
 <p>영화를 검색해 저장히면 동시에 web scraping을 활용해 얻어온 정보도 디비에 저장한다</p>
 <img src="image\webScrapingCode.png" alt="webScrapingCode" />
 <p>JSOUP 클래스를 활용한 web scraping 코드</p>
-<img src="image\adminMain.png" alt="adminMain" />
+<img src="image\adminMain.PNG" alt="adminMain" />
 <p>영화를 등록하면 메인페이지에 간단한 영화 정보를 표시</p>
-
+<img src="image\addTrailer.PNG" alt="adminMain" />
+<p>사진 / 영상 추가하면 영화 소개 페이지의 해당 영화에 추가</p>
+<hr>
 <h3>관리자 맴버 UML Diagram (with DTO)</h3><br>
 <img src="image\adminMemberUML.gif" alt="adminMemberUML" />
 <hr>
