@@ -12,7 +12,7 @@
 <p>JSOUP 클래스를 활용한 web scraping 코드</p>
 <img src="image\adminMain.PNG" alt="adminMain" />
 <p>영화를 등록하면 메인페이지에 간단한 영화 정보를 표시</p>
-<img src="image\addTrailer.PNG" alt="adminMain" />
+<img src="image\addTrailer.PNG" alt="addTrailer" />
 <p>사진 / 영상 추가하면 영화 소개 페이지의 해당 영화에 추가</p>
 <hr>
 <h3>관리자 맴버 UML Diagram (with DTO)</h3><br>
