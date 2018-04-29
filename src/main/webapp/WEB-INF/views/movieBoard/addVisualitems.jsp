@@ -21,7 +21,7 @@
                          <div class="span12">
                             <div class="table-toolbar">
                                <div class="btn-group span2">
-                                  <button type="button" id="deleteStillcutBtn" class="btn btn-primary">삭제<i class="icon-remove icon-white"></i></button>
+                                  <button type="button" style="margin-bottom: 10px;" id="deleteStillcutBtn" class="btn btn-primary">삭제<i class="icon-remove icon-white"></i></button>
                                </div>
                                <div class="btn-group span2">
                                   <button type="button" id="addStillcutBtn" class="btn btn-primary">추가<i class="icon-inbox icon-white"></i></button>
@@ -69,10 +69,10 @@
                                   <button type="button" id="addTrailerBtn"class="btn btn-primary addVisualBtn">추가<i class="icon-inbox icon-white"></i></button>
                                </div>
                                <div class="btn-group span8">
-                				  		<input type="text" id="trailerURL" name="trailerURL" class="span12" placeholder="트레일러 URL을 입력해주세요" value="">	
+                				  		<input type="file" id="trailerFile" name="trailerFile" class="span12" placeholder="파일을 추가해 주세요" value="">	
                                </div>
                                <div class="btn-group span8">
-                				  		<input type="text" id="trailerURL" name="trailerDesc" class="span12" placeholder="간단한 설명을 써주세요" value="">	
+                				  		<input type="text" style="margin-top: 10px;" id="trailerURL" name="trailerDesc" class="span12" placeholder="간단한 설명을 써주세요" value="">	
                                </div>
                             </div>
                              
